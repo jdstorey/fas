@@ -2,6 +2,7 @@
 *_files
 *_book
 *.md
+*.log
 
 # PDF Output
 fas.pdf
