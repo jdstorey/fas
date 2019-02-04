@@ -1,47 +1,47 @@
-# (PART) Introduction {-}
-
-# Statistics, Machine Learning, and Data Science {#stat_ml_ds}
-
-
 ```{r, message=FALSE, echo=FALSE, cache=FALSE}
 source("./customization/knitr_options.R")
 ```
 
-## Statistics
+# (PART) Introduction {-}
 
-**Statistics** is the study of the collection, analysis, interpretation, presentation, and organization of data.
+# Statistics {#stat_ml_ds}
 
-<https://en.wikipedia.org/wiki/Statistics>
+## History
 
-## Applied Statistics
+The practice of statistics has been around for hundreds of years. The early application of statistics was centered around collecting demographic and economic data for governments. The terms "statistics" was coined in the mid-1700s, which is derived from its relationship to state or government data. 
+
+Early methodological ideas introduced in statistics involved procedures such as calculating the mean or median, representing data graphically, and trying to model the distribution of "errors" between observed data and a model.
+
+In the 1800s, probability started to become integrated into statistical thinking, which lead to the era of inferential statistics; it gave rise to deep results on how we design and analyze studies to use finite amounts of data that have been collected through a probabilistic mechanism. During the early to mid 1900s, inferential statistics became a well developed and understood component to statistics. Its ties to probability were deepened, especially with the formal axiomatization and rigorous development of probability.
+
+The latter half of the 1900s resulted in another major leap forward for the field of statistics, with the introduction of modern computing. This had a massive impact on how we collect and analyze data. Statistics became less reliant on mathematical models and more immersed in computational approaches.
+
+In the 2000s we have witnessed yet another major leap forward. Data collection has never been faster, cheaper, or larger than today. We are able to collect and analyze massive amounts of data in most areas of science and industry. This has led to a sea-change in statistics, both in its scope and in its importance. The field of statistics has never been more challenging or impactful than it is today.
+
+## Definition
+
+The modern definition of **Statistics** is the study of how to extract information from data, including how to collect, organize, analyze, and present information in data. 
 
 **Applied Statistics** is concerned with the practical considerations and implementations needed to carry out a statistical analysis.
 
-## Machine Learning
+In Chapter \@ref(challenges) below, we make this definition concrete by discussing the various problems that statistics tackles.
+
+
+## Relationship to Machine Learning
 
 **Machine learning** explores the study and construction of algorithms that can learn from and make predictions on data. Machine learning is closely related to and often overlaps with computational statistics; a discipline which also focuses in prediction-making through the use of computers. 
 
 <https://en.wikipedia.org/wiki/Machine_learning>
 
-## Data Science
+## Relationship to Data Science 
 
 **Data Science** is an interdisciplinary field about processes and systems to extract knowledge or insights from data in various forms, either structured or unstructured, which is a continuation of some of the data analysis fields such as statistics, data mining, and predictive analytics.
 
 <https://en.wikipedia.org/wiki/Data_science>
 
-*So what is Data Science?*
+### Some History
 
-- *Data Science* is a very new term
-
-- No well-accepted definition
-
-- Statistics, machine learning, and data science are all essentially about extracting knowledge or value from data
-
-- DS deals with data in the following ways: collecting, storing, managing, wrangling, exploration, learning, discovery, communication, products
-
-## Some History
-
-### John Tukey
+#### John Tukey {-}
 
 John Tukey pioneered a field called "exploratory data analysis" (EDA)
 
@@ -55,23 +55,17 @@ From [The Future of Data Analysis](https://projecteuclid.org/euclid.aoms/1177704
 
 > Data analysis is a larger and more varied field than inference, or incisive procedures, or allocation.
 
-### Jeff Wu
+#### Jeff Wu {-}
 
 > In November 1997, C.F. Jeff Wu gave the inaugural lecture entitled "Statistics = Data Science?". In this lecture, he characterized statistical work as a trilogy of data collection, data modeling and analysis, and decision making. In his conclusion, he initiated the modern, non-computer science, usage of the term "data science" and advocated that statistics be renamed data science and statisticians data scientists.
 
 <https://en.wikipedia.org/wiki/Data_science>
 
-### William Cleveland
+#### William Cleveland {-}
 
  - In 2001, William Cleveland introduced data science as an independent discipline, extending the field of statistics to incorporate "advances in computing with data" in his article [Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics](http://onlinelibrary.wiley.com/doi/10.1111/j.1751-5823.2001.tb00477.x/abstract) in  *International Statistical Review*
 
-- Cleveland establishes six technical areas which he believed to encompass the field of data science
-
-<https://en.wikipedia.org/wiki/Data_science>
-
-## Statistics $\rightarrow$ Data Science
-
-Cleveland's six area to extend statistics to data science:
+Cleveland establishes six technical areas which he believed to encompass the field of data science:
 
 1. multidisciplinary investigations
 2. models and methods for data
@@ -80,7 +74,9 @@ Cleveland's six area to extend statistics to data science:
 5. tool evaluation
 6. theory
 
-## Industry
+<https://en.wikipedia.org/wiki/Data_science>
+
+### Industry
 
 Individuals working in industry began to call themselves "data scientists" several years after statisticians had introduced the field.
 
@@ -88,7 +84,7 @@ Individuals working in industry began to call themselves "data scientists" sever
 
 - The term "data scientist" is now often used to describe positions in industry that primarily involve data, whether it is statistics, machine learning, data curation, or other data-centric activities
 
-# Components of Applied Statistics and Data Science {#challenges}
+# Components of Applied Statistics {#challenges}
 
 Let's first cosnider the central challenges of applied statistics, shown in the following schematic I'll call the "central dogma of applied statistics", shown in Figure \@ref(fig:central-dogma-statistics)
 
@@ -104,7 +100,7 @@ Study design is an area that is almost solely studied by statisticians and it is
 
 ## Data Wrangling {#data-wrangling-introduction-chapter}
 
-Data wrangling is a new terms that refers to the process of converitng raw data, which is often very messy, into data that can be readily analyzed.  The importance of this activity has grown substantially in recent years as data sets have becoem larger and more comoplex. Data wrangling 
+Data wrangling is a new terms that refers to the process of convertng raw data, which is often very messy, into data that can be readily analyzed.  The importance of this activity has grown substantially in recent years as data sets have becoem larger and more comoplex. Data wrangling 
 
 ## Data Analysis
 

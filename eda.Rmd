@@ -1657,7 +1657,7 @@ Hierarchical clustering is an example of *bottom-up* clustering in that the proc
 
 $K$-means clustering is an example of *top-down* clustering in that the number of clusters is chosen beforehand and then object are assigned to one of the $K$ clusters.
 
-## Challenges
+## Challenges {#clustering-challenges}
 
 - Cluster analysis method
 - Distance measure
