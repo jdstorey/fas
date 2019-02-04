@@ -1,0 +1,21 @@
+---
+knit: "bookdown::render_book"
+title: "Foundations of Applied Statistics"
+subtitle: "Data Wrangling, Exploratory Data Analysis, Inference, and Modeling"
+author: "John D. Storey"
+description: "Foundations of Applied Statistics"
+date: "Created 2017-02-01; Last midified `r Sys.Date()`"
+url: 'https\://jdstorey.github.io/fas/'
+github-repo: jdstorey/fas
+twitter-handle: johnstorey
+cover-image: images/book_cover.png
+site: bookdown::bookdown_site
+documentclass: book
+---
+
+#  {-}
+
+```{r fig.align='center', out.width='75%', echo=FALSE}
+knitr::include_graphics('images/book_cover.png')
+```
+

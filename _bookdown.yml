@@ -1,0 +1,31 @@
+new_session: yes
+
+output_dir: "docs"
+
+book_filename: "fas"
+
+language:
+  ui:
+    chapter_name: ""
+
+rmd_files: [
+  "index.Rmd",
+  "preface.Rmd",
+  "introduction.Rmd",
+  "r.Rmd",
+  "data_wrangling.Rmd",
+  "eda.Rmd",
+  "probability.Rmd",
+  "freq_inference.Rmd",
+  "bayes_inference.Rmd",
+  "numerical_likelihood.Rmd",
+  "nonparametrics.Rmd",
+  "stat_models_1.Rmd",
+  "stat_models_2.Rmd",
+  "hd_inference.Rmd",
+  "lv_models.Rmd",
+#  "session_info.Rmd",
+  "references.Rmd"
+]
+
+# before_chapter_script: "_common.R"

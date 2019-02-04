@@ -1,0 +1,7 @@
+Package: fas
+Title: Foundations of Applied Statistics
+Version: 0.0.0.1000
+Authors@R: c(person("John D.", "Storey", email = "jstorey@princeton.edu", role = c("aut", "cre")))
+Depends: R (>= 3.3.0)
+Imports:
+  bookdown

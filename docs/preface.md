@@ -1,0 +1,37 @@
+# Preface {-}
+
+Hello, current and future statistics enthusiasts! Welcome to my ambitious book project. I'm a professor at Princeton University who works at the interface of statistics, genetics, and genomics. My primary background is in statistics. I have worked with undergraduate and graduate students who come from many backgrounds: biology, computer science, engineering, mathematics, physics, and statistics. The goal for my students is to turn them into skilled applied statsiticians who are interested in tackling real world problems. The content of this book is what I want them to learn as soon as possible after joining my lab.  More generally, this book establishes a foundation in applied statistics and data science for those interested in pursuing data-driven research. I have included many different types of data sets here, but the book places a special emphasis on modern biological problems and data sets due to my particular interests. 
+
+This book also serves as the primary reference for my Princeton University course verbosely titled, _Foundations of Applied Statistics and Data Science (with Applications in Biology)_, which has a web site, http://jdstorey.org/asdscourse/. The content of this book started with an undergraduate course I developed, called [Introduction to Data Science](http://sml201.github.io). In that course, I made slides using the amazing R package [`revealjs`](https://cran.r-project.org/web/packages/revealjs/index.html).  When I then developed Foundations of Applied Statistics and Data Science (with Applications in Biology), I created new slides also using `revealjs`; these slides can be found at http://jdstorey.org/asdscourse2017/lectures/, and the source code at https://github.com/jdstorey/asdslectures. Although, I no longer use slides to teach this course, I was nevertheless able to easily move the R Markdown used to make the slides into a book format, using the also amazing [`bookdown`](https://cran.rstudio.com/web/packages/bookdown/index.html) package.
+
+The current draft of this book contains most of the statistics and R code that I intend to include. However, because it is being build from slides, there are two things to keep in mind. First, I will be adding a substantial amount of exposition and data analyses in the book. It currently mostly reads as terse slides. I will also be modifying some of the formatting to better suit bookdown. Second, it is common to quote from sources verbatim when making slides (citing the source, of course). It is not so common to do this in a book. Threfore, you will see more material quoted verbatim from outside sources than is typical in a book. I intend to remedy this over time.
+
+This books is organized into several parts:
+
+<ol type="I">
+  <li> Introduction
+  <li> R
+  <li> Data wrangling
+  <li> Explortatory data analysis
+  <li> Probability
+  <li> Frequentist inference
+  <li> Bayesian inference
+  <li> Numerical methods for likelihood
+  <li> Nonparametric inference
+  <li> Statistical models
+  <li> High-dimensional inference
+  <li> Latent variable models
+</ol>
+
+#### Source Files {-}
+
+The source files for this book are maintained on GitHub: https://github.com/jdstorey/fas
+
+Feel free to visit this repository to help me make the book better.
+
+#### About The Author {-}
+
+John Storey received his PhD from Stanford University in statistics with a PhD minor in genetics. He then held faculty positions at the University of California, Berkeley and the University of Washington. Since 2008, he has a been a professor in the Lewis-Sigler Institute for Integrative Genomics at Princeton University. Storey's research has been concerned with developing and applying statistical methods in genetics and genomics. He has made pioneering contributions to the development and application of methods for significance testing and inference on high-dimensional data.
+
+In 2014, Storey was appointed the founding Director of the Center for Statistics and Machine Learning at Princeton University and he was also named the William R. Harman '63 and Mary-Love Harman Professor in Genomics. He is an elected fellow of the American Association for the Advancement of Science as well as the Institute of Mathematical Statistics. He is the winner of the 2015 COPSS Presidents' Award.  He is also the winner of the 2015 Mortimer Spiegelman Award given by the American Public Health Association for outstanding contributions to public health statistics.
+

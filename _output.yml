@@ -1,0 +1,16 @@
+bookdown::gitbook:
+#  includes:
+#    in_header: [ga_script.html]
+  config:
+    toc:
+      collapse: section
+      before: |
+        <li><strong><a href="./index.html">Foundations of Applied Statistics</a></strong></li>
+    edit:
+      link: https://github.com/jdstorey/fas/edit/master/%s
+      text: "Edit"
+    sharing: no
+  css: fas.css
+
+#bookdown::pdf_book:
+#  latex_engine: "xelatex"
