@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>20 Principal Component Analysis | Foundations of Applied Statistics</title>
-  <meta name="description" content="20 Principal Component Analysis | Foundations of Applied Statistics">
+  <title>1 Statistics | Foundations of Applied Statistics</title>
+  <meta name="description" content="1 Statistics | Foundations of Applied Statistics">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="20 Principal Component Analysis | Foundations of Applied Statistics" />
+  <meta property="og:title" content="1 Statistics | Foundations of Applied Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://jdstorey.github.io/fas/" />
   <meta property="og:image" content="https://jdstorey.github.io/fas/images/book_cover.png" />
-  <meta property="og:description" content="20 Principal Component Analysis | Foundations of Applied Statistics" />
+  <meta property="og:description" content="1 Statistics | Foundations of Applied Statistics" />
   <meta name="github-repo" content="jdstorey/fas" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="20 Principal Component Analysis | Foundations of Applied Statistics" />
+  <meta name="twitter:title" content="1 Statistics | Foundations of Applied Statistics" />
   <meta name="twitter:site" content="@johnstorey" />
-  <meta name="twitter:description" content="20 Principal Component Analysis | Foundations of Applied Statistics" />
+  <meta name="twitter:description" content="1 Statistics | Foundations of Applied Statistics" />
   <meta name="twitter:image" content="https://jdstorey.github.io/fas/images/book_cover.png" />
 
 <meta name="author" content="John D. Storey">
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="cluster-analysis.html">
-<link rel="next" href="probability-and-statistics.html">
+<link rel="prev" href="preface.html">
+<link rel="next" href="challenges.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -1288,403 +1288,84 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="principal-component-analysis" class="section level1">
-<h1><span class="header-section-number">20</span> Principal Component Analysis</h1>
-<div id="dimensionality-reduction" class="section level2">
-<h2><span class="header-section-number">20.1</span> Dimensionality Reduction</h2>
-<p>The goal of <strong>dimensionality reduction</strong> is to extract low dimensional representations of high dimensional data that are useful for visualization, exploration, inference, or prediction.</p>
-<p>The low dimensional representations should capture key sources of variation in the data.</p>
-<p>Some methods for dimensionality reduction include:</p>
+<div id="stat_overview" class="section level1">
+<h1><span class="header-section-number">1</span> Statistics</h1>
+<div id="history" class="section level2">
+<h2><span class="header-section-number">1.1</span> History</h2>
+<p>The practice of statistics has been around for hundreds of years. The early application of statistics was centered around collecting demographic and economic data for governments. The terms “statistics” was coined in the mid-1700s, which is derived from its relationship to state or government data.</p>
+<p>Early methodological ideas introduced in statistics involved procedures such as calculating the mean or median, representing data graphically, and trying to model the distribution of “errors” between observed data and a model.</p>
+<p>In the 1800s, probability started to become integrated into statistical thinking, which lead to the era of inferential statistics; it gave rise to deep results on how we design and analyze studies to use finite amounts of data that have been collected through a probabilistic mechanism. During the early to mid 1900s, inferential statistics became a well developed and understood component to statistics. Its ties to probability were deepened, especially with the formal axiomatization and rigorous development of probability.</p>
+<p>The latter half of the 1900s resulted in another major leap forward for the field of statistics, with the introduction of modern computing. This had a massive impact on how we collect and analyze data. Statistics became less reliant on mathematical models and more immersed in computational approaches.</p>
+<p>In the 2000s we have witnessed yet another major leap forward. Data collection has never been faster, cheaper, or larger than today. We are able to collect and analyze massive amounts of data in most areas of science and industry. This has led to a sea-change in statistics, both in its scope and in its importance. The field of statistics has never been more challenging or impactful than it is today.</p>
+</div>
+<div id="definition" class="section level2">
+<h2><span class="header-section-number">1.2</span> Definition</h2>
+<p>The modern definition of <strong>Statistics</strong> is the study of how to extract information from data, including how to collect, organize, analyze, and present information in data.</p>
+<p><strong>Applied Statistics</strong> is concerned with the practical considerations and implementations needed to carry out a statistical analysis.</p>
+<p>In Chapter <a href="challenges.html#challenges">2</a> below, we make this definition concrete by discussing the various problems that statistics tackles.</p>
+</div>
+<div id="relationship-to-machine-learning" class="section level2">
+<h2><span class="header-section-number">1.3</span> Relationship to Machine Learning</h2>
+<p><strong>Machine learning</strong> explores the study and construction of algorithms that can learn from and make predictions on data. Machine learning is closely related to and often overlaps with computational statistics; a discipline which also focuses in prediction-making through the use of computers.</p>
+<p><a href="https://en.wikipedia.org/wiki/Machine_learning" class="uri">https://en.wikipedia.org/wiki/Machine_learning</a></p>
+</div>
+<div id="relationship-to-data-science" class="section level2">
+<h2><span class="header-section-number">1.4</span> Relationship to Data Science</h2>
+<p><strong>Data Science</strong> is an interdisciplinary field about processes and systems to extract knowledge or insights from data in various forms, either structured or unstructured, which is a continuation of some of the data analysis fields such as statistics, data mining, and predictive analytics.</p>
+<p><a href="https://en.wikipedia.org/wiki/Data_science" class="uri">https://en.wikipedia.org/wiki/Data_science</a></p>
+<div id="some-history" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> Some History</h3>
+<div id="john-tukey" class="section level4 unnumbered">
+<h4>John Tukey</h4>
+<p>John Tukey pioneered a field called “exploratory data analysis” (EDA)</p>
+<p>From <a href="https://projecteuclid.org/euclid.aoms/1177704711">The Future of Data Analysis</a> (1962) <em>Annals of Mathematical Statistics</em> …</p>
+<blockquote>
+<p>For a long time I have thought I was a statistician, interested in inferences from the particular to the general. But as I have watched mathematical statistics evolve, I have had cause to wonder and to doubt.</p>
+</blockquote>
+<blockquote>
+<p>All in all, I have come to feel that my central interest is in data analysis, which I take to include, among other things: procedures for analyzing data, techniques for interpreting the results of such procedures, ways of planning the gathering of data to make its analysis easier, more precise or more accurate, and all the machinery and results of (mathematical) statistics which apply to analyzing data.</p>
+</blockquote>
+<blockquote>
+<p>Data analysis is a larger and more varied field than inference, or incisive procedures, or allocation.</p>
+</blockquote>
+</div>
+<div id="jeff-wu" class="section level4 unnumbered">
+<h4>Jeff Wu</h4>
+<blockquote>
+<p>In November 1997, C.F. Jeff Wu gave the inaugural lecture entitled “Statistics = Data Science?”. In this lecture, he characterized statistical work as a trilogy of data collection, data modeling and analysis, and decision making. In his conclusion, he initiated the modern, non-computer science, usage of the term “data science” and advocated that statistics be renamed data science and statisticians data scientists.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Data_science" class="uri">https://en.wikipedia.org/wiki/Data_science</a></p>
+</div>
+<div id="william-cleveland" class="section level4 unnumbered">
+<h4>William Cleveland</h4>
 <ul>
-<li>Principal component analysis</li>
-<li>Singular value decomposition</li>
-<li>Latent variable modeling</li>
-<li>Vector quantization</li>
-<li>Self-organizing maps</li>
-<li>Multidimensional scaling</li>
+<li>In 2001, William Cleveland introduced data science as an independent discipline, extending the field of statistics to incorporate “advances in computing with data” in his article <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1751-5823.2001.tb00477.x/abstract">Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics</a> in <em>International Statistical Review</em></li>
 </ul>
-<p>We will focus on what is likely the most commonly applied dimensionality reduction tool, principal components analysis.</p>
+<p>Cleveland establishes six technical areas which he believed to encompass the field of data science:</p>
+<ol style="list-style-type: decimal">
+<li>multidisciplinary investigations</li>
+<li>models and methods for data</li>
+<li>computing with data</li>
+<li>pedagogy</li>
+<li>tool evaluation</li>
+<li>theory</li>
+</ol>
+<p><a href="https://en.wikipedia.org/wiki/Data_science" class="uri">https://en.wikipedia.org/wiki/Data_science</a></p>
 </div>
-<div id="goal-of-pca" class="section level2">
-<h2><span class="header-section-number">20.2</span> Goal of PCA</h2>
-<p>For a given set of variables, <strong>principal component analysis</strong> (PCA) finds (constrained) weighted sums of the variables to produce variables (called principal components) that capture consectuive maximum levels of variation in the data.</p>
-<p>Specifically, the first principal component is the weighted sum of the variables that results in a component with the highest variation.</p>
-<p>This component is then “removed” from the data, and the second principal component is obtained on the resulting residuals.</p>
-<p>This process is repeated until there is no variation left in the data.</p>
 </div>
-<div id="defining-the-first-pc" class="section level2">
-<h2><span class="header-section-number">20.3</span> Defining the First PC</h2>
-<p>Suppose we have <span class="math inline">\(m\)</span> variables, each with <span class="math inline">\(n\)</span> observations:</p>
-<p><span class="math display">\[
-\begin{aligned}
-{\boldsymbol{x}}_1 &amp; = (x_{11}, x_{12}, \ldots, x_{1n}) \\
-{\boldsymbol{x}}_2 &amp; = (x_{21}, x_{22}, \ldots, x_{2n}) \\
-\  &amp; \vdots \ \\
-{\boldsymbol{x}}_m &amp; = (x_{m1}, x_{m2}, \ldots, x_{mn})
-\end{aligned}
-\]</span></p>
-<p>We can organize these variables into an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\({\boldsymbol{X}}\)</span> where row <span class="math inline">\(i\)</span> is <span class="math inline">\({\boldsymbol{x}}_i\)</span>.</p>
-<p>Consider all possible weighted sums of these variables</p>
-<p><span class="math display">\[\tilde{\pmb{x}} = \sum_{i=1}^{m} u_i \pmb{x}_i\]</span></p>
-<p>where we constrain <span class="math inline">\(\sum_{i=1}^{m} u_i^2 = 1\)</span>. We wish to identify the vector <span class="math inline">\(\pmb{u} = \{u_i\}_{i=1}^{m}\)</span> under this constraint that maximizes the sample variance of <span class="math inline">\(\tilde{\pmb{x}}\)</span>. However, note that if we first mean center each variable, replacing <span class="math inline">\(x_{ij}\)</span> with <span class="math display">\[x_{ij}^* = x_{ij} -  \frac{1}{n} \sum_{k=1}^n x_{ik},\]</span> then the sample variance of <span class="math inline">\(\tilde{\pmb{x}} = \sum_{i=1}^{m} u_i \pmb{x}_i\)</span> is equal to that of <span class="math inline">\(\tilde{\pmb{x}}^* = \sum_{i=1}^{m} u_i \pmb{x}^*_i\)</span>.</p>
-<p>PCA is a method concerned with decompositon variance and covariance, so we don’t wish to involve the mean of each indivdual variable. Therefore, unless the true population mean of each variable is known (in which case it would be subtracted from its respective variable), we will formulate PCA in terms of mean centered variables, <span class="math inline">\(\pmb{x}^*_i = (x^*_{i1}, x^*_{i2}, \ldots, x^*_{in})\)</span>, which we can collect into <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\({\boldsymbol{X}}^*\)</span>. We therefore consider all possible weighted sums of variables: <span class="math display">\[\tilde{\pmb{x}}^* = \sum_{i=1}^{m} u_i \pmb{x}^*_i.\]</span></p>
-<p>The <strong>first principal component</strong> of <span class="math inline">\({\boldsymbol{X}}^*\)</span> (and <span class="math inline">\({\boldsymbol{X}}\)</span>) is <span class="math inline">\(\tilde{\pmb{x}}^*\)</span> with maximum sample variance</p>
-<p><span class="math display">\[
-s^2_{\tilde{{\boldsymbol{x}}}^*}  = \frac{\sum_{j=1}^n \tilde{x}^{*2}_j}{n-1} 
-\]</span></p>
-<p>The <span class="math inline">\(\pmb{u} = \{u_i\}_{i=1}^{m}\)</span> yielding this first principal component is called its <strong>loadings</strong>.</p>
-<p>Note that <span class="math display">\[
-s^2_{\tilde{{\boldsymbol{x}}}}  = \frac{\sum_{j=1}^n \left(\tilde{x}_j - \frac{1}{n} \sum_{k=1}^n \tilde{x}_k \right)^2}{n-1} = \frac{\sum_{j=1}^n \tilde{x}^{*2}_j}{n-1} = s^2_{\tilde{{\boldsymbol{x}}}^*} \ ,
-\]</span> so the loadings can be found from either <span class="math inline">\({\boldsymbol{X}}\)</span> or <span class="math inline">\({\boldsymbol{X}}^*\)</span>. However, it the technically correct first PC is <span class="math inline">\(\tilde{{\boldsymbol{x}}}^*\)</span> rather than <span class="math inline">\(\tilde{{\boldsymbol{x}}}\)</span>.</p>
-<p>This first PC is then removed from the data, and the procedure is repeated until all possible sample PCs are constructed. This is accomplished by calculating the product of <span class="math inline">\({\boldsymbol{u}}_{m \times 1}\)</span> and <span class="math inline">\(\tilde{\pmb{x}}^*_{1 \times n}\)</span>, and subtracting it from <span class="math inline">\({\boldsymbol{X}}^*\)</span>: <span class="math display">\[
-{\boldsymbol{X}}^* - {\boldsymbol{u}}\tilde{\pmb{x}}^* \ .
-\]</span></p>
-</div>
-<div id="calculating-all-pcs" class="section level2">
-<h2><span class="header-section-number">20.4</span> Calculating All PCs</h2>
-<p>All of the PCs can be calculated simultaneously. First, we construct the <span class="math inline">\(m \times m\)</span> sample covariance matrix <span class="math inline">\({\boldsymbol{S}}\)</span> with <span class="math inline">\((i,j)\)</span> entry <span class="math display">\[
-s_{ij} = \frac{\sum_{k=1}^n (x_{ik} - \bar{x}_{i\cdot})(x_{jk} - \bar{x}_{j\cdot})}{n-1}.
-\]</span> The sample covariance can also be calculated by <span class="math display">\[
-{\boldsymbol{S}}= \frac{1}{n-1} {\boldsymbol{X}}^{*} {\boldsymbol{X}}^{*T}.
-\]</span></p>
-<p>It can be shown that <span class="math display">\[
-s^2_{\tilde{{\boldsymbol{x}}}^*} = {\boldsymbol{u}}^T {\boldsymbol{S}}{\boldsymbol{u}},
-\]</span> so identifying <span class="math inline">\({\boldsymbol{u}}\)</span> that maximizes <span class="math inline">\(s^2_{\tilde{{\boldsymbol{x}}}}\)</span> also maximizes <span class="math inline">\({\boldsymbol{u}}^T {\boldsymbol{S}}{\boldsymbol{u}}\)</span>.</p>
-<p>Using a Lagrange multiplier, we wish to maximize</p>
-<p><span class="math display">\[
-{\boldsymbol{u}}^T {\boldsymbol{S}}{\boldsymbol{u}}+ \lambda({\boldsymbol{u}}^T {\boldsymbol{u}}- 1).
-\]</span></p>
-<p>Differentiating with respect to <span class="math inline">\({\boldsymbol{u}}\)</span> and setting this to <span class="math inline">\({\boldsymbol{0}}\)</span>, we get <span class="math inline">\({\boldsymbol{S}}{\boldsymbol{u}}- \lambda {\boldsymbol{u}}= 0\)</span> or</p>
-<p><span class="math display">\[
-{\boldsymbol{\Sigma}}{\boldsymbol{u}}= \lambda {\boldsymbol{u}}.
-\]</span></p>
-<p>For any such <span class="math inline">\({\boldsymbol{u}}\)</span> and <span class="math inline">\(\lambda\)</span> where this holds, note that</p>
-<p><span class="math display">\[
-s_{ij} = \frac{\sum_{k=1}^n (x_{ik} - \bar{x}_{i\cdot})(x_{jk} - \bar{x}_{j\cdot})}{n-1} = {\boldsymbol{u}}^T {\boldsymbol{\Sigma}}{\boldsymbol{u}}= \lambda
-\]</span></p>
-<p>so the PC’s variance is <span class="math inline">\(\lambda\)</span>.</p>
-<p>The eigendecompositon of a matrix identifies all such solutions to <span class="math inline">\({\boldsymbol{S}}{\boldsymbol{u}}= \lambda {\boldsymbol{u}}.\)</span> Specifically, it calculates the decompositon</p>
-<p><span class="math display">\[
-{\boldsymbol{S}}= {\boldsymbol{U}}{\boldsymbol{\Lambda}}{\boldsymbol{U}}^T
-\]</span></p>
-<p>where <span class="math inline">\({\boldsymbol{U}}\)</span> is an <span class="math inline">\(m \times m\)</span> orthogonal matrix and <span class="math inline">\({\boldsymbol{\Lambda}}\)</span> is a diagonal matrix with entries <span class="math inline">\(\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0\)</span>.</p>
-<p>The fact that <span class="math inline">\({\boldsymbol{U}}\)</span> is orthogonal means <span class="math inline">\({\boldsymbol{U}}{\boldsymbol{U}}^T = {\boldsymbol{U}}^T {\boldsymbol{U}}= {\boldsymbol{I}}\)</span>.</p>
-<p>The following therefore hold:</p>
-<ul>
-<li>For each column <span class="math inline">\(j\)</span> of <span class="math inline">\({\boldsymbol{U}}\)</span>, say <span class="math inline">\({\boldsymbol{u}}_j\)</span>, it follows that <span class="math inline">\({\boldsymbol{S}}{\boldsymbol{u}}_j = \lambda_j {\boldsymbol{u}}_j\)</span></li>
-<li><span class="math inline">\(\| {\boldsymbol{u}}_j \|^2_2 = 1\)</span> and <span class="math inline">\({\boldsymbol{u}}_j^T {\boldsymbol{u}}_k = {\boldsymbol{0}}\)</span> for <span class="math inline">\(\lambda_j \not= \lambda_k\)</span></li>
-<li><span class="math inline">\({\operatorname{Var}}({\boldsymbol{u}}_j^T {\boldsymbol{X}}) = \lambda_j\)</span></li>
-<li><span class="math inline">\({\operatorname{Var}}({\boldsymbol{u}}_1^T {\boldsymbol{X}}) \geq {\operatorname{Var}}({\boldsymbol{u}}_2^T {\boldsymbol{X}}) \geq \cdots \geq {\operatorname{Var}}({\boldsymbol{u}}_m^T {\boldsymbol{X}})\)</span></li>
-<li><span class="math inline">\({\boldsymbol{S}}= \sum_{j=1}^m \lambda_j {\boldsymbol{u}}_j {\boldsymbol{u}}_j^T\)</span></li>
-<li>For <span class="math inline">\(\lambda_j \not= \lambda_k\)</span>, <span class="math display">\[{\operatorname{Cov}}({\boldsymbol{u}}_j^T {\boldsymbol{X}}, {\boldsymbol{u}}_k^T {\boldsymbol{X}}) = {\boldsymbol{u}}_j^T {\boldsymbol{S}}{\boldsymbol{u}}_k = \lambda_k {\boldsymbol{u}}_j^T {\boldsymbol{u}}_k =  {\boldsymbol{0}}\]</span></li>
-</ul>
-<p>To calculate the actual principal components, let <span class="math inline">\(x^*_{ij} = x_{ij} - \bar{x}_{i\cdot}\)</span> be the mean-centered variables. Let <span class="math inline">\({\boldsymbol{X}}^*\)</span> be the matrix composed of these mean-centered variables. Also, let <span class="math inline">\({\boldsymbol{u}}_j\)</span> be column <span class="math inline">\(j\)</span> of <span class="math inline">\({\boldsymbol{U}}\)</span> from <span class="math inline">\({\boldsymbol{S}}= {\boldsymbol{U}}{\boldsymbol{\Lambda}}{\boldsymbol{U}}^T\)</span>.</p>
-<p><strong>Sample principal component</strong> <span class="math inline">\(j\)</span> is then</p>
-<p><span class="math display">\[
-\tilde{{\boldsymbol{x}}}_j = {\boldsymbol{u}}_j^T {\boldsymbol{X}}^* = \sum_{i=1}^m u_{ij} {\boldsymbol{x}}^*_i 
-\]</span></p>
-<p>for <span class="math inline">\(j = 1, 2, \ldots, \min(m, n-1)\)</span>. For <span class="math inline">\(j &gt; \min(m, n-1)\)</span>, we have <span class="math inline">\(\lambda_j = 0\)</span>, so these principal components are not necessary to calculate. The <strong>loadings</strong> corresponding to PC <span class="math inline">\(j\)</span> are <span class="math inline">\({\boldsymbol{u}}_j\)</span>.</p>
-<p>Note that the convention is that mean of PC <span class="math inline">\(j\)</span> is zero, i.e., that <span class="math display">\[
-\frac{1}{n} \sum_{k=1}^n \tilde{x}_{jk} = 0,
-\]</span> but as mentioned above <span class="math inline">\(\sum_{i=1}^m u_{ij} {\boldsymbol{x}}^*_i\)</span> and the uncentered <span class="math inline">\(\sum_{i=1}^m u_{ij} {\boldsymbol{x}}_i\)</span> have the same sample variance.</p>
-<p>It can be calculated that the variance of PC <span class="math inline">\(j\)</span> is <span class="math display">\[
-s^2_{\tilde{{\boldsymbol{x}}}_j} = \frac{\sum_{k=1}^n \tilde{x}_{jk}^2}{n-1} = \lambda_j.
-\]</span> The proportion of variance explained by PC <span class="math inline">\(j\)</span> is <span class="math display">\[
-\operatorname{PVE}_j = \frac{\lambda_j}{\sum_{k=1}^m \lambda_k}.
-\]</span></p>
-</div>
-<div id="singular-value-decomposition" class="section level2">
-<h2><span class="header-section-number">20.5</span> Singular Value Decomposition</h2>
-<p>One way in which PCA is performed is to carry out a <strong>singular value decomposition</strong> (SVD) of the data matrix <span class="math inline">\({\boldsymbol{X}}\)</span>. Let <span class="math inline">\(q = \min(m, n)\)</span>. Recalling that <span class="math inline">\({\boldsymbol{X}}^*\)</span> is the row-wise mean centered <span class="math inline">\({\boldsymbol{X}}\)</span>, we can take the SVD of <span class="math inline">\({\boldsymbol{X}}^*/\sqrt{n-1}\)</span> to obtain</p>
-<p><span class="math display">\[
-\frac{1}{\sqrt{n-1}} {\boldsymbol{X}}^* = {\boldsymbol{U}}{\boldsymbol{D}}{\boldsymbol{V}}^T
-\]</span></p>
-<p>where <span class="math inline">\({\boldsymbol{U}}_{m \times q}\)</span>, <span class="math inline">\({\boldsymbol{V}}_{n \times q}\)</span>, and diagonal <span class="math inline">\({\boldsymbol{D}}_{q \times q}\)</span>. Also, we have the orthogonality properties <span class="math inline">\({\boldsymbol{V}}^T {\boldsymbol{V}}= {\boldsymbol{U}}^T {\boldsymbol{U}}= {\boldsymbol{I}}_{q}\)</span>. Finally, <span class="math inline">\({\boldsymbol{D}}\)</span> is composed of diagonal elements <span class="math inline">\(d_1 \geq d_2 \geq \cdots \geq d_q \geq 0\)</span> where <span class="math inline">\(d_q = 0\)</span> if <span class="math inline">\(q = n\)</span>.</p>
-<p>Note that</p>
-<p><span class="math display">\[
-{\boldsymbol{S}}= \frac{1}{n-1} {\boldsymbol{X}}^{*} {\boldsymbol{X}}^{*T} = {\boldsymbol{U}}{\boldsymbol{D}}{\boldsymbol{V}}^T \left({\boldsymbol{U}}{\boldsymbol{D}}{\boldsymbol{V}}^T\right)^T = {\boldsymbol{U}}{\boldsymbol{D}}^2 {\boldsymbol{U}}^T.
-\]</span></p>
-<p>Therefore:</p>
-<ul>
-<li>The variance of PC <span class="math inline">\(j\)</span> is <span class="math inline">\(\lambda_j = d_j^2\)</span></li>
-<li>The loadings of PC <span class="math inline">\(j\)</span> are contained in the columns of the left-hand matrix from the decomposition of <span class="math inline">\({\boldsymbol{S}}\)</span> or <span class="math inline">\({\boldsymbol{X}}^*\)</span></li>
-<li>PC <span class="math inline">\(j\)</span> is row <span class="math inline">\(j\)</span> of <span class="math inline">\({\boldsymbol{D}}{\boldsymbol{V}}^T\)</span></li>
-</ul>
-</div>
-<div id="a-simple-pca-function" class="section level2">
-<h2><span class="header-section-number">20.6</span> A Simple PCA Function</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>pca &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">space=</span><span class="kw">c</span>(<span class="st">&quot;rows&quot;</span>, <span class="st">&quot;columns&quot;</span>), 
-<span class="op">+</span><span class="st">                 </span><span class="dt">center=</span><span class="ot">TRUE</span>, <span class="dt">scale=</span><span class="ot">FALSE</span>) {
-<span class="op">+</span><span class="st">   </span>space &lt;-<span class="st"> </span><span class="kw">match.arg</span>(space)
-<span class="op">+</span><span class="st">   </span><span class="cf">if</span>(space<span class="op">==</span><span class="st">&quot;columns&quot;</span>) {x &lt;-<span class="st"> </span><span class="kw">t</span>(x)}
-<span class="op">+</span><span class="st">   </span>x &lt;-<span class="st"> </span><span class="kw">t</span>(<span class="kw">scale</span>(<span class="kw">t</span>(x), <span class="dt">center=</span>center, <span class="dt">scale=</span>scale))
-<span class="op">+</span><span class="st">   </span>x &lt;-<span class="st"> </span>x<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">nrow</span>(x)<span class="op">-</span><span class="dv">1</span>)
-<span class="op">+</span><span class="st">   </span>s &lt;-<span class="st"> </span><span class="kw">svd</span>(x)
-<span class="op">+</span><span class="st">   </span>loading &lt;-<span class="st"> </span>s<span class="op">$</span>u
-<span class="op">+</span><span class="st">   </span><span class="kw">colnames</span>(loading) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;Loading&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(loading))
-<span class="op">+</span><span class="st">   </span><span class="kw">rownames</span>(loading) &lt;-<span class="st"> </span><span class="kw">rownames</span>(x)
-<span class="op">+</span><span class="st">   </span>pc &lt;-<span class="st"> </span><span class="kw">diag</span>(s<span class="op">$</span>d) <span class="op">%*%</span><span class="st"> </span><span class="kw">t</span>(s<span class="op">$</span>v)
-<span class="op">+</span><span class="st">   </span><span class="kw">rownames</span>(pc) &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;PC&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(pc))
-<span class="op">+</span><span class="st">   </span><span class="kw">colnames</span>(pc) &lt;-<span class="st"> </span><span class="kw">colnames</span>(x)
-<span class="op">+</span><span class="st">   </span>pve &lt;-<span class="st"> </span>s<span class="op">$</span>d<span class="op">^</span><span class="dv">2</span> <span class="op">/</span><span class="st"> </span><span class="kw">sum</span>(s<span class="op">$</span>d<span class="op">^</span><span class="dv">2</span>)
-<span class="op">+</span><span class="st">   </span><span class="cf">if</span>(space<span class="op">==</span><span class="st">&quot;columns&quot;</span>) {pc &lt;-<span class="st"> </span><span class="kw">t</span>(pc); loading &lt;-<span class="st"> </span><span class="kw">t</span>(loading)}
-<span class="op">+</span><span class="st">   </span><span class="kw">return</span>(<span class="kw">list</span>(<span class="dt">pc=</span>pc, <span class="dt">loading=</span>loading, <span class="dt">pve=</span>pve))
-<span class="op">+</span><span class="st"> </span>}</code></pre></div>
-<p>The input is as follows:</p>
-<ul>
-<li><code>x</code>: a matrix of numerical values</li>
-<li><code>space</code>: either <code>&quot;rows&quot;</code> or <code>&quot;columns&quot;</code>, denoting which dimension contains the variables</li>
-<li><code>center</code>: if <code>TRUE</code> then the variables are mean centered before calculating PCs</li>
-<li><code>scale</code>: if <code>TRUE</code> then the variables are std dev scaled before calculating PCs</li>
-</ul>
-<p>The output is a list with the following items:</p>
-<ul>
-<li><code>pc</code>: a matrix of all possible PCs</li>
-<li><code>loading</code>: the weights or “loadings” that determined each PC</li>
-<li><code>pve</code>: the proportion of variation explained by each PC</li>
-</ul>
-<p>Note that the rows or columns of <code>pc</code> and <code>loading</code> have names to let you know on which dimension the values are organized.</p>
-</div>
-<div id="the-ubiquitous-pca-example" class="section level2">
-<h2><span class="header-section-number">20.7</span> The Ubiquitous PCA Example</h2>
-<p>Here’s an example very frequently encountered to explain PCA, but it’s slightly complicated and conflates several ideas in PCA. I think it’s not a great example to motivate PCA, but it’s so common I want to carefully clarify what it’s displaying.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">set.seed</span>(<span class="dv">508</span>)
-<span class="op">&gt;</span><span class="st"> </span>n &lt;-<span class="st"> </span><span class="dv">70</span>
-<span class="op">&gt;</span><span class="st"> </span>z &lt;-<span class="st"> </span><span class="kw">sqrt</span>(<span class="fl">0.8</span>) <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(n)
-<span class="op">&gt;</span><span class="st"> </span>x1 &lt;-<span class="st"> </span>z <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="fl">0.2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(n)
-<span class="op">&gt;</span><span class="st"> </span>x2 &lt;-<span class="st"> </span>z <span class="op">+</span><span class="st"> </span><span class="kw">sqrt</span>(<span class="fl">0.2</span>) <span class="op">*</span><span class="st"> </span><span class="kw">rnorm</span>(n)
-<span class="op">&gt;</span><span class="st"> </span>X &lt;-<span class="st"> </span><span class="kw">rbind</span>(x1, x2)
-<span class="op">&gt;</span><span class="st"> </span>p &lt;-<span class="st"> </span><span class="kw">pca</span>(<span class="dt">x=</span>X, <span class="dt">space=</span><span class="st">&quot;rows&quot;</span>)</code></pre></div>
-<p>PCS is often explained by showing the following plot and stating, “The first PC finds the direction of maximal variance in the data…”</p>
-<p><img src="eda_files/figure-html/unnamed-chunk-178-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The above figure was made with the following code:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>a1 &lt;-<span class="st"> </span>p<span class="op">$</span>loading[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>p<span class="op">$</span>pc[<span class="dv">1</span>,]
-<span class="op">&gt;</span><span class="st"> </span>a2 &lt;-<span class="st"> </span>p<span class="op">$</span>loading[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>p<span class="op">$</span>pc[<span class="dv">2</span>,]
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># a1 &lt;- outer(p$loading[,1], p$pc[1,])[1,] + mean(x1)</span>
-<span class="er">&gt;</span><span class="st"> </span><span class="co"># a2 &lt;- outer(p$loading[,1], p$pc[1,])[2,] + mean(x2)</span>
-<span class="er">&gt;</span><span class="st"> </span>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1=</span><span class="kw">c</span>(x1, a1), 
-<span class="op">+</span><span class="st">                  </span><span class="dt">x2=</span><span class="kw">c</span>(x2, a2), 
-<span class="op">+</span><span class="st">                  </span><span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;data&quot;</span>,n),<span class="kw">rep</span>(<span class="st">&quot;pc1_projection&quot;</span>,n)))
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">ggplot</span>(df) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x1,<span class="dt">y=</span>x2,<span class="dt">color=</span>legend)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">scale_color_manual</span>(<span class="dt">values=</span><span class="kw">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>))</code></pre></div>
-<p>The red dots are therefore the projection of <code>x1</code> and <code>x2</code> onto the first PC, so they are neither the loadings nor the PC. This is rather complicated to understand before loadings and PCs are full understood.</p>
-<p>Note that there are several ways to calculate these projections.</p>
-<pre><code># all equivalent ways to get a1  
-p$loading[1,1] * p$pc[1,]
-outer(p$loading[,1], p$pc[1,])[1,] + mean(x1) 
-lm(x1 ~ p$pc[1,])$fit # and
-
-# all equivalent ways to get a2  
-p$loading[2,2] * p$pc[2,]
-outer(p$loading[,1], p$pc[1,])[2,] + mean(x2) 
-lm(x2 ~ p$pc[1,])$fit</code></pre>
-<p>We haven’t seen the <code>lm()</code> function yet, but once we do this example will be useful to revisit to understand what is meant by “projection”.</p>
-<p>Here is PC1 vs PC2:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pc1=</span>p<span class="op">$</span>pc[<span class="dv">1</span>,], <span class="dt">pc2=</span>p<span class="op">$</span>pc[<span class="dv">2</span>,]) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>pc1,<span class="dt">y=</span>pc2)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">theme</span>(<span class="dt">aspect.ratio=</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-180-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Here is PC1 vs <code>x1</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pc1=</span>p<span class="op">$</span>pc[<span class="dv">1</span>,], <span class="dt">x1=</span>x1) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>pc1,<span class="dt">y=</span>x1)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">theme</span>(<span class="dt">aspect.ratio=</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Here is PC1 vs <code>x2</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pc1=</span>p<span class="op">$</span>pc[<span class="dv">1</span>,], <span class="dt">x2=</span>x2) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>pc1,<span class="dt">y=</span>x2)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">theme</span>(<span class="dt">aspect.ratio=</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-182-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Here is PC1 vs <code>z</code>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pc1=</span>p<span class="op">$</span>pc[<span class="dv">1</span>,], <span class="dt">z=</span>z) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>pc1,<span class="dt">y=</span>z)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">theme</span>(<span class="dt">aspect.ratio=</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-183-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="pc-biplots" class="section level2">
-<h2><span class="header-section-number">20.8</span> PC Biplots</h2>
-<p>Sometimes it is informative to plot a PC versus another PC. This is called a <strong>PC biplot</strong>.</p>
-<p>It is possible that interesting subgroups or clusters of <em>observations</em> will emerge.</p>
-</div>
-<div id="pca-examples" class="section level2">
-<h2><span class="header-section-number">20.9</span> PCA Examples</h2>
-<div id="weather-data" class="section level3">
-<h3><span class="header-section-number">20.9.1</span> Weather Data</h3>
-<p>These daily temperature data (in tenths of degrees C) come from meteorogical observations for weather stations in the US for the year 2012 provided by NOAA (National Oceanic and Atmospheric Administration).:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">load</span>(<span class="st">&quot;./data/weather_data.RData&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">dim</span>(weather_data)
-[<span class="dv">1</span>] <span class="dv">2811</span>   <span class="dv">50</span>
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span>weather_data[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">7</span>]
-                  <span class="dv">11</span>       <span class="dv">16</span>  <span class="dv">18</span>       <span class="dv">19</span>  <span class="dv">27</span>  <span class="dv">30</span>       <span class="dv">31</span>
-AG000060611 <span class="fl">138.0000</span> <span class="fl">175.0000</span> <span class="dv">173</span> <span class="fl">164.0000</span> <span class="dv">218</span> <span class="dv">160</span> <span class="fl">163.0000</span>
-AGM00060369 <span class="fl">158.0000</span> <span class="fl">162.0000</span> <span class="dv">154</span> <span class="fl">159.0000</span> <span class="dv">165</span> <span class="dv">125</span> <span class="fl">171.0000</span>
-AGM00060425 <span class="fl">272.7619</span> <span class="fl">272.7619</span> <span class="dv">152</span> <span class="fl">163.0000</span> <span class="dv">163</span> <span class="dv">108</span> <span class="fl">158.0000</span>
-AGM00060444 <span class="fl">128.0000</span> <span class="fl">102.0000</span> <span class="dv">100</span> <span class="fl">111.0000</span> <span class="dv">125</span>  <span class="dv">33</span> <span class="fl">125.0000</span>
-AGM00060468 <span class="fl">105.0000</span> <span class="fl">122.0000</span>  <span class="dv">97</span> <span class="fl">263.5714</span> <span class="dv">155</span>  <span class="dv">52</span> <span class="fl">263.5714</span></code></pre></div>
-<p>This matrix contains temperature data on 50 days and 2811 stations that were randomly selected.</p>
-<p>First, we will convert temperatures to Fahrenheit:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>weather_data &lt;-<span class="st"> </span><span class="fl">0.18</span><span class="op">*</span>weather_data <span class="op">+</span><span class="st"> </span><span class="dv">32</span>
-<span class="op">&gt;</span><span class="st"> </span>weather_data[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]
-                  <span class="dv">11</span>       <span class="dv">16</span>    <span class="dv">18</span>       <span class="dv">19</span>    <span class="dv">27</span>    <span class="dv">30</span>
-AG000060611 <span class="fl">56.84000</span> <span class="fl">63.50000</span> <span class="fl">63.14</span> <span class="fl">61.52000</span> <span class="fl">71.24</span> <span class="fl">60.80</span>
-AGM00060369 <span class="fl">60.44000</span> <span class="fl">61.16000</span> <span class="fl">59.72</span> <span class="fl">60.62000</span> <span class="fl">61.70</span> <span class="fl">54.50</span>
-AGM00060425 <span class="fl">81.09714</span> <span class="fl">81.09714</span> <span class="fl">59.36</span> <span class="fl">61.34000</span> <span class="fl">61.34</span> <span class="fl">51.44</span>
-AGM00060444 <span class="fl">55.04000</span> <span class="fl">50.36000</span> <span class="fl">50.00</span> <span class="fl">51.98000</span> <span class="fl">54.50</span> <span class="fl">37.94</span>
-AGM00060468 <span class="fl">50.90000</span> <span class="fl">53.96000</span> <span class="fl">49.46</span> <span class="fl">79.44286</span> <span class="fl">59.90</span> <span class="fl">41.36</span>
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">apply</span>(weather_data, <span class="dv">1</span>, median) <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">quantile</span>(<span class="dt">probs=</span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.1</span>))
-        <span class="dv">0</span><span class="op">%        10%</span><span class="st">        </span><span class="dv">20</span><span class="op">%        30%</span><span class="st">        </span><span class="dv">40</span><span class="op">%        50%</span><span class="st"> </span>
-<span class="st">  </span><span class="fl">8.886744</span>  <span class="fl">49.010000</span>  <span class="fl">54.500000</span>  <span class="fl">58.460000</span>  <span class="fl">62.150000</span>  <span class="fl">65.930000</span> 
-       <span class="dv">60</span><span class="op">%        70%</span><span class="st">        </span><span class="dv">80</span><span class="op">%        90%</span><span class="st">       </span><span class="dv">100</span>% 
- <span class="fl">69.679318</span>  <span class="fl">73.490000</span>  <span class="fl">77.990000</span>  <span class="fl">82.940000</span> <span class="fl">140.000000</span> </code></pre></div>
-<p>Let’s perform PCA on these data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>mypca &lt;-<span class="st"> </span><span class="kw">pca</span>(weather_data, <span class="dt">space=</span><span class="st">&quot;rows&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">names</span>(mypca)
-[<span class="dv">1</span>] <span class="st">&quot;pc&quot;</span>      <span class="st">&quot;loading&quot;</span> <span class="st">&quot;pve&quot;</span>    
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">dim</span>(mypca<span class="op">$</span>pc)
-[<span class="dv">1</span>] <span class="dv">50</span> <span class="dv">50</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">dim</span>(mypca<span class="op">$</span>loading)
-[<span class="dv">1</span>] <span class="dv">2811</span>   <span class="dv">50</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>mypca<span class="op">$</span>pc[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
-            <span class="dv">11</span>        <span class="dv">16</span>         <span class="dv">18</span>
-PC1 <span class="fl">19.5166741</span> <span class="fl">25.441401</span> <span class="fl">25.9023874</span>
-PC2 <span class="op">-</span><span class="fl">2.6025225</span> <span class="op">-</span><span class="fl">4.310673</span>  <span class="fl">0.9707207</span>
-PC3 <span class="op">-</span><span class="fl">0.6681223</span> <span class="op">-</span><span class="fl">1.240748</span> <span class="op">-</span><span class="fl">3.7276658</span>
-<span class="op">&gt;</span><span class="st"> </span>mypca<span class="op">$</span>loading[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]
-                Loading1    Loading2     Loading3
-AG000060611 <span class="op">-</span><span class="fl">0.015172744</span> <span class="fl">0.013033849</span> <span class="op">-</span><span class="fl">0.011273121</span>
-AGM00060369 <span class="op">-</span><span class="fl">0.009439176</span> <span class="fl">0.016884418</span> <span class="op">-</span><span class="fl">0.004611284</span>
-AGM00060425 <span class="op">-</span><span class="fl">0.015779138</span> <span class="fl">0.007026312</span> <span class="op">-</span><span class="fl">0.009907972</span></code></pre></div>
-<p>PC1 vs Time:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>day_of_the_year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">colnames</span>(weather_data))
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">day=</span>day_of_the_year, <span class="dt">PC1=</span>mypca<span class="op">$</span>pc[<span class="dv">1</span>,]) <span class="op">%&gt;%</span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>day, <span class="dt">y=</span>PC1), <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-188-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>PC2 vs Time:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">day=</span>day_of_the_year, <span class="dt">PC2=</span>mypca<span class="op">$</span>pc[<span class="dv">2</span>,]) <span class="op">%&gt;%</span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>day, <span class="dt">y=</span>PC2), <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-189-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>PC1 vs PC2 Biplot:</p>
-<p>This does not appear to be subgroups or clusters in the weather data set biplot of PC1 vs PC2.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">PC1=</span>mypca<span class="op">$</span>pc[<span class="dv">1</span>,], <span class="dt">PC2=</span>mypca<span class="op">$</span>pc[<span class="dv">2</span>,]) <span class="op">%&gt;%</span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>PC1, <span class="dt">y=</span>PC2), <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-190-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Proportion of Variance Explained:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">Component=</span><span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(mypca<span class="op">$</span>pve), <span class="dt">PVE=</span>mypca<span class="op">$</span>pve) <span class="op">%&gt;%</span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Component, <span class="dt">y=</span>PVE), <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-191-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>We can multiple the loadings matrix by the PCs matrix to reproduce the data:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="co"># mean centered weather data</span>
-<span class="er">&gt;</span><span class="st"> </span>weather_data_mc &lt;-<span class="st"> </span>weather_data <span class="op">-</span><span class="st"> </span><span class="kw">rowMeans</span>(weather_data)
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span><span class="co"># difference between the PC projections and the data</span>
-<span class="er">&gt;</span><span class="st"> </span><span class="co"># the small sum is just machine imprecision</span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">sum</span>(<span class="kw">abs</span>(weather_data_mc<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">nrow</span>(weather_data_mc)<span class="op">-</span><span class="dv">1</span>) <span class="op">-</span><span class="st"> </span>
-<span class="op">+</span><span class="st">           </span>mypca<span class="op">$</span>loading <span class="op">%*%</span><span class="st"> </span>mypca<span class="op">$</span>pc))
-[<span class="dv">1</span>] <span class="fl">1.329755e-10</span></code></pre></div>
-<p>The sum of squared weights – i.e., loadings – equals one for each component:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">sum</span>(mypca<span class="op">$</span>loading[,<span class="dv">1</span>]<span class="op">^</span><span class="dv">2</span>)
-[<span class="dv">1</span>] <span class="dv">1</span>
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">apply</span>(mypca<span class="op">$</span>loading, <span class="dv">2</span>, <span class="cf">function</span>(x) {<span class="kw">sum</span>(x<span class="op">^</span><span class="dv">2</span>)})
- Loading1  Loading2  Loading3  Loading4  Loading5  Loading6  Loading7 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
- Loading8  Loading9 Loading10 Loading11 Loading12 Loading13 Loading14 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
-Loading15 Loading16 Loading17 Loading18 Loading19 Loading20 Loading21 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
-Loading22 Loading23 Loading24 Loading25 Loading26 Loading27 Loading28 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
-Loading29 Loading30 Loading31 Loading32 Loading33 Loading34 Loading35 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
-Loading36 Loading37 Loading38 Loading39 Loading40 Loading41 Loading42 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
-Loading43 Loading44 Loading45 Loading46 Loading47 Loading48 Loading49 
-        <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span>         <span class="dv">1</span> 
-Loading50 
-        <span class="dv">1</span> </code></pre></div>
-<p>PCs by contruction have sample correlation equal to zero:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">cor</span>(mypca<span class="op">$</span>pc[<span class="dv">1</span>,], mypca<span class="op">$</span>pc[<span class="dv">2</span>,])
-[<span class="dv">1</span>] <span class="fl">3.135149e-17</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">cor</span>(mypca<span class="op">$</span>pc[<span class="dv">1</span>,], mypca<span class="op">$</span>pc[<span class="dv">3</span>,])
-[<span class="dv">1</span>] <span class="fl">2.273613e-16</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">cor</span>(mypca<span class="op">$</span>pc[<span class="dv">1</span>,], mypca<span class="op">$</span>pc[<span class="dv">12</span>,])
-[<span class="dv">1</span>] <span class="op">-</span><span class="fl">1.231339e-16</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">cor</span>(mypca<span class="op">$</span>pc[<span class="dv">5</span>,], mypca<span class="op">$</span>pc[<span class="dv">27</span>,])
-[<span class="dv">1</span>] <span class="op">-</span><span class="fl">2.099516e-17</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># etc...</span></code></pre></div>
-<p>I can transform the top PC back to the original units to display it at a scale that has a more direct interpretation.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>day_of_the_year &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">colnames</span>(weather_data))
-<span class="op">&gt;</span><span class="st"> </span>y &lt;-<span class="st"> </span><span class="op">-</span>mypca<span class="op">$</span>pc[<span class="dv">1</span>,] <span class="op">+</span><span class="st"> </span><span class="kw">mean</span>(weather_data)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">day=</span>day_of_the_year, <span class="dt">max_temp=</span>y) <span class="op">%&gt;%</span>
-<span class="op">+</span><span class="st">   </span><span class="kw">ggplot</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>day, <span class="dt">y=</span>max_temp))</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-195-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="yeast-gene-expression" class="section level3">
-<h3><span class="header-section-number">20.9.2</span> Yeast Gene Expression</h3>
-<p>Yeast cells were synchronized so that they were on the same approximate cell cycle timing in <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC25624/">Spellman et al. (1998)</a>. The goal was to understand how gene expression varies over the cell cycle from a genome-wide perspective.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">load</span>(<span class="st">&quot;./data/spellman.RData&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span>time
- [<span class="dv">1</span>]   <span class="dv">0</span>  <span class="dv">30</span>  <span class="dv">60</span>  <span class="dv">90</span> <span class="dv">120</span> <span class="dv">150</span> <span class="dv">180</span> <span class="dv">210</span> <span class="dv">240</span> <span class="dv">270</span> <span class="dv">330</span> <span class="dv">360</span> <span class="dv">390</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">dim</span>(gene_expression)
-[<span class="dv">1</span>] <span class="dv">5981</span>   <span class="dv">13</span>
-<span class="op">&gt;</span><span class="st"> </span>gene_expression[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]
-                  <span class="dv">0</span>         <span class="dv">30</span>         <span class="dv">60</span>        <span class="dv">90</span>        <span class="dv">120</span>
-YAL001C  <span class="fl">0.69542786</span> <span class="op">-</span><span class="fl">0.4143538</span>  <span class="fl">3.2350520</span> <span class="fl">1.6323737</span> <span class="op">-</span><span class="fl">2.1091820</span>
-YAL002W <span class="op">-</span><span class="fl">0.01210662</span>  <span class="fl">3.0465649</span>  <span class="fl">1.1062193</span> <span class="fl">4.0591467</span> <span class="op">-</span><span class="fl">0.1166399</span>
-YAL003W <span class="op">-</span><span class="fl">2.78570526</span> <span class="op">-</span><span class="fl">1.0156981</span> <span class="op">-</span><span class="fl">2.1387564</span> <span class="fl">1.9299681</span>  <span class="fl">0.7797033</span>
-YAL004W  <span class="fl">0.55165887</span>  <span class="fl">0.6590093</span>  <span class="fl">0.5857847</span> <span class="fl">0.3890409</span> <span class="op">-</span><span class="fl">1.0009777</span>
-YAL005C <span class="op">-</span><span class="fl">0.53191556</span>  <span class="fl">0.1577985</span> <span class="op">-</span><span class="fl">1.2401448</span> <span class="fl">0.8170350</span> <span class="op">-</span><span class="fl">1.3520947</span>
-YAL007C <span class="op">-</span><span class="fl">0.86693416</span> <span class="op">-</span><span class="fl">1.1642322</span> <span class="op">-</span><span class="fl">0.6359588</span> <span class="fl">1.1179131</span>  <span class="fl">1.9587021</span></code></pre></div>
-<p>Proportion Variance Explained:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>p &lt;-<span class="st"> </span><span class="kw">pca</span>(gene_expression, <span class="dt">space=</span><span class="st">&quot;rows&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">pc=</span><span class="dv">1</span><span class="op">:</span><span class="dv">13</span>, <span class="dt">pve=</span>p<span class="op">$</span>pve)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>pc,<span class="dt">y=</span>pve), <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>PCs vs Time (with Smoothers):</p>
-<p><img src="eda_files/figure-html/unnamed-chunk-198-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="hapmap-genotypes" class="section level3">
-<h3><span class="header-section-number">20.9.3</span> HapMap Genotypes</h3>
-<p>I curated a small data set that cleanly separates human subpopulations from the <a href="https://en.wikipedia.org/wiki/International_HapMap_Project">HapMap</a> data. These include unrelated individuals from Yoruba people from Ibadan, Nigeria (YRI), Utah residents of northern and western European ancestry (CEU), Japanese individuals from Tokyo, Japan (JPT), and Han Chinese individuals from Beijing, China (CHB).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>hapmap &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;./data/hapmap_sample.txt&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">dim</span>(hapmap)
-[<span class="dv">1</span>] <span class="dv">400</span>  <span class="dv">24</span>
-<span class="op">&gt;</span><span class="st"> </span>hapmap[<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>]
-           NA18516 NA19138 NA19137 NA19223 NA19200 NA19131
-rs2051075        <span class="dv">0</span>       <span class="dv">1</span>       <span class="dv">2</span>       <span class="dv">1</span>       <span class="dv">1</span>       <span class="dv">1</span>
-rs765546         <span class="dv">2</span>       <span class="dv">2</span>       <span class="dv">0</span>       <span class="dv">0</span>       <span class="dv">0</span>       <span class="dv">0</span>
-rs10019399       <span class="dv">2</span>       <span class="dv">2</span>       <span class="dv">2</span>       <span class="dv">1</span>       <span class="dv">1</span>       <span class="dv">2</span>
-rs7055827        <span class="dv">2</span>       <span class="dv">2</span>       <span class="dv">1</span>       <span class="dv">2</span>       <span class="dv">0</span>       <span class="dv">2</span>
-rs6943479        <span class="dv">0</span>       <span class="dv">0</span>       <span class="dv">2</span>       <span class="dv">0</span>       <span class="dv">1</span>       <span class="dv">0</span>
-rs2095381        <span class="dv">1</span>       <span class="dv">2</span>       <span class="dv">1</span>       <span class="dv">2</span>       <span class="dv">1</span>       <span class="dv">1</span></code></pre></div>
-<p>Proportion Variance Explained:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>p &lt;-<span class="st"> </span><span class="kw">pca</span>(hapmap, <span class="dt">space=</span><span class="st">&quot;rows&quot;</span>)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">ggplot</span>(<span class="kw">data.frame</span>(<span class="dt">pc=</span>(<span class="dv">1</span><span class="op">:</span><span class="kw">ncol</span>(hapmap)), <span class="dt">pve=</span>p<span class="op">$</span>pve)) <span class="op">+</span><span class="st"> </span>
-<span class="op">+</span><span class="st">   </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>pc,<span class="dt">y=</span>pve), <span class="dt">size=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="eda_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>PC1 vs PC2 Biplot:</p>
-<p><img src="eda_files/figure-html/unnamed-chunk-201-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>PC1 vs PC3 Biplot:</p>
-<p><img src="eda_files/figure-html/unnamed-chunk-202-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>PC2 vs PC3 Biplot:</p>
-<p><img src="eda_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" /></p>
-
+<div id="industry" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> Industry</h3>
+<p>Individuals working in industry began to call themselves “data scientists” in the late 2000’s, but this was far after statisticians had introduced the field. For exampe,</p>
 </div>
 </div>
 </div>
-
-
-
             </section>
 
           </div>
         </div>
       </div>
-<a href="cluster-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="probability-and-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="preface.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="challenges.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1704,7 +1385,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jdstorey/fas/edit/master/eda.Rmd",
+"link": "https://github.com/jdstorey/fas/edit/master/introduction.Rmd",
 "text": "Edit"
 },
 "history": {

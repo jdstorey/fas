@@ -1,6 +1,7 @@
 \providecommand{\E}{\operatorname{E}}
 \providecommand{\V}{\operatorname{Var}}
 \providecommand{\Cov}{\operatorname{Cov}}
+\providecommand{\cov}{\operatorname{cov}}
 \providecommand{\se}{\operatorname{se}}
 \providecommand{\logit}{\operatorname{logit}}
 \providecommand{\iid}{\; \stackrel{\text{iid}}{\sim}\;}
@@ -93,19 +94,11 @@ EDA involves calculating quantities and visualizing data for:
 
 ... and there are possible many more activities one can do.
 
-## *R4DS* Workflow
+## Data Sets
 
-Which of the following components of the *R4DS* workflow involve EDA?
+For the majority of this chapter, we will use some simple data sets to demonstrate the ideas.
 
-1. Import
-2. Tidy
-3. Transform $\leftrightarrow$ Visualize $\leftrightarrow$ Model (*iterate*)
-4. Communicate
-
-
-# Data Sets
-
-## Data `mtcars`
+### Data `mtcars`
 
 Load the `mtcars` data set:
 
@@ -126,7 +119,7 @@ Load the `mtcars` data set:
 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1
 ```
 
-## Data `mpg`
+### Data `mpg`
 
 Load the `mpg` data set:
 
@@ -145,7 +138,7 @@ Load the `mpg` data set:
 6 audi         a4      2.8  1999     6 manua… f        18    26 p     comp…
 ```
 
-## Data `diamonds`
+### Data `diamonds`
 
 Load the `diamonds` data set:
 
@@ -164,7 +157,7 @@ Load the `diamonds` data set:
 6 0.24  Very Good J     VVS2     62.8    57   336  3.94  3.96  2.48
 ```
 
-## Data `gapminder`
+### Data `gapminder`
 
 Load the `gapminder` data set:
 
@@ -398,32 +391,38 @@ gdpPercap
 
 <img src="eda_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" />
 
-## Correlation
+## Covariance and Correlation
 
 - It is often the case that two or more quantitative variables are measured on each unit of observation (such as an individual).  
 
 - We are then often interested in characterizing how pairs of variables are associated or how they vary together.
 
-- A common measure that is used is called "correlation", which is most well suited for measuring linear associations
+- Two common measures for this are called "covariance" and "correlation", both of which are most well suited for measuring linear associations
+
+### Covariance
+
+Suppose we observe $n$ pairs of data $(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$. Their sample covariance is
+
+$$
+\cov_{xy} = \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}{(n-1)},
+$$
+which meausers how the two variables "covary" about their respective means.  Large positive numbers indicate concordance of deviations from the mean, and large negative numbers indicated discordance (so opposite sides of the mean).
 
 ### Pearson Correlation
 
-Suppose we observe $n$ pairs of data $(x_1, y_1), (x_2, y_2), \ldots, (x_n, y_n)$. Their sample correlation is
+Pearson correlation is sample covariance scaled by the variables' standard deviations, meaning correlation is a unitless measure of variation about the mean. It is defined by 
 
 \begin{eqnarray}
 r_{xy} & = & \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}} \\
-\ & = & \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}{(n-1) s_x s_y}
+\ & = & \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}{(n-1) s_x s_y} \\
+\ & = & \frac{\cov_{xy}}{s_x s_y}
 \end{eqnarray}
 
-where $s_x$ and $s_y$ are the sample standard deviations of each measured variable.
+where $s_x$ and $s_y$ are the sample standard deviations of each measured variable. Note that $-1 \leq r_{xy} \leq 1$.
 
 ### Spearman Correlation
 
-- There are other ways to measure correlation that are less reliant on linear trends in covariation and are also more robust to outliers.
-
-- Specifically, one can convert each measured variable to ranks by size (1 for the smallest, $n$ for the largest) and then use a formula for correlation designed for these ranks.
-
-- One popular measure of rank-based correlation is the [Spearman correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient).
+There are other ways to measure correlation that are less reliant on linear trends in covariation and are also more robust to outliers. Specifically, one can convert each measured variable to ranks by size (1 for the smallest, $n$ for the largest) and then use a formula for correlation designed for these ranks. One popular measure of rank-based correlation is the [Spearman correlation](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient).
 
 
 
@@ -471,63 +470,6 @@ where $s_x$ and $s_y$ are the sample standard deviations of each measured variab
 <img src="eda_files/figure-html/unnamed-chunk-25-1.png" width="960" style="display: block; margin: auto;" />
 
 
-## Quantile-Quantile Plots
-
-Quantile-quantile plots display the [quantiles](#/quantiles-and-percentiles) of: 
-
-1. two samples of data
-2. a sample of data vs a theoretical distribution
-
-The first type allows one to assess how similar the distributions are of two samples of data.
-
-The second allows one to assess how similar a sample of data is to a theoretical distribution (often Normal with mean 0 and standard deviation 1).
-
-
-
-```r
-> qqnorm(mtcars$mpg, main=" ")
-> qqline(mtcars$mpg) # line through Q1 and Q3
-```
-
-<img src="eda_files/figure-html/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" />
-
-  
-
-```r
-> before1980 <- gapminder %>% filter(year < 1980) %>% 
-+   select(lifeExp) %>% unlist()
-> after1980 <- gapminder %>% filter(year > 1980) %>% 
-+   select(lifeExp) %>% unlist()
-> qqplot(before1980, after1980); abline(0,1)
-```
-
-<img src="eda_files/figure-html/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" />
-
-
-
-```r
-> ggplot(mtcars) + stat_qq(aes(sample = mpg))
-```
-
-<img src="eda_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
-
-
-
-```r
-> ggplot(gapminder) + stat_qq(aes(sample=lifeExp))
-```
-
-<img src="eda_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
-
-
-
-```r
-> ggplot(gapminder) + 
-+   stat_qq(aes(sample=lifeExp, color=continent))
-```
-
-<img src="eda_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
-
 # Data Visualization Basics
 
 ## Plots
@@ -571,7 +513,7 @@ For all of the plotting functions covered below, read the help files.
 > barplot(cyl_tbl, xlab="Cylinders", ylab="Count")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Boxplot
 
@@ -580,7 +522,7 @@ For all of the plotting functions covered below, read the help files.
 > boxplot(mtcars$mpg, ylab="MPG", col="lightgray")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Constructing Boxplots
 
@@ -601,7 +543,7 @@ For all of the plotting functions covered below, read the help files.
 +         col="lightgray")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Histogram
 
@@ -610,7 +552,7 @@ For all of the plotting functions covered below, read the help files.
 > hist(mtcars$mpg, xlab="MPG", main="", col="lightgray")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-36-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Histogram with More Breaks
 
@@ -619,7 +561,7 @@ For all of the plotting functions covered below, read the help files.
 > hist(mtcars$mpg, breaks=12, xlab="MPG", main="", col="lightgray")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-32-1.png" width="672" style="display: block; margin: auto;" />
 
 
 ## Density Plot
@@ -630,7 +572,7 @@ For all of the plotting functions covered below, read the help files.
 > polygon(density(mtcars$mpg), col="lightgray", border="black")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-33-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Boxplot (Side-By-Side)
 
@@ -640,7 +582,7 @@ For all of the plotting functions covered below, read the help files.
 +         ylab="MPG", col="lightgray")
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-34-1.png" width="672" style="display: block; margin: auto;" />
 
 ## Stacked Barplot
 
@@ -665,7 +607,7 @@ For all of the plotting functions covered below, read the help files.
 ```
 
 
-<img src="eda_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-37-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -677,7 +619,65 @@ For all of the plotting functions covered below, read the help files.
 +      ylab="MPG")
 ```
 
+<img src="eda_files/figure-html/unnamed-chunk-38-1.png" width="672" style="display: block; margin: auto;" />
+
+## Quantile-Quantile Plots
+
+Quantile-quantile plots display the [quantiles](#/quantiles-and-percentiles) of: 
+
+1. two samples of data
+2. a sample of data vs a theoretical distribution
+
+The first type allows one to assess how similar the distributions are of two samples of data.
+
+The second allows one to assess how similar a sample of data is to a theoretical distribution (often Normal with mean 0 and standard deviation 1).
+
+
+
+```r
+> qqnorm(mtcars$mpg, main=" ")
+> qqline(mtcars$mpg) # line through Q1 and Q3
+```
+
+<img src="eda_files/figure-html/unnamed-chunk-39-1.png" width="672" style="display: block; margin: auto;" />
+
+  
+
+```r
+> before1980 <- gapminder %>% filter(year < 1980) %>% 
++   select(lifeExp) %>% unlist()
+> after1980 <- gapminder %>% filter(year > 1980) %>% 
++   select(lifeExp) %>% unlist()
+> qqplot(before1980, after1980); abline(0,1)
+```
+
+<img src="eda_files/figure-html/unnamed-chunk-40-1.png" width="672" style="display: block; margin: auto;" />
+
+
+
+```r
+> ggplot(mtcars) + stat_qq(aes(sample = mpg))
+```
+
+<img src="eda_files/figure-html/unnamed-chunk-41-1.png" width="672" style="display: block; margin: auto;" />
+
+
+
+```r
+> ggplot(gapminder) + stat_qq(aes(sample=lifeExp))
+```
+
+<img src="eda_files/figure-html/unnamed-chunk-42-1.png" width="672" style="display: block; margin: auto;" />
+
+
+
+```r
+> ggplot(gapminder) + 
++   stat_qq(aes(sample=lifeExp, color=continent))
+```
+
 <img src="eda_files/figure-html/unnamed-chunk-43-1.png" width="672" style="display: block; margin: auto;" />
+
 
 # A Grammar of Graphics
 
@@ -2527,13 +2527,17 @@ When `method="centers"` it returns the centroids.  When `method="classes"` it re
 
 <img src="eda_files/figure-html/unnamed-chunk-175-1.png" width="672" style="display: block; margin: auto;" />
 
+
+
+# Principal Component Analysis
+
 ## Dimensionality Reduction
 
 The goal of **dimensionality reduction** is to extract low dimensional representations of high dimensional data that are useful for visualization, exploration, inference, or prediction.
 
 The low dimensional representations should capture key sources of variation in the data.
 
-### Some Methods
+Some methods for dimensionality reduction include:
 
 - Principal component analysis
 - Singular value decomposition 
@@ -2542,58 +2546,9 @@ The low dimensional representations should capture key sources of variation in t
 - Self-organizing maps
 - Multidimensional scaling
 
-### Example: Weather Data
+We will focus on what is likely the most commonly applied dimensionality reduction tool, principal components analysis.
 
-These daily temperature data (in tenths of degrees C) come from meteorogical observations for weather stations in the US for the year 2012 provided by NOAA (National Oceanic and Atmospheric Administration).:
-
-
-```r
-> load("./data/weather_data.RData")
-> dim(weather_data)
-[1] 2811   50
-> 
-> weather_data[1:5, 1:7]
-                  11       16  18       19  27  30       31
-AG000060611 138.0000 175.0000 173 164.0000 218 160 163.0000
-AGM00060369 158.0000 162.0000 154 159.0000 165 125 171.0000
-AGM00060425 272.7619 272.7619 152 163.0000 163 108 158.0000
-AGM00060444 128.0000 102.0000 100 111.0000 125  33 125.0000
-AGM00060468 105.0000 122.0000  97 263.5714 155  52 263.5714
-```
-
-This matrix contains temperature data on 50 days and 2811 stations that were randomly selected.
-
-
-Convert temperatures to Fahrenheit:
-
-
-```r
-> weather_data <- 0.18*weather_data + 32
-> weather_data[1:5, 1:6]
-                  11       16    18       19    27    30
-AG000060611 56.84000 63.50000 63.14 61.52000 71.24 60.80
-AGM00060369 60.44000 61.16000 59.72 60.62000 61.70 54.50
-AGM00060425 81.09714 81.09714 59.36 61.34000 61.34 51.44
-AGM00060444 55.04000 50.36000 50.00 51.98000 54.50 37.94
-AGM00060468 50.90000 53.96000 49.46 79.44286 59.90 41.36
-> 
-> apply(weather_data, 1, median) %>% 
-+   quantile(probs=seq(0,1,0.1))
-        0%        10%        20%        30%        40%        50% 
-  8.886744  49.010000  54.500000  58.460000  62.150000  65.930000 
-       60%        70%        80%        90%       100% 
- 69.679318  73.490000  77.990000  82.940000 140.000000 
-```
-
-
-Here are the 2811 rows converted to a single row that captures the most variation among the rows:
-
-<img src="eda_files/figure-html/unnamed-chunk-178-1.png" width="672" style="display: block; margin: auto;" />
-
-
-# Principal Component Analysis
-
-## Goal
+## Goal of PCA
 
 For a given set of variables, **principal component analysis** (PCA) finds (constrained) weighted sums of the variables to produce variables (called principal components) that capture consectuive maximum levels of variation in the data.
 
@@ -2603,95 +2558,7 @@ This component is then "removed" from the data, and the second principal compone
 
 This process is repeated until there is no variation left in the data.
 
-## Population PCA
-
-Suppose we have $m$ random variables $X_1, X_2, \ldots, X_m$.  We wish to identify a set of weights $w_1, w_2, \ldots, w_m$ that maximizes
-
-$$
-\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right).
-$$
-
-However, this is unbounded, so we need to constrain the weights.  It turns out that constraining the weights so that 
-
-$$
-\| \bw \|_2^2 = \sum_{i=1}^m w_i^2 = 1
-$$
-
-is both interpretable and mathematically tractable.
-
-
-Therefore we wish to maximize
-
-$$
-\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right)
-$$
-
-subject to $\| \bw \|_2^2 = 1$.  Let $\bSig$ be the $m \times m$ population covariance matrix of the random variables $X_1, X_2, \ldots, X_m$.  It follows that
-
-$$
-\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right) = \bw^T \bSig \bw.
-$$
-
-Using a Lagrange multiplier, we wish to maximize
-
-$$
-\bw^T \bSig \bw + \lambda(\bw^T \bw - 1).
-$$
-
-
-Differentiating with respect to $\bw$ and setting to $\bO$, we get $\bSig \bw - \lambda \bw = 0$ or
-
-$$
-\bSig \bw = \lambda \bw.
-$$
-
-For any such $\bw$ and $\lambda$ where this holds, note that
-
-$$
-\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right) = \bw^T \bSig \bw = \lambda
-$$
-
-so the variance is $\lambda$.
-
-
-The eigendecompositon of a matrix identifies all such solutions to $\bSig \bw = \lambda \bw$.  Specifically, it calculates the decompositon
-
-$$
-\bSig = \bW \bLambda \bW^T
-$$
-
-where $\bW$ is an $m \times m$ orthogonal matrix and $\bLambda$ is a diagonal matrix with entries $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0$.  
-
-The fact that $\bW$ is orthogonal means $\bW \bW^T = \bW^T \bW = \bI$.  
-
-
-The following therefore hold:
-
-- For each column $j$ of $\bW$, say $\bw_j$, it follows that $\bSig \bw_j = \lambda_j \bw_j$
-- $\| \bw_j \|^2_2 = 1$ and $\bw_j^T \bw_k = \bO$ for $\lambda_j \not= \lambda_k$
-- $\V(\bw_j^T \bX) = \lambda_j$
-- $\V(\bw_1^T \bX) \geq \V(\bw_2^T \bX) \geq \cdots \geq \V(\bw_m^T \bX)$
-- $\bSig = \sum_{j=1}^m \lambda_j \bw^j \bw_j^T$
-- For $\lambda_j \not= \lambda_k$, 
-$$\Cov(\bw_j^T \bX, \bw_k^T \bX) = \bw_j^T \bSig \bw_k = \lambda_k \bw_j^T \bw_k =  \bO$$ 
-
-## Population PCs
-
-The $j$th **population principal component** (PC) of $X_1, X_2, \ldots, X_m$ is 
-
-$$
-\bw_j^T \bX = w_{1j} X_1 + w_{2j} X_2 + \cdots + w_{mj} X_m
-$$
-
-where $\bw_j = (w_{1j}, w_{2j}, \ldots, w_{mj})^T$ is column $j$ of $\bW$ from the eigendecomposition
-
-$$
-\bSig = \bW \bLambda \bW^T.
-$$
-
-The column $\bw_j$ are called the **loadings** of the $j$th principal component.  The **variance explained** by the $j$th PC is $\lambda_j$, which is diagonal element $j$ of $\bLambda$.
-
-## Sample PCA
+## Defining the First PC
 
 Suppose we have $m$ variables, each with $n$ observations:
 
@@ -2707,82 +2574,118 @@ $$
 
 We can organize these variables into an $m \times n$ matrix $\bX$ where row $i$ is $\bx_i$.
 
-PCA can be extended from the population scenario applied to rv's to the sample scenario applied to the observed data $\bX$.
-
-
 Consider all possible weighted sums of these variables
 
-$$\tilde{\pmb{x}} = \sum_{i=1}^{m} u_i \pmb{x_i}$$
+$$\tilde{\pmb{x}} = \sum_{i=1}^{m} u_i \pmb{x}_i$$
 
-where we constrain $\sum_{i=1}^{m} u_i^2 = 1$.
+where we constrain $\sum_{i=1}^{m} u_i^2 = 1$. We wish to identify the vector $\pmb{u} = \{u_i\}_{i=1}^{m}$ under this constraint that maximizes the sample variance of $\tilde{\pmb{x}}$. However, note that if we first mean center each variable, replacing $x_{ij}$ with 
+$$x_{ij}^* = x_{ij} -  \frac{1}{n} \sum_{k=1}^n x_{ik},$$ 
+then the sample variance of $\tilde{\pmb{x}} = \sum_{i=1}^{m} u_i \pmb{x}_i$ is equal to that of $\tilde{\pmb{x}}^* = \sum_{i=1}^{m} u_i \pmb{x}^*_i$. 
 
-The first principal component of $\bX$ is the results $\tilde{\bx}$ with maximum sample variance
+PCA is a method concerned with decompositon variance and covariance, so we don't wish to involve the mean of each indivdual variable. Therefore, unless the true population mean of each variable is known (in which case it would be subtracted from its respective variable), we will formulate PCA in terms of mean centered variables, $\pmb{x}^*_i =  (x^*_{i1}, x^*_{i2}, \ldots, x^*_{in})$, which we can collect into $m \times n$ matrix $\bX^*$. We therefore consider all possible weighted sums of variables:
+$$\tilde{\pmb{x}}^* = \sum_{i=1}^{m} u_i \pmb{x}^*_i.$$
+
+
+The **first principal component** of $\bX^*$ (and $\bX$) is $\tilde{\pmb{x}}^*$ with maximum sample variance
 
 $$
-s^2_{\tilde{\bx}} = \frac{\sum_{j=1}^n \left(\tilde{x}_j - \frac{1}{n} \sum_{k=1}^n \tilde{x}_k \right)^2}{n-1}.
+s^2_{\tilde{\bx}^*}  = \frac{\sum_{j=1}^n \tilde{x}^{*2}_j}{n-1} 
 $$
 
-This first sample principal component (PC) is then "removed" from the data, and the procedure is repeated until $\min(m, n-1)$ sample PCs are constructed.
+The $\pmb{u} = \{u_i\}_{i=1}^{m}$ yielding this first principal component is called its **loadings**.
 
+Note that 
+$$
+s^2_{\tilde{\bx}}  = \frac{\sum_{j=1}^n \left(\tilde{x}_j - \frac{1}{n} \sum_{k=1}^n \tilde{x}_k \right)^2}{n-1} = \frac{\sum_{j=1}^n \tilde{x}^{*2}_j}{n-1} = s^2_{\tilde{\bx}^*} \ ,
+$$
+so the loadings can be found from either $\bX$ or $\bX^*$. However, it the technically correct first PC is $\tilde{\bx}^*$ rather than $\tilde{\bx}$.
 
-The sample PCs are found in a manner analogous to the population PCs. First, we construct the $m \times m$ sample covariance matrix $\bS$ with $(i,j)$ entry
+This first PC is then removed from the data, and the procedure is repeated until all possible sample PCs are constructed. This is accomplished by calculating the product of $\bu_{m \times 1}$ and $\tilde{\pmb{x}}^*_{1 \times n}$, and subtracting it from $\bX^*$: 
+$$
+\bX^* - \bu \tilde{\pmb{x}}^* \ .
+$$
 
+## Calculating All PCs
+
+All of the PCs can be calculated simultaneously. First, we construct the $m \times m$ sample covariance matrix $\bS$ with $(i,j)$ entry
 $$
 s_{ij} = \frac{\sum_{k=1}^n (x_{ik} - \bar{x}_{i\cdot})(x_{jk} - \bar{x}_{j\cdot})}{n-1}.
 $$
-
-Identifying $\bu$ that maximizes $s^2_{\tilde{\bx}}$ also maximizes
-
+The sample covariance can also be calculated by
 $$
-\bu^T \bS \bu.
+\bS = \frac{1}{n-1} \bX^{*} \bX^{*T}.
 $$
 
+It can be shown that 
+$$
+s^2_{\tilde{\bx}^*} = \bu^T \bS \bu,
+$$
+so identifying $\bu$ that maximizes $s^2_{\tilde{\bx}}$ also maximizes $\bu^T \bS \bu$.
 
-Following the steps from before, we want to identify $\bu$ and $\lambda$ where
+Using a Lagrange multiplier, we wish to maximize
 
 $$
-\bS \bu = \lambda \bu.
+\bu^T \bS \bu + \lambda(\bu^T \bu - 1).
 $$
 
-which is accomplished with the eigendecomposition
+
+Differentiating with respect to $\bu$ and setting this to $\bO$, we get $\bS \bu - \lambda \bu = 0$ or
+
+$$
+\bSig \bu = \lambda \bu.
+$$
+
+For any such $\bu$ and $\lambda$ where this holds, note that
+
+$$
+s_{ij} = \frac{\sum_{k=1}^n (x_{ik} - \bar{x}_{i\cdot})(x_{jk} - \bar{x}_{j\cdot})}{n-1} = \bu^T \bSig \bu = \lambda
+$$
+
+so the PC's variance is $\lambda$.
+
+
+The eigendecompositon of a matrix identifies all such solutions to $\bS \bu = \lambda \bu.$  Specifically, it calculates the decompositon
 
 $$
 \bS = \bU \bLambda \bU^T
 $$
 
-where again $\bU^T \bU = \bU \bU^T = \bI$ and $\bLambda$ is a diagonal matrix so that $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0$.
+where $\bU$ is an $m \times m$ orthogonal matrix and $\bLambda$ is a diagonal matrix with entries $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0$.  
 
-## Sample PCs
+The fact that $\bU$ is orthogonal means $\bU \bU^T = \bU^T \bU = \bI$.  
 
-Let $x^*_{ij} = x_{ij} - \bar{x}_{i\cdot}$ be the row-wise mean-centered values of $\bX$, and let $\bX^*$ be the matrix composed of these values.  Also, let $\bu_j$ be column $j$ of $\bU$ from $\bS = \bU \bLambda \bU^T$.
 
-Sample PC $j$ is then 
+The following therefore hold:
+
+- For each column $j$ of $\bU$, say $\bu_j$, it follows that $\bS \bu_j = \lambda_j \bu_j$
+- $\| \bu_j \|^2_2 = 1$ and $\bu_j^T \bu_k = \bO$ for $\lambda_j \not= \lambda_k$
+- $\V(\bu_j^T \bX) = \lambda_j$
+- $\V(\bu_1^T \bX) \geq \V(\bu_2^T \bX) \geq \cdots \geq \V(\bu_m^T \bX)$
+- $\bS = \sum_{j=1}^m \lambda_j \bu_j \bu_j^T$
+- For $\lambda_j \not= \lambda_k$, 
+$$\Cov(\bu_j^T \bX, \bu_k^T \bX) = \bu_j^T \bS \bu_k = \lambda_k \bu_j^T \bu_k =  \bO$$ 
+
+To calculate the actual principal components, let $x^*_{ij} = x_{ij} - \bar{x}_{i\cdot}$ be the mean-centered variables. Let $\bX^*$ be the matrix composed of these mean-centered variables.  Also, let $\bu_j$ be column $j$ of $\bU$ from $\bS = \bU \bLambda \bU^T$.
+
+**Sample principal component** $j$ is then 
 
 $$
 \tilde{\bx}_j = \bu_j^T \bX^* = \sum_{i=1}^m u_{ij} \bx^*_i 
 $$
 
-for $j = 1, 2, \ldots, \min(m, n-1)$.
+for $j = 1, 2, \ldots, \min(m, n-1)$. For $j > \min(m, n-1)$, we have $\lambda_j = 0$, so these principal components are not necessary to calculate. The **loadings** corresponding to PC $j$ are $\bu_j$.
 
-
-The loadings corresponding to PC $j$ are $\bu_j$.
-
-Note that the mean of PC $j$ is zero, i.e., that
-
+Note that the convention is that mean of PC $j$ is zero, i.e., that
 $$
-\frac{1}{n} \sum_{k=1}^n \tilde{x}_{jk} = 0.
+\frac{1}{n} \sum_{k=1}^n \tilde{x}_{jk} = 0,
 $$
+but as mentioned above $\sum_{i=1}^m u_{ij} \bx^*_i$ and the uncentered $\sum_{i=1}^m u_{ij} \bx_i$ have the same sample variance.
 
 It can be calculated that the variance of PC $j$ is
-
 $$
 s^2_{\tilde{\bx}_j} = \frac{\sum_{k=1}^n \tilde{x}_{jk}^2}{n-1} = \lambda_j.
 $$
-
-## Proportion of Variance Explained
-
 The proportion of variance explained by PC $j$ is
-
 $$
 \operatorname{PVE}_j = \frac{\lambda_j}{\sum_{k=1}^m \lambda_k}.
 $$
@@ -2810,7 +2713,7 @@ Therefore:
 - The loadings of PC $j$ are contained in the columns of the left-hand matrix from the decomposition of $\bS$ or $\bX^*$
 - PC $j$ is row $j$ of $\bD \bV^T$
 
-## My PCA Function
+## A Simple PCA Function
 
 
 ```r
@@ -2833,9 +2736,7 @@ Therefore:
 + }
 ```
 
-## How It Works
-
-Input is as follows:
+The input is as follows:
 
 - `x`: a matrix of numerical values
 - `space`: either `"rows"` or `"columns"`, denoting which dimension contains the variables
@@ -2843,7 +2744,7 @@ Input is as follows:
 - `scale`: if `TRUE` then the variables are std dev scaled before calculating PCs
 
 
-Output is a list with the following items:
+The output is a list with the following items:
 
 - `pc`: a matrix of all possible PCs
 - `loading`:  the weights or "loadings" that determined each PC
@@ -2851,9 +2752,9 @@ Output is a list with the following items:
 
 Note that the rows or columns of `pc` and `loading` have names to let you know on which dimension the values are organized.
 
-## The Ubiquitous Example
+## The Ubiquitous PCA Example
 
-Here's an example very frequently encountered to explain PCA, but it's slightly complicated.
+Here's an example very frequently encountered to explain PCA, but it's slightly complicated and conflates several ideas in PCA. I think it's not a great example to motivate PCA, but it's so common I want to carefully clarify what it's displaying.
 
 
 ```r
@@ -2867,35 +2768,42 @@ Here's an example very frequently encountered to explain PCA, but it's slightly 
 ```
 
 
-"The first PC finds the direction of maximal variance in the data..."
+PCS is often explained by showing the following plot and stating, "The first PC finds the direction of maximal variance in the data..."
 
-<img src="eda_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" />
-
-
+<img src="eda_files/figure-html/unnamed-chunk-178-1.png" width="672" style="display: block; margin: auto;" />
 
 The above figure was made with the following code:
 
 
 ```r
-> df <- data.frame(x1=c(x1, lm(x1 ~ p$pc[1,])$fit), 
-+                  x2=c(x2, lm(x2 ~ p$pc[1,])$fit), 
+> a1 <- p$loading[1,1] * p$pc[1,]
+> a2 <- p$loading[2,2] * p$pc[2,]
+> # a1 <- outer(p$loading[,1], p$pc[1,])[1,] + mean(x1)
+> # a2 <- outer(p$loading[,1], p$pc[1,])[2,] + mean(x2)
+> df <- data.frame(x1=c(x1, a1), 
++                  x2=c(x2, a2), 
 +                  legend=c(rep("data",n),rep("pc1_projection",n)))
 > ggplot(df) + geom_point(aes(x=x1,y=x2,color=legend)) + 
 +   scale_color_manual(values=c("blue", "red"))
 ```
 
-The red dots are therefore the projection of `x1` and `x2` onto the first PC, so they are neither the loadings nor the PC.
+The red dots are therefore the projection of `x1` and `x2` onto the first PC, so they are neither the loadings nor the PC. This is rather complicated to understand before loadings and PCs are full understood.
 
-Note that 
+Note that there are several ways to calculate these projections.
 
 ```
+# all equivalent ways to get a1  
+p$loading[1,1] * p$pc[1,]
 outer(p$loading[,1], p$pc[1,])[1,] + mean(x1) 
-# yields the same as  
 lm(x1 ~ p$pc[1,])$fit # and
+
+# all equivalent ways to get a2  
+p$loading[2,2] * p$pc[2,]
 outer(p$loading[,1], p$pc[1,])[2,] + mean(x2) 
-# yields the same as 
 lm(x2 ~ p$pc[1,])$fit
 ```
+
+We haven't seen the `lm()` function yet, but once we do this example will be useful to revisit to understand what is meant  by "projection".
 
 
 Here is PC1 vs PC2:
@@ -2907,7 +2815,7 @@ Here is PC1 vs PC2:
 +   theme(aspect.ratio=1)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-183-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-180-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
@@ -2920,7 +2828,7 @@ Here is PC1 vs `x1`:
 +   theme(aspect.ratio=1)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-184-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-181-1.png" width="672" style="display: block; margin: auto;" />
 
 
 Here is PC1 vs `x2`:
@@ -2932,7 +2840,7 @@ Here is PC1 vs `x2`:
 +   theme(aspect.ratio=1)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-185-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-182-1.png" width="672" style="display: block; margin: auto;" />
 
 
 Here is PC1 vs `z`:
@@ -2944,11 +2852,60 @@ Here is PC1 vs `z`:
 +   theme(aspect.ratio=1)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-186-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-183-1.png" width="672" style="display: block; margin: auto;" />
+
+## PC Biplots
+
+Sometimes it is informative to plot a PC versus another PC.  This is called a **PC biplot**.
+
+It is possible that interesting subgroups or clusters of *observations* will emerge.  
 
 ## PCA Examples
 
 ### Weather Data
+
+These daily temperature data (in tenths of degrees C) come from meteorogical observations for weather stations in the US for the year 2012 provided by NOAA (National Oceanic and Atmospheric Administration).:
+
+
+```r
+> load("./data/weather_data.RData")
+> dim(weather_data)
+[1] 2811   50
+> 
+> weather_data[1:5, 1:7]
+                  11       16  18       19  27  30       31
+AG000060611 138.0000 175.0000 173 164.0000 218 160 163.0000
+AGM00060369 158.0000 162.0000 154 159.0000 165 125 171.0000
+AGM00060425 272.7619 272.7619 152 163.0000 163 108 158.0000
+AGM00060444 128.0000 102.0000 100 111.0000 125  33 125.0000
+AGM00060468 105.0000 122.0000  97 263.5714 155  52 263.5714
+```
+
+This matrix contains temperature data on 50 days and 2811 stations that were randomly selected.
+
+
+First, we will convert temperatures to Fahrenheit:
+
+
+```r
+> weather_data <- 0.18*weather_data + 32
+> weather_data[1:5, 1:6]
+                  11       16    18       19    27    30
+AG000060611 56.84000 63.50000 63.14 61.52000 71.24 60.80
+AGM00060369 60.44000 61.16000 59.72 60.62000 61.70 54.50
+AGM00060425 81.09714 81.09714 59.36 61.34000 61.34 51.44
+AGM00060444 55.04000 50.36000 50.00 51.98000 54.50 37.94
+AGM00060468 50.90000 53.96000 49.46 79.44286 59.90 41.36
+> 
+> apply(weather_data, 1, median) %>% 
++   quantile(probs=seq(0,1,0.1))
+        0%        10%        20%        30%        40%        50% 
+  8.886744  49.010000  54.500000  58.460000  62.150000  65.930000 
+       60%        70%        80%        90%       100% 
+ 69.679318  73.490000  77.990000  82.940000 140.000000 
+```
+
+Let's perform PCA on these data.
 
 
 ```r
@@ -2977,7 +2934,7 @@ AGM00060425 -0.015779138 0.007026312 -0.009907972
 ```
 
 
-### PC1 vs Time
+PC1 vs Time:  
 
 
 ```r
@@ -2986,11 +2943,11 @@ AGM00060425 -0.015779138 0.007026312 -0.009907972
 +   ggplot() + geom_point(aes(x=day, y=PC1), size=2)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-189-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-188-1.png" width="672" style="display: block; margin: auto;" />
 
 
 
-### PC2 vs Time
+PC2 vs Time:  
 
 
 ```r
@@ -2998,19 +2955,14 @@ AGM00060425 -0.015779138 0.007026312 -0.009907972
 +   ggplot() + geom_point(aes(x=day, y=PC2), size=2)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-190-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-189-1.png" width="672" style="display: block; margin: auto;" />
 
 
-### PC Biplots
 
-Sometimes it is informative to plot a PC versus another PC.  This is called a **PC biplot**.
+PC1 vs PC2 Biplot:  
 
-It is possible that interesting subgroups or clusters of *observations* will emerge.
+This does not appear to be subgroups or clusters in the weather data set biplot of PC1 vs PC2.
 
-This does not appear to be the case in the weather data set, however, due to what we observe in the next two plots.
-
-
-### PC1 vs PC2 Biplot
 
 
 ```r
@@ -3018,10 +2970,10 @@ This does not appear to be the case in the weather data set, however, due to wha
 +   ggplot() + geom_point(aes(x=PC1, y=PC2), size=2)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-191-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-190-1.png" width="672" style="display: block; margin: auto;" />
 
 
-### Proportion of Variance Explained
+Proportion of Variance Explained:  
 
 
 ```r
@@ -3029,10 +2981,8 @@ This does not appear to be the case in the weather data set, however, due to wha
 +   ggplot() + geom_point(aes(x=Component, y=PVE), size=2)
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-192-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-191-1.png" width="672" style="display: block; margin: auto;" />
 
-
-### PCs Reproduce the Data
 
 We can multiple the loadings matrix by the PCs matrix to reproduce the data:
 
@@ -3047,8 +2997,6 @@ We can multiple the loadings matrix by the PCs matrix to reproduce the data:
 [1] 1.329755e-10
 ```
 
-
-### Loadings 
 
 The sum of squared weights -- i.e., loadings -- equals one for each component:
 
@@ -3076,9 +3024,6 @@ Loading50
         1 
 ```
 
-
-### Pairs of PCs Have Correlaton Zero
-
 PCs by contruction have sample correlation equal to zero:
 
 
@@ -3094,6 +3039,7 @@ PCs by contruction have sample correlation equal to zero:
 > # etc...
 ```
 
+I can transform the top PC back to the original units to display it at a scale that has a more direct interpretation.
 
 
 ```r
@@ -3103,11 +3049,11 @@ PCs by contruction have sample correlation equal to zero:
 +   ggplot() + geom_point(aes(x=day, y=max_temp))
 ```
 
-<img src="eda_files/figure-html/unnamed-chunk-196-1.png" width="672" style="display: block; margin: auto;" />
+<img src="eda_files/figure-html/unnamed-chunk-195-1.png" width="672" style="display: block; margin: auto;" />
 
 ### Yeast Gene Expression
 
-Yeast cells were synchronized so that they were on the same approximate cell cycle timing.  The goal was to understand how gene expression varies over the cell cycle from a genome-wide perspective.
+Yeast cells were synchronized so that they were on the same approximate cell cycle timing in [Spellman et al. (1998)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC25624/).  The goal was to understand how gene expression varies over the cell cycle from a genome-wide perspective.
 
 
 ```r
@@ -3126,8 +3072,7 @@ YAL005C -0.53191556  0.1577985 -1.2401448 0.8170350 -1.3520947
 YAL007C -0.86693416 -1.1642322 -0.6359588 1.1179131  1.9587021
 ```
 
-
-#### Proportion Variance Explained
+Proportion Variance Explained:  
 
 
 ```r
@@ -3136,16 +3081,16 @@ YAL007C -0.86693416 -1.1642322 -0.6359588 1.1179131  1.9587021
 +   geom_point(aes(x=pc,y=pve), size=2)
 ```
 
+<img src="eda_files/figure-html/unnamed-chunk-197-1.png" width="672" style="display: block; margin: auto;" />
+
+
+PCs vs Time (with Smoothers):  
+
 <img src="eda_files/figure-html/unnamed-chunk-198-1.png" width="672" style="display: block; margin: auto;" />
-
-
-#### PCs vs Time (with Smoothers)
-
-<img src="eda_files/figure-html/unnamed-chunk-199-1.png" width="672" style="display: block; margin: auto;" />
 
 ### HapMap Genotypes
 
-Recall the example HapMap data used to demonstrate the MCMC algorithm for estimating structure.  We curated a small data set that cleanly separates human subpopulations.
+I curated a small data set that cleanly separates human subpopulations from the [HapMap](https://en.wikipedia.org/wiki/International_HapMap_Project) data.  These include unrelated individuals from Yoruba people from Ibadan, Nigeria (YRI), Utah residents of northern and western European ancestry (CEU), Japanese individuals from Tokyo, Japan (JPT), and Han Chinese individuals from Beijing, China (CHB). 
 
 
 ```r
@@ -3162,8 +3107,7 @@ rs6943479        0       0       2       0       1       0
 rs2095381        1       2       1       2       1       1
 ```
 
-
-#### Proportion Variance Explained
+Proportion Variance Explained:  
 
 
 ```r
@@ -3172,21 +3116,19 @@ rs2095381        1       2       1       2       1       1
 +   geom_point(aes(x=pc,y=pve), size=2)
 ```
 
+<img src="eda_files/figure-html/unnamed-chunk-200-1.png" width="672" style="display: block; margin: auto;" />
+
+PC1 vs PC2 Biplot:  
+
 <img src="eda_files/figure-html/unnamed-chunk-201-1.png" width="672" style="display: block; margin: auto;" />
 
 
-#### PC1 vs PC2 Biplot
+PC1 vs PC3 Biplot:  
 
 <img src="eda_files/figure-html/unnamed-chunk-202-1.png" width="672" style="display: block; margin: auto;" />
 
 
-#### PC1 vs PC3 Biplot
+PC2 vs PC3 Biplot:  
 
 <img src="eda_files/figure-html/unnamed-chunk-203-1.png" width="672" style="display: block; margin: auto;" />
-
-
-
-#### PC2 vs PC3 Biplot
-
-<img src="eda_files/figure-html/unnamed-chunk-204-1.png" width="672" style="display: block; margin: auto;" />
 

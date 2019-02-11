@@ -4,7 +4,7 @@ title: "Foundations of Applied Statistics"
 subtitle: "Data Wrangling, Exploratory Data Analysis, Inference, and Modeling"
 author: "John D. Storey"
 description: "Foundations of Applied Statistics"
-date: "Created 2017-02-01; Last midified 2019-02-04"
+date: "Created 2017-02-01; Last midified 2019-02-10"
 url: 'https\://jdstorey.github.io/fas/'
 github-repo: jdstorey/fas
 twitter-handle: johnstorey

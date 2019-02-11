@@ -2,7 +2,7 @@
 
 # (PART) Introduction {-}
 
-# Statistics {#stat_ml_ds}
+# Statistics {#stat_overview}
 
 ## History
 
@@ -76,11 +76,8 @@ Cleveland establishes six technical areas which he believed to encompass the fie
 
 ### Industry
 
-Individuals working in industry began to call themselves "data scientists" several years after statisticians had introduced the field.
+Individuals working in industry began to call themselves "data scientists" in the late 2000's, but this was far  after statisticians had introduced the field. For exampe, 
 
-- "In 2008, DJ Patil and Jeff Hammerbacher used the term 'data scientist' to define their jobs at LinkedIn and Facebook, respectively." <https://en.wikipedia.org/wiki/Data_science>
-
-- The term "data scientist" is now often used to describe positions in industry that primarily involve data, whether it is statistics, machine learning, data curation, or other data-centric activities
 
 # Components of Applied Statistics {#challenges}
 
@@ -114,5 +111,8 @@ Data wrangling is a new terms that refers to the process of convertng raw data, 
 ## Communication
 
 # Data Sets Used in this Book
+
+I will eventually include several data sets that will be used throughout the book. These data sets will be described here. As of now, all of the R examples are completed with a variety of smaller data sets. Threfore, the R code I demonstrate will not change much, but there will be a more consistent use of data sets that I find interesting. 
+
 
 

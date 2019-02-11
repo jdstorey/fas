@@ -918,6 +918,94 @@ $$\V(\boldsymbol{X}) =
 \end{bmatrix}
 $$
 
+Often times $\boldsymbol{\Sigma}$ is used as the matrix of population covariances in $\V(\boldsymbol{X})$ so that $\boldsymbol{\Sigma}=\V(\boldsymbol{X})$.
+
+## Population PCA
+
+Suppose we have $m$ random variables $X_1, X_2, \ldots, X_m$.  We wish to identify a set of weights $w_1, w_2, \ldots, w_m$ that maximizes
+
+$$
+\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right).
+$$
+
+However, this is unbounded, so we need to constrain the weights.  It turns out that constraining the weights so that 
+
+$$
+\| \bw \|_2^2 = \sum_{i=1}^m w_i^2 = 1
+$$
+
+is both interpretable and mathematically tractable.
+
+
+Therefore we wish to maximize
+
+$$
+\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right)
+$$
+
+subject to $\| \bw \|_2^2 = 1$.  Let $\bSig$ be the $m \times m$ population covariance matrix of the random variables $X_1, X_2, \ldots, X_m$.  It follows that
+
+$$
+\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right) = \bw^T \bSig \bw.
+$$
+
+Using a Lagrange multiplier, we wish to maximize
+
+$$
+\bw^T \bSig \bw + \lambda(\bw^T \bw - 1).
+$$
+
+
+Differentiating with respect to $\bw$ and setting to $\bO$, we get $\bSig \bw - \lambda \bw = 0$ or
+
+$$
+\bSig \bw = \lambda \bw.
+$$
+
+For any such $\bw$ and $\lambda$ where this holds, note that
+
+$$
+\V\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right) = \bw^T \bSig \bw = \lambda
+$$
+
+so the variance is $\lambda$.
+
+
+The eigendecompositon of a matrix identifies all such solutions to $\bSig \bw = \lambda \bw$.  Specifically, it calculates the decompositon
+
+$$
+\bSig = \bW \bLambda \bW^T
+$$
+
+where $\bW$ is an $m \times m$ orthogonal matrix and $\bLambda$ is a diagonal matrix with entries $\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0$.  
+
+The fact that $\bW$ is orthogonal means $\bW \bW^T = \bW^T \bW = \bI$.  
+
+
+The following therefore hold:
+
+- For each column $j$ of $\bW$, say $\bw_j$, it follows that $\bSig \bw_j = \lambda_j \bw_j$
+- $\| \bw_j \|^2_2 = 1$ and $\bw_j^T \bw_k = \bO$ for $\lambda_j \not= \lambda_k$
+- $\V(\bw_j^T \bX) = \lambda_j$
+- $\V(\bw_1^T \bX) \geq \V(\bw_2^T \bX) \geq \cdots \geq \V(\bw_m^T \bX)$
+- $\bSig = \sum_{j=1}^m \lambda_j \bw^j \bw_j^T$
+- For $\lambda_j \not= \lambda_k$, 
+$$\Cov(\bw_j^T \bX, \bw_k^T \bX) = \bw_j^T \bSig \bw_k = \lambda_k \bw_j^T \bw_k =  \bO$$ 
+
+The $j$th **population principal component** (PC) of $X_1, X_2, \ldots, X_m$ is 
+
+$$
+\bw_j^T \bX = w_{1j} X_1 + w_{2j} X_2 + \cdots + w_{mj} X_m
+$$
+
+where $\bw_j = (w_{1j}, w_{2j}, \ldots, w_{mj})^T$ is column $j$ of $\bW$ from the eigendecomposition
+
+$$
+\bSig = \bW \bLambda \bW^T.
+$$
+
+The column $\bw_j$ are called the **loadings** of the $j$th principal component.  The **variance explained** by the $j$th PC is $\lambda_j$, which is diagonal element $j$ of $\bLambda$.
+
 # Multivariate RVs
 
 ## Multinomial
