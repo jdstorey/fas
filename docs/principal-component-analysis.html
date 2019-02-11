@@ -1460,9 +1460,7 @@ s^2_{\tilde{{\boldsymbol{x}}}_j} = \frac{\sum_{k=1}^n \tilde{x}_{jk}^2}{n-1} = \
 <p>The above figure was made with the following code:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>a1 &lt;-<span class="st"> </span>p<span class="op">$</span>loading[<span class="dv">1</span>,<span class="dv">1</span>] <span class="op">*</span><span class="st"> </span>p<span class="op">$</span>pc[<span class="dv">1</span>,]
 <span class="op">&gt;</span><span class="st"> </span>a2 &lt;-<span class="st"> </span>p<span class="op">$</span>loading[<span class="dv">2</span>,<span class="dv">2</span>] <span class="op">*</span><span class="st"> </span>p<span class="op">$</span>pc[<span class="dv">2</span>,]
-<span class="op">&gt;</span><span class="st"> </span><span class="co"># a1 &lt;- outer(p$loading[,1], p$pc[1,])[1,] + mean(x1)</span>
-<span class="er">&gt;</span><span class="st"> </span><span class="co"># a2 &lt;- outer(p$loading[,1], p$pc[1,])[2,] + mean(x2)</span>
-<span class="er">&gt;</span><span class="st"> </span>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1=</span><span class="kw">c</span>(x1, a1), 
+<span class="op">&gt;</span><span class="st"> </span>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">x1=</span><span class="kw">c</span>(x1, a1), 
 <span class="op">+</span><span class="st">                  </span><span class="dt">x2=</span><span class="kw">c</span>(x2, a2), 
 <span class="op">+</span><span class="st">                  </span><span class="dt">legend=</span><span class="kw">c</span>(<span class="kw">rep</span>(<span class="st">&quot;data&quot;</span>,n),<span class="kw">rep</span>(<span class="st">&quot;pc1_projection&quot;</span>,n)))
 <span class="op">&gt;</span><span class="st"> </span><span class="kw">ggplot</span>(df) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>x1,<span class="dt">y=</span>x2,<span class="dt">color=</span>legend)) <span class="op">+</span><span class="st"> </span>
@@ -1711,7 +1709,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["fas.pdf"],
+"download": null,
 "toc": {
 "collapse": "section"
 }

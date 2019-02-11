@@ -2384,8 +2384,6 @@ The above figure was made with the following code:
 ```{r, eval=FALSE}
 a1 <- p$loading[1,1] * p$pc[1,]
 a2 <- p$loading[2,2] * p$pc[2,]
-# a1 <- outer(p$loading[,1], p$pc[1,])[1,] + mean(x1)
-# a2 <- outer(p$loading[,1], p$pc[1,])[2,] + mean(x2)
 df <- data.frame(x1=c(x1, a1), 
                  x2=c(x2, a2), 
                  legend=c(rep("data",n),rep("pc1_projection",n)))
