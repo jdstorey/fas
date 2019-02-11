@@ -361,7 +361,7 @@ Pearson correlation is sample covariance scaled by the variables' standard devia
 \begin{eqnarray}
 r_{xy} & = & \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2 \sum_{i=1}^n (y_i - \overline{y})^2}} \\
 \ & = & \frac{\sum_{i=1}^n (x_i - \overline{x}) (y_i - \overline{y})}{(n-1) s_x s_y} \\
-\ & = & \frac{\cov_{xy}}{s_x s_y}
+\ & = & \frac{ \operatorname{cov}_{xy}}{s_x s_y}
 \end{eqnarray}
 
 where $s_x$ and $s_y$ are the sample standard deviations of each measured variable. Note that $-1 \leq r_{xy} \leq 1$.
@@ -2237,13 +2237,13 @@ $$
 Differentiating with respect to $\bu$ and setting this to $\bO$, we get $\bS \bu - \lambda \bu = 0$ or
 
 $$
-\bSig \bu = \lambda \bu.
+\bS \bu = \lambda \bu.
 $$
 
 For any such $\bu$ and $\lambda$ where this holds, note that
 
 $$
-s_{ij} = \frac{\sum_{k=1}^n (x_{ik} - \bar{x}_{i\cdot})(x_{jk} - \bar{x}_{j\cdot})}{n-1} = \bu^T \bSig \bu = \lambda
+s_{ij} = \frac{\sum_{k=1}^n (x_{ik} - \bar{x}_{i\cdot})(x_{jk} - \bar{x}_{j\cdot})}{n-1} = \bu^T \bS \bu = \lambda
 $$
 
 so the PC's variance is $\lambda$.
