@@ -55,7 +55,7 @@
 source("./customization/knitr_options.R")
 ```
 
-# (PART) Probability {-}
+# (PART) Random Variables {-}
 
 
 # Probability and Statistics

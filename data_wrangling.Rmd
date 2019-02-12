@@ -612,59 +612,6 @@ df2
 setdiff(df1, df2)
 ```
 
-# Getting Data In and Out of R 
-
-## `.RData` Files
-
-R objects can be saved to binary `.RData` files and loaded with the `save` (or `save.image`) and `load` functions, respectively.
-
-This is the easiest way to get data into R.
-
-## `readr` Package
-
-There are a number of R packages that provide more sophisticated tools for getting data in and out of R, especially as data sets have become larger and larger.
-
-One of those packages is `readr` for text files.  It reads and writes data quickly, provides a useful status bar for large files, and does a good job at determining data types.
-
-`readr` is organized similarly to the base R functions.  For example, there are functions `read_table`, `read_csv`, `write_tsv`, and `write_csv`.  
-
-See also `fread` and `fwrite` from the `data.table` package.
-
-## Scraping from the Web 
-
-
-There are several packages that facilitate "scraping" data from the web, including `rvest` demonstrated here.
-
-```{r, message=FALSE, eval=FALSE}
-library("rvest")
-schedule <- read_html("http://jdstorey.github.io/asdscourse/schedule/")
-first_table <- html_table(schedule)[[1]]
-names(first_table) <- c("week", "topics", "reading")
-first_table[2,"week"]
-first_table[2,"topics"] %>% strsplit(split="  ")
-first_table[2,"reading"] %>% strsplit(split="  ")
-grep("R4DS", first_table$reading) # which rows (weeks) have R4DS
-```
-
-The `rvest` documentation recommends [SelectorGadget](http://selectorgadget.com), which is "a javascript bookmarklet that allows you to interactively figure out what css selector you need to extract desired components from a page."
-
-```{r, eval=FALSE}
-usg_url <- "https://princetonusg.com/senate/"
-usg <- read_html(usg_url)
-officers <- html_nodes(usg, ".team-member-name") %>% 
-            html_text
-head(officers, n=20)
-```
-
-## APIs
-
-API stands for "application programming interface" which is [a set of routines, protocols, and tools for building software and applications](https://en.wikipedia.org/wiki/Application_programming_interface).
-
-A specific website may provide an API for scraping data from that website.
-
-There are R packages that provide an interface  with specific APIs, such as the [`twitteR`](https://cran.r-project.org/web/packages/twitteR/index.html) package.
-
-
 # Case Study in Data Wrangling
 
 ## Yeast Genomics
