@@ -1228,13 +1228,13 @@ $$
 \ 
 
 $$
-\frac{d}{d \eta_k} A(\boldsymbol{\eta}) = \E[T_k(X)]
+\frac{\partial}{\partial \eta_k} A(\boldsymbol{\eta}) = \E[T_k(X)]
 $$
 
 \ 
 
 $$
-\frac{d^2}{d \eta_k^2} A(\boldsymbol{\eta}) = \V[T_k(X)]
+\frac{\partial^2}{\partial \eta_k^2} A(\boldsymbol{\eta}) = \V[T_k(X)]
 $$
 
 
@@ -1242,9 +1242,9 @@ $$
 
 For $X \sim \mbox{Normal}(\mu, \sigma^2)$, 
 
-$$\E[X] = \frac{d}{d \eta_1} A(\boldsymbol{\eta}) = -\frac{\eta_1}{2 \eta_2} = \mu,$$
+$$\E[X] = \frac{\partial}{\partial \eta_1} A(\boldsymbol{\eta}) = -\frac{\eta_1}{2 \eta_2} = \mu,$$
 
-$$\V(X) = \frac{d^2}{d \eta_1^2} A(\boldsymbol{\eta}) = -\frac{1}{2 \eta_2} = \sigma^2.$$
+$$\V(X) = \frac{\partial^2}{\partial \eta_1^2} A(\boldsymbol{\eta}) = -\frac{1}{2 \eta_2} = \sigma^2.$$
 
 ## Maximum Likelihood
 

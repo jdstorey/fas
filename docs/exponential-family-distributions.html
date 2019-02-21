@@ -1341,18 +1341,18 @@ h(x) \exp \left\{ \eta x - A(\eta) \right\}
 <h2><span class="header-section-number">31.6</span> Calculating Moments</h2>
 <p> </p>
 <p><span class="math display">\[
-\frac{d}{d \eta_k} A(\boldsymbol{\eta}) = {\operatorname{E}}[T_k(X)]
+\frac{\partial}{\partial \eta_k} A(\boldsymbol{\eta}) = {\operatorname{E}}[T_k(X)]
 \]</span></p>
 <p> </p>
 <p><span class="math display">\[
-\frac{d^2}{d \eta_k^2} A(\boldsymbol{\eta}) = {\operatorname{Var}}[T_k(X)]
+\frac{\partial^2}{\partial \eta_k^2} A(\boldsymbol{\eta}) = {\operatorname{Var}}[T_k(X)]
 \]</span></p>
 </div>
 <div id="example-normal-2" class="section level2">
 <h2><span class="header-section-number">31.7</span> Example: Normal</h2>
 <p>For <span class="math inline">\(X \sim \mbox{Normal}(\mu, \sigma^2)\)</span>,</p>
-<p><span class="math display">\[{\operatorname{E}}[X] = \frac{d}{d \eta_1} A(\boldsymbol{\eta}) = -\frac{\eta_1}{2 \eta_2} = \mu,\]</span></p>
-<p><span class="math display">\[{\operatorname{Var}}(X) = \frac{d^2}{d \eta_1^2} A(\boldsymbol{\eta}) = -\frac{1}{2 \eta_2} = \sigma^2.\]</span></p>
+<p><span class="math display">\[{\operatorname{E}}[X] = \frac{\partial}{\partial \eta_1} A(\boldsymbol{\eta}) = -\frac{\eta_1}{2 \eta_2} = \mu,\]</span></p>
+<p><span class="math display">\[{\operatorname{Var}}(X) = \frac{\partial^2}{\partial \eta_1^2} A(\boldsymbol{\eta}) = -\frac{1}{2 \eta_2} = \sigma^2.\]</span></p>
 </div>
 <div id="maximum-likelihood-1" class="section level2">
 <h2><span class="header-section-number">31.8</span> Maximum Likelihood</h2>
