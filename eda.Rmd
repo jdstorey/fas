@@ -2374,7 +2374,11 @@ p <- pca(x=X, space="rows")
 PCS is often explained by showing the following plot and stating, "The first PC finds the direction of maximal variance in the data..."
 
 ```{r, echo=FALSE, fig.width=7}
-df <- data.frame(x1=c(x1, lm(x1 ~ p$pc[1,])$fit), x2=c(x2, lm(x2 ~ p$pc[1,])$fit), legend=c(rep("data",n),rep("pc1_projection",n)))
+a1 <- p$loading[1,1] * p$pc[1,] + mean(x1)
+a2 <- p$loading[1,2] * p$pc[1,] + mean(x2)
+df <- data.frame(x1=c(x1, a1), 
+                 x2=c(x2, a2), 
+                 legend=c(rep("data",n),rep("pc1_projection",n)))
 ggplot(df) + geom_point(aes(x=x1,y=x2,color=legend)) + 
   scale_color_manual(values=c("blue", "red"))
 ```
@@ -2382,8 +2386,8 @@ ggplot(df) + geom_point(aes(x=x1,y=x2,color=legend)) +
 The above figure was made with the following code:
 
 ```{r, eval=FALSE}
-a1 <- p$loading[1,1] * p$pc[1,]
-a2 <- p$loading[2,2] * p$pc[2,]
+a1 <- p$loading[1,1] * p$pc[1,] + mean(x1)
+a2 <- p$loading[1,2] * p$pc[1,] + mean(x2)
 df <- data.frame(x1=c(x1, a1), 
                  x2=c(x2, a2), 
                  legend=c(rep("data",n),rep("pc1_projection",n)))

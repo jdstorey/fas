@@ -13,22 +13,11 @@ library(magrittr)
 
 ## Definition
 
-Data wrangling is loosely defined as the process of manually converting or mapping data from one "raw" form into another format that allows for more convenient consumption of the data with the help of semi-automated tools.
-
-It typically follows a set of general steps which begin with extracting the data in a raw form from the data source, "wrangling" the raw data using algorithms (e.g. sorting) or parsing the data into predefined data structures, and finally depositing the resulting content into a data sink for storage and future use.
+> Data wrangling is loosely defined as the process of manually converting or mapping data from one "raw" form into another format that allows for more convenient consumption of the data with the help of semi-automated tools.
+>  
+> It typically follows a set of general steps which begin with extracting the data in a raw form from the data source, "wrangling" the raw data using algorithms (e.g. sorting) or parsing the data into predefined data structures, and finally depositing the resulting content into a data sink for storage and future use.
 
 <https://en.wikipedia.org/wiki/Data_wrangling>
-
-## Workflow
-
-These steps are typically taken in a data science project.
-
-1. **Import**
-2. **Tidy**
-3. **Transform** $\leftrightarrow$ Visualize $\leftrightarrow$ Model (*iterate*)
-4. Communicate
-
-The bold terms are part of data wrangling.
 
 ## Wrangling Challenges
 
@@ -287,7 +276,7 @@ Verbs:
 
 Partially based on *R Programming for Data Science* 
 
-## Example: Baby Names
+## Baby Names Data Set
 
 ```{r, include=FALSE}
 rm(list=ls())
@@ -327,7 +316,7 @@ Originally from R package `magrittr`.  Provides a mechanism for chaining command
 ```{r}
 x <- 1:10
 
-x %>% log(base=10) %>% sum
+x %>% log(base=10) %>% sum()
 
 sum(log(x,base=10))
 ```
@@ -383,7 +372,7 @@ mutate(babynames, total_by_year=round(n/prop))
 ## see also transmutate
 ```
 
-## Babynames: Numver of Individuals by Year and Sex
+## `distinct()`
 
 Let's put a few things together now adding the function `distinct()`...
 
@@ -392,7 +381,7 @@ babynames %>% mutate(total_by_year=round(n/prop)) %>%
   select(sex, year, total_by_year) %>% distinct()
 ```
 
-### `summarize()`
+## `summarize()`
 
 ```{r}
 summarize(babynames, mean_n = mean(n), median_n = median(n), 
@@ -400,22 +389,22 @@ summarize(babynames, mean_n = mean(n), median_n = median(n),
           distinct_names = n_distinct(name))
 ```
 
-### `group_by()`
+## `group_by()`
 
 ```{r}
 babynames %>% group_by(year, sex)
 ```
 
-### No. Individuals by Year and Sex
+## Chaining Verbs Together
+
+#### No. Individuals by Year and Sex {-}
 
 ```{r}
 babynames %>% group_by(year, sex) %>% 
   summarize(total_by_year=sum(n))
 ```
 
-Compare to earlier slide. Why the difference?
-
-### How Many Distinct Names?
+#### How Many Distinct Names? {-}
 
 ```{r}
 babynames %>% group_by(sex) %>% 
@@ -424,7 +413,7 @@ babynames %>% group_by(sex) %>%
 ```
 
 
-### Most Popular Names
+#### Most Popular Names by Year {-}
 
 ```{r}
 top_names <- babynames %>% group_by(year, sex) %>% 
@@ -434,58 +423,38 @@ head(top_names)
 ```
 
 
-### Most Popular Names
-
-#### Recent Years
+#### Most Popular Names in Recent Years {-}
 
 ```{r}
 tail(top_names, n=10)
 ```
 
-### Most Popular Female Names 
-
-#### 1990s
+#### Most Popular Female Names in the 1990s {-}
 
 ```{r}
 top_names %>% filter(year >= 1990 & year < 2000, sex=="F")
 ```
 
-### Most Popular Male Names 
-
-#### 1990s
+#### Most Popular Male Names in the 1990s {-}
 
 ```{r}
 top_names %>% filter(year >= 1990 & year < 2000, sex=="M")
 ```
 
+#### Analyzing the name 'John' {-}
+
 ```{r, small.mar=TRUE}
-## Analyzing the name 'John'
 john <- babynames %>% filter(sex=="M", name=="John")
 plot(john$year, john$prop, type="l")
 ```
 
 
+#### Analyzing the name 'Bella' {-}
+
 ```{r, small.mar=TRUE}
-## Analyzing the name 'Bella'
 bella <- babynames %>% filter(sex=="F", name=="Bella") 
 plot(bella$year, bella$prop, type="l")
 ```
-
-### Additional Examples
-
-You should study additional tutorials of `dplyr` that utilize other data sets:
-
-- Read the `dplyr` [introductory vignette](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
-- Read the examples given in the *R for Data Science* assigned reading
-
-### Additional `dplyr` Features
-
-- We've only scratched the surface -- many interesting demos of `dplyr` can be found online
-- `dplyr` can work with other data frame backends such as SQL databases
-- There is an SQL interface for relational databases via the `DBI` package
-- `dplyr` can be integrated with the `data.table` package for large fast tables
-- There is a [healthy rivalry](http://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly) between `dplyr` and [`data.table`](https://cran.r-project.org/web/packages/data.table/index.html)
-
 
 # Relational Data
 
@@ -599,7 +568,7 @@ One can perform traditional set operations on the rows of data frames.
 
 From *R for Data Science*
 
-### Example `setdiff()`
+#### Example `setdiff()` {-}
 
 ```{r, echo=FALSE}
 df1 <- tibble(x=c(1, 2), y=c(1, 1))
@@ -815,3 +784,20 @@ sk_tidy %>% dcast(gene + segregant ~ condition,
   geom_point() +  theme_bw() +
   theme(legend.position = "none")
 ```
+
+# Further Reading
+
+## Additional Examples
+
+You should study additional tutorials of `dplyr` that utilize other data sets:
+
+- Read the `dplyr` [introductory vignette](https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html)
+- Read the examples given in the *R for Data Science* assigned reading
+
+## Additional `dplyr` Features
+
+- We've only scratched the surface -- many interesting demos of `dplyr` can be found online
+- `dplyr` can work with other data frame backends such as SQL databases
+- There is an SQL interface for relational databases via the `DBI` package
+- `dplyr` can be integrated with the `data.table` package for large fast tables
+- There is a [healthy rivalry](http://stackoverflow.com/questions/21435339/data-table-vs-dplyr-can-one-do-something-well-the-other-cant-or-does-poorly) between `dplyr` and [`data.table`](https://cran.r-project.org/web/packages/data.table/index.html)

@@ -5,21 +5,21 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>68 lm() Function in R | Foundations of Applied Statistics</title>
-  <meta name="description" content="68 lm() Function in R | Foundations of Applied Statistics">
+  <title>58 Further Reading | Foundations of Applied Statistics</title>
+  <meta name="description" content="58 Further Reading | Foundations of Applied Statistics">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="68 lm() Function in R | Foundations of Applied Statistics" />
+  <meta property="og:title" content="58 Further Reading | Foundations of Applied Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://jdstorey.github.io/fas/" />
   <meta property="og:image" content="https://jdstorey.github.io/fas/images/book_cover.png" />
-  <meta property="og:description" content="68 lm() Function in R | Foundations of Applied Statistics" />
+  <meta property="og:description" content="58 Further Reading | Foundations of Applied Statistics" />
   <meta name="github-repo" content="jdstorey/fas" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="68 lm() Function in R | Foundations of Applied Statistics" />
+  <meta name="twitter:title" content="58 Further Reading | Foundations of Applied Statistics" />
   <meta name="twitter:site" content="@johnstorey" />
-  <meta name="twitter:description" content="68 lm() Function in R | Foundations of Applied Statistics" />
+  <meta name="twitter:description" content="58 Further Reading | Foundations of Applied Statistics" />
   <meta name="twitter:image" content="https://jdstorey.github.io/fas/images/book_cover.png" />
 
 <meta name="author" content="John D. Storey">
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="simple-linear-regression-1.html">
-<link rel="next" href="ordinary-least-squares-1.html">
+<link rel="prev" href="mcmc-example.html">
+<link rel="next" href="nonparametric-statistics.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -1281,141 +1281,42 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lm-function-in-r" class="section level1">
-<h1><span class="header-section-number">68</span> <code>lm()</code> Function in R</h1>
-<div id="calculate-the-line-in-r" class="section level2">
-<h2><span class="header-section-number">68.1</span> Calculate the Line in R</h2>
-<p>The syntax for a model in R is</p>
-<p><code>response variable ~ explanatory variables</code></p>
-<p>where the <code>explanatory variables</code> component can involve several types of terms.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>myfit &lt;-<span class="st"> </span><span class="kw">lm</span>(weight <span class="op">~</span><span class="st"> </span>height, <span class="dt">data=</span>htwt)
-<span class="op">&gt;</span><span class="st"> </span>myfit
+<div id="further-reading-1" class="section level1">
+<h1><span class="header-section-number">58</span> Further Reading</h1>
+<div id="bishop-2016" class="section level4 unnumbered">
+<h4>Bishop (2016)</h4>
+<p>One of the clearest treatments of the EM algorithm, variational inference, and MCMC can be found in Chapters 9-11 of <a href="https://pulsearch.princeton.edu/catalog/4992869"><em>Pattern Recognition and Machine Learning</em></a>, by Christopher Bishop.</p>
+<p>This is a great book in general.</p>
+</div>
+<div id="em-algorithm-1" class="section level4 unnumbered">
+<h4>EM Algorithm</h4>
+<p>Paper that popularized the method: <a href="https://www.jstor.org/stable/2984875?seq=1#page_scan_tab_contents">Dempster, Laird, Rubin (1977)</a></p>
+<p>Paper that got the theory correct: <a href="http://projecteuclid.org/euclid.aos/1176346060">Wu (1983)</a></p>
+</div>
+<div id="variational-inference-1" class="section level4 unnumbered">
+<h4>Variational Inference</h4>
+<p><a href="http://www.nowpublishers.com/article/Details/MAL-001">Wainwright and Jordan (2008)</a></p>
+<p><a href="http://www.maths.usyd.edu.au/u/jormerod/JTOpapers/Ormerod10.pdf">Ormerod and Wand (2010)</a></p>
+<p><a href="https://arxiv.org/abs/1601.00670">Blei et al. (2016)</a></p>
+</div>
+<div id="mcmc" class="section level4 unnumbered">
+<h4>MCMC</h4>
+<p><a href="https://jeremykun.com/2015/04/06/markov-chain-monte-carlo-without-all-the-bullshit/">MCMC Without All the BS</a></p>
+<p><a href="https://pulsearch.princeton.edu/catalog/7647380"><em>Bayesian Data Analysis</em></a> by Gelman et al.</p>
+<p><a href="https://pulsearch.princeton.edu/catalog/8891468"><em>Monte Carlo Strategies in Scientific Computing</em></a> by Jun Liu</p>
 
-Call<span class="op">:</span>
-<span class="kw">lm</span>(<span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>height, <span class="dt">data =</span> htwt)
+</div>
+</div>
 
-Coefficients<span class="op">:</span>
-(Intercept)       height  
-    <span class="op">-</span><span class="fl">130.91</span>         <span class="fl">1.15</span>  </code></pre></div>
-</div>
-<div id="an-lm-object-is-a-list" class="section level2">
-<h2><span class="header-section-number">68.2</span> An <code>lm</code> Object is a List</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">class</span>(myfit)
-[<span class="dv">1</span>] <span class="st">&quot;lm&quot;</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">is.list</span>(myfit)
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">names</span>(myfit)
- [<span class="dv">1</span>] <span class="st">&quot;coefficients&quot;</span>  <span class="st">&quot;residuals&quot;</span>     <span class="st">&quot;effects&quot;</span>       <span class="st">&quot;rank&quot;</span>         
- [<span class="dv">5</span>] <span class="st">&quot;fitted.values&quot;</span> <span class="st">&quot;assign&quot;</span>        <span class="st">&quot;qr&quot;</span>            <span class="st">&quot;df.residual&quot;</span>  
- [<span class="dv">9</span>] <span class="st">&quot;xlevels&quot;</span>       <span class="st">&quot;call&quot;</span>          <span class="st">&quot;terms&quot;</span>         <span class="st">&quot;model&quot;</span>        </code></pre></div>
-</div>
-<div id="from-the-r-help" class="section level2">
-<h2><span class="header-section-number">68.3</span> From the R Help</h2>
-<blockquote>
-<p><code>lm</code> returns an object of class “lm” or for multiple responses of class c(“mlm”, “lm”).</p>
-</blockquote>
-<blockquote>
-<p>The functions <code>summary</code> and <code>anova</code> are used to obtain and print a summary and analysis of variance table of the results. The generic accessor functions coefficients, effects, fitted.values and residuals extract various useful features of the value returned by <code>lm</code>.</p>
-</blockquote>
-</div>
-<div id="some-of-the-list-items" class="section level2">
-<h2><span class="header-section-number">68.4</span> Some of the List Items</h2>
-<p>These are some useful items to access from the <code>lm</code> object:</p>
-<ul>
-<li><code>coefficients</code>: a named vector of coefficients</li>
-<li><code>residuals</code>: the residuals, that is response minus fitted values.</li>
-<li><code>fitted.values</code>: the fitted mean values.</li>
-<li><code>df.residual</code>: the residual degrees of freedom.</li>
-<li><code>call</code>: the matched call.</li>
-<li><code>model</code>: if requested (the default), the model frame used.</li>
-</ul>
-</div>
-<div id="summary" class="section level2">
-<h2><span class="header-section-number">68.5</span> <code>summary()</code></h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">summary</span>(myfit)
 
-Call<span class="op">:</span>
-<span class="kw">lm</span>(<span class="dt">formula =</span> weight <span class="op">~</span><span class="st"> </span>height, <span class="dt">data =</span> htwt)
 
-Residuals<span class="op">:</span>
-<span class="st">    </span>Min      1Q  Median      3Q     Max 
-<span class="op">-</span><span class="fl">19.658</span>  <span class="op">-</span><span class="fl">5.381</span>  <span class="op">-</span><span class="fl">0.555</span>   <span class="fl">4.807</span>  <span class="fl">42.894</span> 
-
-Coefficients<span class="op">:</span>
-<span class="st">              </span>Estimate Std. Error t value <span class="kw">Pr</span>(<span class="op">&gt;</span><span class="er">|</span>t<span class="op">|</span>)    
-(Intercept) <span class="op">-</span><span class="fl">130.91040</span>   <span class="fl">11.52792</span>  <span class="op">-</span><span class="fl">11.36</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
-height         <span class="fl">1.15009</span>    <span class="fl">0.06749</span>   <span class="fl">17.04</span>   <span class="op">&lt;</span><span class="fl">2e-16</span> <span class="op">**</span><span class="er">*</span>
-<span class="op">---</span>
-Signif. codes<span class="op">:</span><span class="st">  </span><span class="dv">0</span> <span class="st">&#39;***&#39;</span> <span class="fl">0.001</span> <span class="st">&#39;**&#39;</span> <span class="fl">0.01</span> <span class="st">&#39;*&#39;</span> <span class="fl">0.05</span> <span class="st">&#39;.&#39;</span> <span class="fl">0.1</span> <span class="st">&#39; &#39;</span> <span class="dv">1</span>
-
-Residual standard error<span class="op">:</span><span class="st"> </span><span class="fl">8.505</span> on <span class="dv">198</span> degrees of freedom
-Multiple R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5946</span>,    Adjusted R<span class="op">-</span>squared<span class="op">:</span><span class="st">  </span><span class="fl">0.5925</span> 
-F<span class="op">-</span>statistic<span class="op">:</span><span class="st"> </span><span class="fl">290.4</span> on <span class="dv">1</span> and <span class="dv">198</span> DF,  p<span class="op">-</span>value<span class="op">:</span><span class="st"> </span><span class="er">&lt;</span><span class="st"> </span><span class="fl">2.2e-16</span></code></pre></div>
-</div>
-<div id="summary-list-elements" class="section level2">
-<h2><span class="header-section-number">68.6</span> <code>summary()</code> List Elements</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>mysummary &lt;-<span class="st"> </span><span class="kw">summary</span>(myfit)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">names</span>(mysummary)
- [<span class="dv">1</span>] <span class="st">&quot;call&quot;</span>          <span class="st">&quot;terms&quot;</span>         <span class="st">&quot;residuals&quot;</span>     <span class="st">&quot;coefficients&quot;</span> 
- [<span class="dv">5</span>] <span class="st">&quot;aliased&quot;</span>       <span class="st">&quot;sigma&quot;</span>         <span class="st">&quot;df&quot;</span>            <span class="st">&quot;r.squared&quot;</span>    
- [<span class="dv">9</span>] <span class="st">&quot;adj.r.squared&quot;</span> <span class="st">&quot;fstatistic&quot;</span>    <span class="st">&quot;cov.unscaled&quot;</span> </code></pre></div>
-</div>
-<div id="using-tidy" class="section level2">
-<h2><span class="header-section-number">68.7</span> Using <code>tidy()</code></h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(broom)
-<span class="op">&gt;</span><span class="st"> </span><span class="kw">tidy</span>(myfit)
-<span class="co"># A tibble: 2 x 5</span>
-  term        estimate std.error statistic  p.value
-  <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st">          </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">     </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span><span class="st">    </span><span class="er">&lt;</span>dbl<span class="op">&gt;</span>
-<span class="dv">1</span> (Intercept)  <span class="op">-</span><span class="dv">131</span>.     <span class="fl">11.5</span>        <span class="op">-</span><span class="fl">11.4</span> <span class="fl">2.44e-23</span>
-<span class="dv">2</span> height          <span class="fl">1.15</span>    <span class="fl">0.0675</span>      <span class="fl">17.0</span> <span class="fl">1.12e-40</span></code></pre></div>
-</div>
-<div id="proportion-of-variation-explained-1" class="section level2">
-<h2><span class="header-section-number">68.8</span> Proportion of Variation Explained</h2>
-<p>The proportion of variance explained by the fitted model is called <span class="math inline">\(R^2\)</span> or <span class="math inline">\(r^2\)</span>. It is calculated by:</p>
-<p><span class="math display">\[r^2 = \frac{s^2_{\hat{y}}}{s^2_{y}}\]</span></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">summary</span>(myfit)<span class="op">$</span>r.squared
-[<span class="dv">1</span>] <span class="fl">0.5945555</span>
-<span class="op">&gt;</span><span class="st"> </span>
-<span class="er">&gt;</span><span class="st"> </span><span class="kw">var</span>(myfit<span class="op">$</span>fitted.values)<span class="op">/</span><span class="kw">var</span>(htwt<span class="op">$</span>weight)
-[<span class="dv">1</span>] <span class="fl">0.5945555</span></code></pre></div>
-</div>
-<div id="assumptions-to-verify" class="section level2">
-<h2><span class="header-section-number">68.9</span> Assumptions to Verify</h2>
-<p>The assumptions on the above linear model are really about the joint distribution of the residuals, which are not directly observed. On data, we try to verify:</p>
-<ol style="list-style-type: decimal">
-<li>The fitted values and the residuals show no trends with respect to each other</li>
-<li>The residuals are distributed approximately Normal<span class="math inline">\((0, \sigma^2)\)</span>
-<ul>
-<li>A constant variance is called <a href="https://en.wikipedia.org/wiki/Homoscedasticity"><strong>homoscedasticity</strong></a></li>
-<li>A non-constant variance is called <a href="https://en.wikipedia.org/wiki/Heteroscedasticity"><strong>heteroscedascity</strong></a></li>
-</ul></li>
-<li>There are no lurking variables</li>
-</ol>
-<p>There are two plots we will use in this course to investigate the first two.</p>
-</div>
-<div id="residual-distribution" class="section level2">
-<h2><span class="header-section-number">68.10</span> Residual Distribution</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(myfit, <span class="dt">which=</span><span class="dv">1</span>)</code></pre></div>
-<p><img src="stat_models_1_files/figure-html/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="normal-residuals-check" class="section level2">
-<h2><span class="header-section-number">68.11</span> Normal Residuals Check</h2>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(myfit, <span class="dt">which=</span><span class="dv">2</span>)</code></pre></div>
-<p><img src="stat_models_1_files/figure-html/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
-</div>
-<div id="fitted-values-vs.-obs.-residuals" class="section level2">
-<h2><span class="header-section-number">68.12</span> Fitted Values Vs. Obs. Residuals</h2>
-<p><img src="stat_models_1_files/figure-html/unnamed-chunk-25-1.png" width="960" style="display: block; margin: auto;" /></p>
-</div>
-</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="simple-linear-regression-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ordinary-least-squares-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="mcmc-example.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="nonparametric-statistics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1435,7 +1336,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jdstorey/fas/edit/master/stat_models_1.Rmd",
+"link": "https://github.com/jdstorey/fas/edit/master/numerical_likelihood.Rmd",
 "text": "Edit"
 },
 "history": {
