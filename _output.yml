@@ -1,6 +1,7 @@
 bookdown::gitbook:
 #  includes:
 #    in_header: [ga_script.html]
+  css: fas.css
   config:
     toc:
       collapse: section
@@ -10,7 +11,6 @@ bookdown::gitbook:
       link: https://github.com/jdstorey/fas/edit/master/%s
       text: "Edit"
     sharing: no
-  css: fas.css
 
 #bookdown::pdf_book:
 #  latex_engine: "xelatex"
