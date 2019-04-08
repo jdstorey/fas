@@ -1294,7 +1294,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <span class="op">+</span><span class="st">          </span><span class="kw">ggtitle</span>(<span class="st">&quot;p-value density histogram&quot;</span>) <span class="op">+</span>
 <span class="op">+</span><span class="st">          </span><span class="kw">geom_histogram</span>(<span class="kw">aes_string</span>(<span class="dt">y =</span> <span class="st">&#39;..density..&#39;</span>), <span class="dt">colour =</span> <span class="st">&quot;black&quot;</span>,
 <span class="op">+</span><span class="st">                         </span><span class="dt">fill =</span> <span class="st">&quot;white&quot;</span>, <span class="dt">binwidth =</span> <span class="fl">0.04</span>, <span class="dt">center=</span><span class="fl">0.02</span>)</code></pre></div>
-<p><img src="hd_inference_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="hd_inference_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="challenges-2" class="section level2">
 <h2><span class="header-section-number">84.2</span> Challenges</h2>
@@ -1306,7 +1306,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>qobj &lt;-<span class="st"> </span><span class="kw">qvalue</span>(hedenfalk<span class="op">$</span>p)
 <span class="op">&gt;</span><span class="st"> </span><span class="kw">hist</span>(qobj)</code></pre></div>
-<p><img src="hd_inference_files/figure-html/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="hd_inference_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="outcomes" class="section level2">
 <h2><span class="header-section-number">84.3</span> Outcomes</h2>
@@ -1445,7 +1445,7 @@ t^*_\alpha = \max \left\{ t:  \hat{{{\rm FDR}}}(t) \leq \alpha \right\}
 \]</span></p>
 <p>Various theoretical properties have been shown for these estimates under certain conditions, notably that the estimated q-values of the entire set of tests are simultaneously conservative as the number of hypothesis tests grows large.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(qobj)</code></pre></div>
-<p><img src="hd_inference_files/figure-html/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="hd_inference_files/figure-html/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="bayesian-mixture-model" class="section level2">
 <h2><span class="header-section-number">84.11</span> Bayesian Mixture Model</h2>
@@ -1483,7 +1483,7 @@ t^*_\alpha = \max \left\{ t:  \hat{{{\rm FDR}}}(t) \leq \alpha \right\}
 <p><span class="math display">\[\Pr(H_i = 0 | P_i = p_i)\]</span></p>
 <p>making this latter quantity sometimes interpreted as a <strong>local false discovery rate</strong>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">hist</span>(qobj)</code></pre></div>
-<p><img src="hd_inference_files/figure-html/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="hd_inference_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 </div>
             </section>

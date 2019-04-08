@@ -1407,11 +1407,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span><span class="kw">library</span>(glmnetUtils)
 <span class="op">&gt;</span><span class="st"> </span>ridgefit &lt;-<span class="st"> </span>glmnetUtils<span class="op">::</span><span class="kw">glmnet</span>(y <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>df, <span class="dt">alpha=</span><span class="dv">0</span>)
 <span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(ridgefit)</code></pre></div>
-<p><img src="hd_inference_files/figure-html/unnamed-chunk-17-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="hd_inference_files/figure-html/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Cross-validation to tune the shrinkage parameter.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>cvridgefit &lt;-<span class="st"> </span>glmnetUtils<span class="op">::</span><span class="kw">cv.glmnet</span>(y <span class="op">~</span><span class="st"> </span>., <span class="dt">data=</span>df, <span class="dt">alpha=</span><span class="dv">0</span>)
 <span class="op">&gt;</span><span class="st"> </span><span class="kw">plot</span>(cvridgefit)</code></pre></div>
-<p><img src="hd_inference_files/figure-html/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="hd_inference_files/figure-html/unnamed-chunk-20-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="glms-1" class="section level2">
 <h2><span class="header-section-number">86.13</span> GLMs</h2>

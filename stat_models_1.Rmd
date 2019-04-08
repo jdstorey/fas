@@ -1119,7 +1119,7 @@ It's also straightforward to show that $(\bI-\bP)\bY \sim \mbox{MVN}_{n}(\bO, \s
 
 The degrees of freedom, $p$, of a linear projection model fit is equal to
 
-- The number of linearly dependent columns of $\bX$
+- The number of linearly independent columns of $\bX$
 - The number of nonzero eigenvalues of $\bP$ (where nonzero eigenvalues are equal to 1)
 - The trace of the projection matrix, $\operatorname{tr}(\bP)$.
 

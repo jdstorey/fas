@@ -1288,7 +1288,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>High-dimesional inference</strong> is the scenario where we perform inference simultaneously on “many” paramaters.</p>
 <p>“Many” can be as few as three parameters (which is where things start to get interesting), but in modern applications this is typically on the order of thousands to billions of paramaters.</p>
 <p><strong>High-dimesional data</strong> is a data set where the number of variables measured is many.</p>
-<p><strong>Large same size</strong> data is a data set where few variables are measured, but many observations are measured.</p>
+<p><strong>Large sample size</strong> data is a data set where few variables are measured, but many observations are measured.</p>
 <p><strong>Big data</strong> is a data set where there are so many data points that it cannot be managed straightforwardly in memory, but must rather be stored and accessed elsewhere. Big data can be high-dimensional, large sample size, or both.</p>
 <p>We will abbreviate high-dimensional with <strong>HD</strong>.</p>
 </div>
@@ -1306,10 +1306,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="hd-gene-expression-data" class="section level2">
 <h2><span class="header-section-number">81.3</span> HD Gene Expression Data</h2>
-<div class="figure">
-<img src="images/rna_sequencing.png" alt="Gene Expression" />
-<p class="caption">Gene Expression</p>
-</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./images/rna_sequencing.png&quot;</span>)</code></pre></div>
+<p><img src="images/rna_sequencing.png" width="300px" style="display: block; margin: auto;" /></p>
 <p>It’s possible to measure the level of gene expression – how much mRNA is being transcribed – from thousands of cell simultaneously in a single biological sample.</p>
 <p>Typically, gene expression is measured over varying biological conditions, and the goal is to perform inference on the relationship between expression and the varying conditions.</p>
 <p>This results in thousands of simultaneous inferences.</p>
@@ -1421,10 +1419,8 @@ g\left({\operatorname{E}}\left[ \left. {\boldsymbol{Y}}_{m \times n} \right| {\b
 </div>
 <div id="hd-snp-data" class="section level2">
 <h2><span class="header-section-number">81.5</span> HD SNP Data</h2>
-<div class="figure">
-<img src="images/snp_dna.png" alt="SNPs" />
-<p class="caption">SNPs</p>
-</div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="op">&gt;</span><span class="st"> </span>knitr<span class="op">::</span><span class="kw">include_graphics</span>(<span class="st">&quot;./images/snp_dna.png&quot;</span>)</code></pre></div>
+<p><img src="images/snp_dna.png" width="300px" style="display: block; margin: auto;" /></p>
 <p>It is possible to measure single nucleotide polymorphisms at millions of locations across the genome.</p>
 <p>The base (A, C, G, or T) is measured from one of the strands.</p>
 <p>For example, on the figure to the left, the individual is heterozygous CT at this SNP location.</p>

@@ -73,7 +73,7 @@ library(MASS)
 **High-dimesional data** is a data set where the number of variables measured is many.
 
 
-**Large same size** data is a data set where few variables are measured, but many observations are measured.
+**Large sample size** data is a data set where few variables are measured, but many observations are measured.
 
 **Big data** is a data set where there are so many data points that it cannot be managed straightforwardly in memory, but must rather be stored and accessed elsewhere.  Big data can be high-dimensional, large sample size, or both.
 
@@ -92,7 +92,9 @@ In all of these examples, many measurements are taken and the goal is often to p
 
 ## HD Gene Expression Data
 
-![Gene Expression](./images/rna_sequencing.png)
+```{r, out.width = "300px"}
+knitr::include_graphics("./images/rna_sequencing.png")
+```
 
 
 It's possible to measure the level of gene expression -- how much mRNA is being transcribed -- from thousands of cell simultaneously in a single biological sample.
@@ -240,7 +242,9 @@ and we could even replace $\bB_{m \times d} \bX_{d \times n}$ with $d$ smoothers
 
 ## HD SNP Data
 
-![SNPs](./images/snp_dna.png)
+```{r, out.width = "300px"}
+knitr::include_graphics("./images/snp_dna.png")
+```
 
 It is possible to measure single nucleotide polymorphisms at millions of locations across the genome.
 
