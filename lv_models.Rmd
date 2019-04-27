@@ -242,7 +242,7 @@ It can be shown that when the regularization can be represented by a prior distr
 
 In [Storey et al. (2005)](http://www.pnas.org/content/102/36/12837.full), we considered a study where kidney samples were obtained on individuals across a range of ages.  The goal was to identify genes with expression associated with age.
 
-```{r kid_load, message=FALSE, cache=TRUE}
+```{r kid_load, message=FALSE, cache=FALSE}
 library(edge)
 library(splines)
 load("./data/kidney.RData")
@@ -255,7 +255,7 @@ full_model <- ~sex + ns(age, df = 3)
 ```
 
 
-```{r kid_lrt, dependson="kid_load", cache=TRUE}
+```{r kid_lrt, dependson="kid_load", cache=FALSE}
 de_obj <- build_models(data = kidexpr, cov = cov, 
                        null.model = null_model, 
                        full.model = full_model)
@@ -267,7 +267,7 @@ hist(qobj1)
 
 Now that we have completed a standard generalized LRT, let's estimate $\bZ$ (the surrogate variables) using the `sva` package as accessed via the `edge` package.
 
-```{r kid_sva, dependson="kid_lrt", cache=TRUE}
+```{r kid_sva, dependson="kid_lrt", cache=FALSE}
 dim(nullMatrix(de_obj))
 de_sva <- apply_sva(de_obj, n.sv=4, method="irw", B=10)
 dim(nullMatrix(de_sva))
@@ -275,7 +275,7 @@ de_svalrt <- lrt(de_sva, nullDistn = "bootstrap", bs.its = 100, verbose=FALSE)
 ```
 
 
-```{r kid_svaq, dependson="kid_sva", cache=TRUE}
+```{r kid_svaq, dependson="kid_sva", cache=FALSE}
 qobj2 <- qvalueObj(de_svalrt)
 hist(qobj2)
 ```
