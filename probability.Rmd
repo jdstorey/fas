@@ -920,7 +920,67 @@ $$
 
 Often times $\boldsymbol{\Sigma}$ is used as the matrix of population covariances in $\V(\boldsymbol{X})$ so that $\boldsymbol{\Sigma}=\V(\boldsymbol{X})$.
 
-## Population PCA
+# Multivariate RVs
+
+## Multinomial
+
+Suppose $\boldsymbol{X}$ (an $m$-vector) is $\mbox{Multinomial}_m(n, \boldsymbol{p})$, where $\boldsymbol{p}$ is an $m$-vector such that $\sum_{i=1}^m p_i = 1$.  It has pmf
+
+$$
+f(\boldsymbol{x}; \boldsymbol{p}) = 
+{n \choose x_1 \ x_2 \ \cdots \ x_m} p_1^{x_1} p_2^{x_2} \cdots p_m^{x_m} 
+$$
+
+where 
+
+$${n \choose x_1 \ x_2 \ \cdots \ x_m} = \frac{n!}{x_1! x_2! \cdots x_m!}$$
+and $\sum_{i=1}^m x_i = n$.
+
+
+The Multinomial distribution is a generalization of the Binomial distribution. It models $n$ independent outcomes where each outcome has probability $p_i$ of category $i$ occurring (for $i=1, 2, \ldots, m$).  The counts per category are contained in the $X_i$ random variables that are constrained so that $\sum_{i=1}^m X_i = n$.
+
+It can be calculated that
+
+$$\E[X_i] = np_i, \quad \V(X_i) = n p_i (1-p_i),$$
+
+$$\Cov(X_i, X_j) = -n p_i p_j \quad (i \not= j).$$
+
+
+## Multivariate Normal
+
+The $n$-vector $\boldsymbol{X}$ has Multivariate Normal distribution when $\boldsymbol{X} \sim \mbox{MVN}_n(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ where $\boldsymbol{\mu}$ is the $n$-vector of population means and $\boldsymbol{\Sigma}$ is the $n \times n$ variance-covariance matrix.  Its pdf is
+
+$$ f(\boldsymbol{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = 
+\frac{1}{\sqrt{2 \pi |\boldsymbol{\Sigma}|}} \exp -\left\{ -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}) \right\}.
+$$
+  
+\   
+
+Fun fact: $\boldsymbol{\Sigma}^{-1/2} (\boldsymbol{X}-\boldsymbol{\mu}) \sim \mbox{MVN}_n(\boldsymbol{0}, \boldsymbol{I})$.
+
+## Dirichlet
+
+The Dirichlet distribution models an $m$-vector $\boldsymbol{X}$ so that $0 \leq X_i \leq 1$ and $\sum_{i=1}^m X_i = 1$.  It is a generalization of the Beta distribution.  The rv $\boldsymbol{X} \sim \mbox{Dirichlet}_m(\boldsymbol{\alpha})$, where $\boldsymbol{\alpha}$ is an $m$-vector, has pdf
+
+$$
+f(\boldsymbol{x}; \boldsymbol{\alpha}) =
+\frac{\Gamma\left( \sum_{i=1}^m \alpha_i \right)}{\prod_{i=1}^m \Gamma(\alpha_i)} \prod_{i=1}^m x_i^{\alpha_i-1}.
+$$
+
+It can be calculated that
+$$\E[X_i] = \frac{\alpha_i}{\alpha_0}, \V(X_i) = \frac{\alpha_i (\alpha_0 - \alpha_i)}{\alpha_0^2 (\alpha_0 + 1)}, \Cov(X_i, X_j) = \frac{- \alpha_i \alpha_j}{\alpha_0^2 (\alpha_0 + 1)}$$
+where $\alpha_0 = \sum_{k=1}^m \alpha_k$ and $i \not= j$ in $\Cov(X_i, X_j)$.
+
+
+## In R
+
+For the Multinomial, base R contains the functions `dmultinom` and `rmultinom`. 
+
+For the Multivariate Normal, there are several packages that work with this distribution.  One choice is the package `mvtnorm`, which contains the functions `dmvnorm` and `rmvnorm`.
+
+For the Dirichlet, there are several packages that work with this distribution.  One choice is the package `MCMCpack`, which contains the functions `ddirichlet` and `rdirichlet`.
+
+# Population Principal Components Analysis
 
 Suppose we have $m$ random variables $X_1, X_2, \ldots, X_m$.  We wish to identify a set of weights $w_1, w_2, \ldots, w_m$ that maximizes
 
@@ -988,7 +1048,7 @@ The following therefore hold:
 - $\| \bw_j \|^2_2 = 1$ and $\bw_j^T \bw_k = \bO$ for $\lambda_j \not= \lambda_k$
 - $\V(\bw_j^T \bX) = \lambda_j$
 - $\V(\bw_1^T \bX) \geq \V(\bw_2^T \bX) \geq \cdots \geq \V(\bw_m^T \bX)$
-- $\bSig = \sum_{j=1}^m \lambda_j \bw^j \bw_j^T$
+- $\bSig = \sum_{j=1}^m \lambda_j \bw_j \bw_j^T$
 - For $\lambda_j \not= \lambda_k$, 
 $$\Cov(\bw_j^T \bX, \bw_k^T \bX) = \bw_j^T \bSig \bw_k = \lambda_k \bw_j^T \bw_k =  \bO$$ 
 
@@ -1005,66 +1065,6 @@ $$
 $$
 
 The column $\bw_j$ are called the **loadings** of the $j$th principal component.  The **variance explained** by the $j$th PC is $\lambda_j$, which is diagonal element $j$ of $\bLambda$.
-
-# Multivariate RVs
-
-## Multinomial
-
-Suppose $\boldsymbol{X}$ (an $m$-vector) is $\mbox{Multinomial}_m(n, \boldsymbol{p})$, where $\boldsymbol{p}$ is an $m$-vector such that $\sum_{i=1}^m p_i = 1$.  It has pmf
-
-$$
-f(\boldsymbol{x}; \boldsymbol{p}) = 
-{n \choose x_1 \ x_2 \ \cdots \ x_m} p_1^{x_1} p_2^{x_2} \cdots p_m^{x_m} 
-$$
-
-where 
-
-$${n \choose x_1 \ x_2 \ \cdots \ x_m} = \frac{n!}{x_1! x_2! \cdots x_m!}$$
-and $\sum_{i=1}^m x_i = n$.
-
-
-The Multinomial distribution is a generalization of the Binomial distribution. It models $n$ independent outcomes where each outcome has probability $p_i$ of category $i$ occurring (for $i=1, 2, \ldots, m$).  The counts per category are contained in the $X_i$ random variables that are constrained so that $\sum_{i=1}^m X_i = n$.
-
-It can be calculated that
-
-$$\E[X_i] = np_i, \quad \V(X_i) = n p_i (1-p_i),$$
-
-$$\Cov(X_i, X_j) = -n p_i p_j \quad (i \not= j).$$
-
-
-## Multivariate Normal
-
-The $n$-vector $\boldsymbol{X}$ has Multivariate Normal distribution when $\boldsymbol{X} \sim \mbox{MVN}_n(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ where $\boldsymbol{\mu}$ is the $n$-vector of population means and $\boldsymbol{\Sigma}$ is the $n \times n$ variance-covariance matrix.  Its pdf is
-
-$$ f(\boldsymbol{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = 
-\frac{1}{\sqrt{2 \pi |\boldsymbol{\Sigma}|}} \exp -\left\{ -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}) \right\}.
-$$
-  
-\   
-
-Fun fact: $\boldsymbol{\Sigma}^{-1/2} (\boldsymbol{X}-\boldsymbol{\mu}) \sim \mbox{MVN}_n(\boldsymbol{0}, \boldsymbol{I})$.
-
-## Dirichlet
-
-The Dirichlet distribution models an $m$-vector $\boldsymbol{X}$ so that $0 \leq X_i \leq 1$ and $\sum_{i=1}^m X_i = 1$.  It is a generalization of the Beta distribution.  The rv $\boldsymbol{X} \sim \mbox{Dirichlet}_m(\boldsymbol{\alpha})$, where $\boldsymbol{\alpha}$ is an $m$-vector, has pdf
-
-$$
-f(\boldsymbol{x}; \boldsymbol{\alpha}) =
-\frac{\Gamma\left( \sum_{i=1}^m \alpha_i \right)}{\prod_{i=1}^m \Gamma(\alpha_i)} \prod_{i=1}^m x_i^{\alpha_i-1}.
-$$
-
-It can be calculated that
-$$\E[X_i] = \frac{\alpha_i}{\alpha_0}, \V(X_i) = \frac{\alpha_i (\alpha_0 - \alpha_i)}{\alpha_0^2 (\alpha_0 + 1)}, \Cov(X_i, X_j) = \frac{- \alpha_i \alpha_j}{\alpha_0^2 (\alpha_0 + 1)}$$
-where $\alpha_0 = \sum_{k=1}^m \alpha_k$ and $i \not= j$ in $\Cov(X_i, X_j)$.
-
-
-## In R
-
-For the Multinomial, base R contains the functions `dmultinom` and `rmultinom`. 
-
-For the Multivariate Normal, there are several packages that work with this distribution.  One choice is the package `mvtnorm`, which contains the functions `dmvnorm` and `rmvnorm`.
-
-For the Dirichlet, there are several packages that work with this distribution.  One choice is the package `MCMCpack`, which contains the functions `ddirichlet` and `rdirichlet`.
 
 # From Probability to Likelihood
 

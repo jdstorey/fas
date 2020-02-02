@@ -4,21 +4,21 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>27 MLE Examples: One Sample | Foundations of Applied Statistics</title>
-  <meta name="description" content="27 MLE Examples: One Sample | Foundations of Applied Statistics" />
+  <title>19 Population Principal Components Analysis | Foundations of Applied Statistics</title>
+  <meta name="description" content="19 Population Principal Components Analysis | Foundations of Applied Statistics" />
   <meta name="generator" content="bookdown 0.10 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="27 MLE Examples: One Sample | Foundations of Applied Statistics" />
+  <meta property="og:title" content="19 Population Principal Components Analysis | Foundations of Applied Statistics" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://jdstorey.github.io/fas/" />
   <meta property="og:image" content="https://jdstorey.github.io/fas/images/book_cover.png" />
-  <meta property="og:description" content="27 MLE Examples: One Sample | Foundations of Applied Statistics" />
+  <meta property="og:description" content="19 Population Principal Components Analysis | Foundations of Applied Statistics" />
   <meta name="github-repo" content="jdstorey/fas" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="27 MLE Examples: One Sample | Foundations of Applied Statistics" />
+  <meta name="twitter:title" content="19 Population Principal Components Analysis | Foundations of Applied Statistics" />
   <meta name="twitter:site" content="@johnstorey" />
-  <meta name="twitter:description" content="27 MLE Examples: One Sample | Foundations of Applied Statistics" />
+  <meta name="twitter:description" content="19 Population Principal Components Analysis | Foundations of Applied Statistics" />
   <meta name="twitter:image" content="https://jdstorey.github.io/fas/images/book_cover.png" />
 
 <meta name="author" content="John D. Storey" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="maximum-likelihood-estimation.html">
-<link rel="next" href="mle-examples-two-samples.html">
+<link rel="prev" href="multivariate-rvs.html">
+<link rel="next" href="from-probability-to-likelihood.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -1041,106 +1041,70 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="mle-examples-one-sample" class="section level1">
-<h1><span class="header-section-number">27</span> MLE Examples: One Sample</h1>
-<div id="exponential-family-distributions-1" class="section level2">
-<h2><span class="header-section-number">27.1</span> Exponential Family Distributions</h2>
-<p>Suppose <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are iid from some EFD. Then,</p>
+<div id="population-principal-components-analysis" class="section level1">
+<h1><span class="header-section-number">19</span> Population Principal Components Analysis</h1>
+<p>Suppose we have <span class="math inline">\(m\)</span> random variables <span class="math inline">\(X_1, X_2, \ldots, X_m\)</span>. We wish to identify a set of weights <span class="math inline">\(w_1, w_2, \ldots, w_m\)</span> that maximizes</p>
 <p><span class="math display">\[
-\frac{\partial}{\partial \eta_k} \ell(\boldsymbol{\eta} ; \boldsymbol{x}) = \sum_{i=1}^n T_k(x_i) - n \frac{\partial}{\partial \eta_k} A(\boldsymbol{\eta})
-\]</span> Setting the second equation to 0, it follows that the MLE of <span class="math inline">\(\eta_k\)</span> is the solution to</p>
-<p><span class="math display">\[
-\frac{1}{n} \sum_{i=1}^n T_k(x_i) = \frac{\partial}{\partial \eta_k} A(\boldsymbol{\eta}).
+{\operatorname{Var}}\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right).
 \]</span></p>
-<p>where note that <span class="math inline">\(\frac{\partial}{\partial \eta_k} A(\boldsymbol{\eta}) = {\operatorname{E}}[T_k(X)]\)</span>.</p>
-</div>
-<div id="summary-of-mle-statistics" class="section level2">
-<h2><span class="header-section-number">27.2</span> Summary of MLE Statistics</h2>
-<p>In all of these scenarios, <span class="math inline">\(Z\)</span> converges in distribution to Normal<span class="math inline">\((0,1)\)</span> for large <span class="math inline">\(n\)</span>.</p>
-<table style="width:71%;">
-<colgroup>
-<col width="18%" />
-<col width="16%" />
-<col width="13%" />
-<col width="22%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th>Distribution</th>
-<th align="center">MLE</th>
-<th align="center">Std Err</th>
-<th align="center"><span class="math inline">\(Z\)</span> Statistic</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Binomial<span class="math inline">\((n,p)\)</span></td>
-<td align="center"><span class="math inline">\(\hat{p} = X/n\)</span></td>
-<td align="center"><span class="math inline">\(\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{\hat{p} - p}{\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}\)</span></td>
-</tr>
-<tr class="even">
-<td>Normal<span class="math inline">\((\mu, \sigma^2)\)</span></td>
-<td align="center"><span class="math inline">\(\hat{\mu} = \overline{X}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{\hat{\sigma}}{\sqrt{n}}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{\hat{\mu} - \mu}{\hat{\sigma}/\sqrt{n}}\)</span></td>
-</tr>
-<tr class="odd">
-<td>Poisson<span class="math inline">\((\lambda)\)</span></td>
-<td align="center"><span class="math inline">\(\hat{\lambda} = \overline{X}\)</span></td>
-<td align="center"><span class="math inline">\(\sqrt{\frac{\hat{\lambda}}{n}}\)</span></td>
-<td align="center"><span class="math inline">\(\frac{\hat{\lambda} - \lambda}{\sqrt{\hat{\lambda}/n}}\)</span></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="notes-1" class="section level2">
-<h2><span class="header-section-number">27.3</span> Notes</h2>
+<p>However, this is unbounded, so we need to constrain the weights. It turns out that constraining the weights so that</p>
+<p><span class="math display">\[
+\| {\boldsymbol{w}}\|_2^2 = \sum_{i=1}^m w_i^2 = 1
+\]</span></p>
+<p>is both interpretable and mathematically tractable.</p>
+<p>Therefore we wish to maximize</p>
+<p><span class="math display">\[
+{\operatorname{Var}}\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right)
+\]</span></p>
+<p>subject to <span class="math inline">\(\| {\boldsymbol{w}}\|_2^2 = 1\)</span>. Let <span class="math inline">\({\boldsymbol{\Sigma}}\)</span> be the <span class="math inline">\(m \times m\)</span> population covariance matrix of the random variables <span class="math inline">\(X_1, X_2, \ldots, X_m\)</span>. It follows that</p>
+<p><span class="math display">\[
+{\operatorname{Var}}\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right) = {\boldsymbol{w}}^T {\boldsymbol{\Sigma}}{\boldsymbol{w}}.
+\]</span></p>
+<p>Using a Lagrange multiplier, we wish to maximize</p>
+<p><span class="math display">\[
+{\boldsymbol{w}}^T {\boldsymbol{\Sigma}}{\boldsymbol{w}}+ \lambda({\boldsymbol{w}}^T {\boldsymbol{w}}- 1).
+\]</span></p>
+<p>Differentiating with respect to <span class="math inline">\({\boldsymbol{w}}\)</span> and setting to <span class="math inline">\({\boldsymbol{0}}\)</span>, we get <span class="math inline">\({\boldsymbol{\Sigma}}{\boldsymbol{w}}- \lambda {\boldsymbol{w}}= 0\)</span> or</p>
+<p><span class="math display">\[
+{\boldsymbol{\Sigma}}{\boldsymbol{w}}= \lambda {\boldsymbol{w}}.
+\]</span></p>
+<p>For any such <span class="math inline">\({\boldsymbol{w}}\)</span> and <span class="math inline">\(\lambda\)</span> where this holds, note that</p>
+<p><span class="math display">\[
+{\operatorname{Var}}\left(w_1 X_1 + w_2 X_2 + \cdots + w_m X_m \right) = {\boldsymbol{w}}^T {\boldsymbol{\Sigma}}{\boldsymbol{w}}= \lambda
+\]</span></p>
+<p>so the variance is <span class="math inline">\(\lambda\)</span>.</p>
+<p>The eigendecompositon of a matrix identifies all such solutions to <span class="math inline">\({\boldsymbol{\Sigma}}{\boldsymbol{w}}= \lambda {\boldsymbol{w}}\)</span>. Specifically, it calculates the decompositon</p>
+<p><span class="math display">\[
+{\boldsymbol{\Sigma}}= {\boldsymbol{W}}{\boldsymbol{\Lambda}}{\boldsymbol{W}}^T
+\]</span></p>
+<p>where <span class="math inline">\({\boldsymbol{W}}\)</span> is an <span class="math inline">\(m \times m\)</span> orthogonal matrix and <span class="math inline">\({\boldsymbol{\Lambda}}\)</span> is a diagonal matrix with entries <span class="math inline">\(\lambda_1 \geq \lambda_2 \geq \cdots \geq \lambda_m \geq 0\)</span>.</p>
+<p>The fact that <span class="math inline">\({\boldsymbol{W}}\)</span> is orthogonal means <span class="math inline">\({\boldsymbol{W}}{\boldsymbol{W}}^T = {\boldsymbol{W}}^T {\boldsymbol{W}}= {\boldsymbol{I}}\)</span>.</p>
+<p>The following therefore hold:</p>
 <ul>
-<li>For the Normal and Poisson distributions, our model is <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> iid from each respective distribution</li>
-<li>For the Binomial distribution, our model is <span class="math inline">\(X \sim \mbox{Binomial}(n, p)\)</span><br />
-</li>
-<li>In the Normal model, <span class="math inline">\(\hat{\sigma} = \sqrt{\frac{\sum_{i=1}^n (X_i - \overline{X})^2}{n}}\)</span> is the MLE of <span class="math inline">\(\sigma\)</span></li>
-<li>The above formulas were given in terms of the random variable probability models; on observed data the same formulas are used except we observed data lower case letters, e.g., replace <span class="math inline">\(\overline{X}\)</span> with <span class="math inline">\(\overline{x}\)</span></li>
+<li>For each column <span class="math inline">\(j\)</span> of <span class="math inline">\({\boldsymbol{W}}\)</span>, say <span class="math inline">\({\boldsymbol{w}}_j\)</span>, it follows that <span class="math inline">\({\boldsymbol{\Sigma}}{\boldsymbol{w}}_j = \lambda_j {\boldsymbol{w}}_j\)</span></li>
+<li><span class="math inline">\(\| {\boldsymbol{w}}_j \|^2_2 = 1\)</span> and <span class="math inline">\({\boldsymbol{w}}_j^T {\boldsymbol{w}}_k = {\boldsymbol{0}}\)</span> for <span class="math inline">\(\lambda_j \not= \lambda_k\)</span></li>
+<li><span class="math inline">\({\operatorname{Var}}({\boldsymbol{w}}_j^T {\boldsymbol{X}}) = \lambda_j\)</span></li>
+<li><span class="math inline">\({\operatorname{Var}}({\boldsymbol{w}}_1^T {\boldsymbol{X}}) \geq {\operatorname{Var}}({\boldsymbol{w}}_2^T {\boldsymbol{X}}) \geq \cdots \geq {\operatorname{Var}}({\boldsymbol{w}}_m^T {\boldsymbol{X}})\)</span></li>
+<li><span class="math inline">\({\boldsymbol{\Sigma}}= \sum_{j=1}^m \lambda_j {\boldsymbol{w}}_j {\boldsymbol{w}}_j^T\)</span></li>
+<li>For <span class="math inline">\(\lambda_j \not= \lambda_k\)</span>, <span class="math display">\[{\operatorname{Cov}}({\boldsymbol{w}}_j^T {\boldsymbol{X}}, {\boldsymbol{w}}_k^T {\boldsymbol{X}}) = {\boldsymbol{w}}_j^T {\boldsymbol{\Sigma}}{\boldsymbol{w}}_k = \lambda_k {\boldsymbol{w}}_j^T {\boldsymbol{w}}_k =  {\boldsymbol{0}}\]</span></li>
 </ul>
-</div>
-<div id="binomial-1" class="section level2">
-<h2><span class="header-section-number">27.4</span> Binomial</h2>
-<p>Approximate <span class="math inline">\((1-\alpha)\)</span>-level two-sided CI:</p>
-<p><span class="math display">\[\left(\hat{p} - |z_{\alpha/2}| \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}, \hat{p} + |z_{\alpha/2}| \sqrt{\frac{\hat{p}(1-\hat{p})}{n}} \right)\]</span></p>
-<p>Hypothesis test, <span class="math inline">\(H_0: p=p_0\)</span> vs <span class="math inline">\(H_1: p \not= p_0\)</span>:</p>
-<p><span class="math display">\[z = \frac{\hat{p} - p_0}{\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}} \mbox{ and } \mbox{p-value} = {\rm Pr}(|Z^*| \geq |z|)\]</span></p>
-<p>where <span class="math inline">\(Z^*\)</span> is a Normal<span class="math inline">\((0,1)\)</span> random variable.</p>
-</div>
-<div id="normal-1" class="section level2">
-<h2><span class="header-section-number">27.5</span> Normal</h2>
-<p>Approximate <span class="math inline">\((1-\alpha)\)</span>-level two-sided CI:</p>
-<p><span class="math display">\[\left(\hat{\mu} - |z_{\alpha/2}| \frac{\hat{\sigma}}{\sqrt{n}}, \hat{\mu} + |z_{\alpha/2}| \frac{\hat{\sigma}}{\sqrt{n}} \right)\]</span></p>
-<p>Hypothesis test, <span class="math inline">\(H_0: \mu=\mu_0\)</span> vs <span class="math inline">\(H_1: \mu \not= \mu_0\)</span>:</p>
-<p><span class="math display">\[z = \frac{\hat{\mu} - \mu_0}{\hat{\sigma}/\sqrt{n}} \mbox{ and } \mbox{p-value} = {\rm Pr}(|Z^*| \geq |z|)\]</span></p>
-<p>where <span class="math inline">\(Z^*\)</span> is a Normal<span class="math inline">\((0,1)\)</span> random variable.</p>
-</div>
-<div id="poisson-1" class="section level2">
-<h2><span class="header-section-number">27.6</span> Poisson</h2>
-<p>Approximate <span class="math inline">\((1-\alpha)\)</span>-level two-sided CI:</p>
-<p><span class="math display">\[\left(\hat{\lambda} - |z_{\alpha/2}| \sqrt{\frac{\hat{\lambda}}{n}}, \hat{\lambda} + |z_{\alpha/2}| \sqrt{\frac{\hat{\lambda}}{n}} \right)\]</span></p>
-<p>Hypothesis test, <span class="math inline">\(H_0: \lambda=\lambda_0\)</span> vs <span class="math inline">\(H_1: \lambda \not= \lambda_0\)</span>:</p>
-<p><span class="math display">\[z = \frac{\hat{\lambda} - \lambda_0}{\sqrt{\frac{\hat{\lambda}}{n}}} \mbox{ and } \mbox{p-value} = {\rm Pr}(|Z^*| \geq |z|)\]</span></p>
-<p>where <span class="math inline">\(Z^*\)</span> is a Normal<span class="math inline">\((0,1)\)</span> random variable.</p>
-</div>
-<div id="one-sided-cis-and-hts" class="section level2">
-<h2><span class="header-section-number">27.7</span> One-Sided CIs and HTs</h2>
-<p>The one-sided versions of these approximate confidence intervals and hypothesis tests work analogously.</p>
-<p>The procedures shown for the <span class="math inline">\(\mbox{Normal}(\mu, \sigma^2)\)</span> case with known <span class="math inline">\(\sigma^2\)</span> from last week are utilzied with the appropriate subsitutions as in the above examples.</p>
-</div>
+<p>The <span class="math inline">\(j\)</span>th <strong>population principal component</strong> (PC) of <span class="math inline">\(X_1, X_2, \ldots, X_m\)</span> is</p>
+<p><span class="math display">\[
+{\boldsymbol{w}}_j^T {\boldsymbol{X}}= w_{1j} X_1 + w_{2j} X_2 + \cdots + w_{mj} X_m
+\]</span></p>
+<p>where <span class="math inline">\({\boldsymbol{w}}_j = (w_{1j}, w_{2j}, \ldots, w_{mj})^T\)</span> is column <span class="math inline">\(j\)</span> of <span class="math inline">\({\boldsymbol{W}}\)</span> from the eigendecomposition</p>
+<p><span class="math display">\[
+{\boldsymbol{\Sigma}}= {\boldsymbol{W}}{\boldsymbol{\Lambda}}{\boldsymbol{W}}^T.
+\]</span></p>
+<p>The column <span class="math inline">\({\boldsymbol{w}}_j\)</span> are called the <strong>loadings</strong> of the <span class="math inline">\(j\)</span>th principal component. The <strong>variance explained</strong> by the <span class="math inline">\(j\)</span>th PC is <span class="math inline">\(\lambda_j\)</span>, which is diagonal element <span class="math inline">\(j\)</span> of <span class="math inline">\({\boldsymbol{\Lambda}}\)</span>.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="maximum-likelihood-estimation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mle-examples-two-samples.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="multivariate-rvs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="from-probability-to-likelihood.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -1160,7 +1124,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jdstorey/fas/edit/master/freq_inference.Rmd",
+"link": "https://github.com/jdstorey/fas/edit/master/probability.Rmd",
 "text": "Edit"
 },
 "history": {

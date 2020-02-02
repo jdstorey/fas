@@ -29,19 +29,19 @@ In Chapter \@ref(challenges) below, we make this definition concrete by discussi
 
 ## Relationship to Machine Learning
 
-**Machine learning** explores the study and construction of algorithms that can learn from and make predictions on data. Machine learning is closely related to and often overlaps with computational statistics; a discipline which also focuses in prediction-making through the use of computers. 
+From <https://en.wikipedia.org/wiki/Machine_learning>:
 
-<https://en.wikipedia.org/wiki/Machine_learning>
+> **Machine learning** explores the study and construction of algorithms that can learn from and make predictions on data. Machine learning is closely related to and often overlaps with computational statistics; a discipline which also focuses in prediction-making through the use of computers. 
 
 ## Relationship to Data Science 
 
-**Data Science** is an interdisciplinary field about processes and systems to extract knowledge or insights from data in various forms, either structured or unstructured, which is a continuation of some of the data analysis fields such as statistics, data mining, and predictive analytics.
+From <https://en.wikipedia.org/wiki/Data_science>:
 
-<https://en.wikipedia.org/wiki/Data_science>
+> **Data Science** is an interdisciplinary field about processes and systems to extract knowledge or insights from data in various forms, either structured or unstructured, which is a continuation of some of the data analysis fields such as statistics, data mining, and predictive analytics.
 
-### Some History
+## Some History On Data Science
 
-#### John Tukey {-}
+### John Tukey {-}
 
 John Tukey pioneered a field called "exploratory data analysis" (EDA)
 
@@ -55,30 +55,31 @@ From [The Future of Data Analysis](https://projecteuclid.org/euclid.aoms/1177704
 
 > Data analysis is a larger and more varied field than inference, or incisive procedures, or allocation.
 
-#### Jeff Wu {-}
+### Jeff Wu {-}
+
+From <https://en.wikipedia.org/wiki/Data_science>:
 
 > In November 1997, C.F. Jeff Wu gave the inaugural lecture entitled "Statistics = Data Science?". In this lecture, he characterized statistical work as a trilogy of data collection, data modeling and analysis, and decision making. In his conclusion, he initiated the modern, non-computer science, usage of the term "data science" and advocated that statistics be renamed data science and statisticians data scientists.
 
-<https://en.wikipedia.org/wiki/Data_science>
+### William Cleveland {-}
 
-#### William Cleveland {-}
+From <https://en.wikipedia.org/wiki/Data_science>:
 
- - In 2001, William Cleveland introduced data science as an independent discipline, extending the field of statistics to incorporate "advances in computing with data" in his article [Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics](http://onlinelibrary.wiley.com/doi/10.1111/j.1751-5823.2001.tb00477.x/abstract) in  *International Statistical Review*
+> In 2001, William Cleveland introduced data science as an independent discipline, extending the field of statistics to incorporate "advances in computing with data" in his article [Data Science: An Action Plan for Expanding the Technical Areas of the Field of Statistics](http://onlinelibrary.wiley.com/doi/10.1111/j.1751-5823.2001.tb00477.x/abstract) in  *International Statistical Review*
+> 
+> Cleveland establishes six technical areas which he believed to encompass the field of data science:
+> 
+> 1. multidisciplinary investigations
+> 2. models and methods for data
+> 3. computing with data
+> 4. pedagogy
+> 5. tool evaluation
+> 6. theory
 
-Cleveland establishes six technical areas which he believed to encompass the field of data science:
 
-1. multidisciplinary investigations
-2. models and methods for data
-3. computing with data
-4. pedagogy
-5. tool evaluation
-6. theory
+### Industry {-}
 
-<https://en.wikipedia.org/wiki/Data_science>
-
-### Industry
-
-Individuals working in industry began to call themselves "data scientists" in the late 2000's, but this was far  after statisticians had introduced the field. For exampe, 
+Individuals working in industry began to call themselves "data scientists" in the late 2000's, but this was far  after statisticians had introduced the field.  
 
 
 # Components of Applied Statistics {#challenges}
