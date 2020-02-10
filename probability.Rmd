@@ -324,20 +324,6 @@ $$\V(X) = \sum_{x \in \mathcal{R}} \left(x-\E[X]\right)^2 \ f(x) \ \ \ \ \mbox{(
 
 $$\V(X) = \int_{-\infty}^{\infty} \left(x-\E[X]\right)^2 \ f(x) \  dx \ \ \ \ \mbox{(continuous)}$$
 
-## Covariance
-
-The **covariance**, also called the "population covariance", measures how two rv's covary.  It is calculated in a fashion analogous to the sample covariance:
-
-$$\Cov(X, Y) = \operatorname{E} \left[ (X - \operatorname{E}[X]) (Y - \operatorname{E}[Y]) \right]$$
-
-Note that $\Cov(X, X) = \V(X)$.
-
-## Correlation
-
-The population **correlation** is calculated analogously to the sample correlation:
-
-$$\operatorname{Cor}(X, Y) = \frac{\Cov(X, Y)}{\operatorname{SD}(X)\operatorname{SD}(Y)}$$
-
 ## Moment Generating Functions
 
 The **moment generating function** (mgf) of a rv is defined to be
@@ -683,6 +669,188 @@ str(qnorm)
 str(rnorm)
 ```
 
+# Joint Distributions
+
+## Bivariate Random Variables
+
+For a pair of rv's $X$ and $Y$ defined on the same probability space, we can define their joint pmf or pdf.  For the discrete case,
+
+\begin{align*}
+f(x, y) & = \Pr(\{\omega: X(\omega) = x\} \cap \{\omega: Y(\omega) = y\}) \\
+\ & = \Pr(X=x, Y=y).
+\end{align*}
+
+The joint pdf is defined analogously for continuous rv's.  
+
+## Events for Bivariate RVs
+
+Let $A_x \times A_y \subseteq \mathbb{R} \times \mathbb{R}$ be an event.  Then $\Pr(X \in A_x, Y \in A_y)$ is calculated by:
+
+\begin{align*}
+& \sum_{x \in A_x} \sum_{y \in A_y} f(x, y) &  \mbox{(discrete)} \\
+& \int_{x \in A_x} \int_{y \in A_y} f(x, y) dy dx & \mbox{(continuous)} \\
+& \int_{x \in A_x} \int_{y \in A_y} dF_Y(y) dF_{X}(x) & \mbox{(general)}
+\end{align*}
+
+## Marginal Distributions
+
+We can calculate the marginal distribution of $X$ (or $Y$) from their joint distribution:
+
+$$f(x) = \sum_{y \in \mathcal{R}_y} f(x, y)$$
+
+$$f(x) = \int_{-\infty}^{\infty} f(x, y) dy$$
+
+## Independent Random Variables
+
+Two rv's are independent when their joint pmf or pdf factor:
+
+$$f(x,y) = f(x) f(y)$$
+
+This means, for example, in the continuous case,
+
+\begin{align*}
+\Pr(X \in A_x, Y \in A_y) & = \int_{x \in A_x} \int_{y \in A_y} f(x, y) dy dx  \\
+\ & = \int_{x \in A_x} \int_{y \in A_y} f(x) f(y) dy dx  \\
+\ & = \Pr(X \in A_x) \Pr(Y \in A_y)
+\end{align*}
+
+## Conditional Distributions
+
+We can define the conditional distribution of $X$ given $Y$ as follows.  The conditional rv $X | Y \sim F_{X|Y}$ with conditional pmf or pdf for $X | Y=y$ given by
+
+$$
+f(x | y) = \frac{f(x, y)}{f(y)}. 
+$$
+
+## Conditional Moments
+
+The $k$th conditional moment (when it exists) is calculated by:
+
+$$\E\left[X^k | Y=y\right] = \sum_{x \in \mathcal{R}_x} x^k f(x | y)$$
+
+$$\E\left[X^k | Y=y\right] = \int_{-\infty}^{\infty} x^k f(x | y) dx$$
+
+Note that $\E \left[X^k | Y\right]$ is a random variable that is a function of $Y$ whose distribution is determined by that of $Y$.
+
+## Law of Total Variance
+
+We can partition the variance of $X$ according to the following conditional calculations on $Y$:
+
+$$\V(X) = \V(\E[X | Y]) + \E[\V(X | Y)].$$
+
+This is a useful result for partitioning variation in modeling fitting.
+
+## Covariance and Correlation
+
+The **covariance**, also called the "population covariance", measures how two rv's covary.  It is calculated in a fashion analogous to the sample covariance:
+
+$$\Cov(X, Y) = \operatorname{E} \left[ (X - \operatorname{E}[X]) (Y - \operatorname{E}[Y]) \right]$$
+
+Note that $\Cov(X, X) = \V(X)$.
+
+The population **correlation** is calculated analogously to the sample correlation:
+
+$$\operatorname{Cor}(X, Y) = \frac{\Cov(X, Y)}{\operatorname{SD}(X)\operatorname{SD}(Y)}$$
+
+## Multivariate Distributions
+
+Let $\boldsymbol{X} = (X_1, X_2, \ldots, X_n)^T$ be a vector of $n$ rv's.  We also let realized values be $\boldsymbol{x} = (x_1, x_2, \ldots, x_n)^T$.  The joint pmf or pdf is written as
+
+$$f(\boldsymbol{x}) = f(x_1, x_2, \ldots, x_n)$$
+
+and if the rv's are independent then
+
+$$f(\boldsymbol{x}) = \prod_{i=1}^{n} f(x_i).$$
+
+## MV Expected Value
+
+The expected value of $\boldsymbol{X} = (X_1, X_2, \ldots, X_n)^T$ is an $n$-vector:
+
+$$\E[\boldsymbol{X}] = 
+\begin{bmatrix}
+\E[X_1] \\
+\E[X_2] \\
+\vdots \\
+\E[X_n]
+\end{bmatrix}
+$$
+
+## MV Variance-Covariance Matrix  
+
+The variance-covariance matrix of $\boldsymbol{X}$ is an $n \times n$ matrix with $(i, j)$ entry equal to $\Cov(X_i, X_j)$.
+  
+  
+$$\V(\boldsymbol{X}) =
+\begin{bmatrix}
+\V(X_1) & \Cov(X_1, X_2) & \cdots & \Cov(X_1, X_n) \\
+\Cov(X_2, X_1) & \V(X_2) & \cdots & \vdots \\
+\vdots & & \ddots & \vdots \\
+\Cov(X_n, X_1) & \cdots & & \V(X_n)
+\end{bmatrix}
+$$
+
+Often times $\boldsymbol{\Sigma}$ is used as the matrix of population covariances in $\V(\boldsymbol{X})$ so that $\boldsymbol{\Sigma}=\V(\boldsymbol{X})$.
+
+# Multivariate RVs
+
+## Multinomial
+
+Suppose $\boldsymbol{X}$ (an $m$-vector) is $\mbox{Multinomial}_m(n, \boldsymbol{p})$, where $\boldsymbol{p}$ is an $m$-vector such that $\sum_{i=1}^m p_i = 1$.  It has pmf
+
+$$
+f(\boldsymbol{x}; \boldsymbol{p}) = 
+{n \choose x_1 \ x_2 \ \cdots \ x_m} p_1^{x_1} p_2^{x_2} \cdots p_m^{x_m} 
+$$
+
+where 
+
+$${n \choose x_1 \ x_2 \ \cdots \ x_m} = \frac{n!}{x_1! x_2! \cdots x_m!}$$
+and $\sum_{i=1}^m x_i = n$.
+
+
+The Multinomial distribution is a generalization of the Binomial distribution. It models $n$ independent outcomes where each outcome has probability $p_i$ of category $i$ occurring (for $i=1, 2, \ldots, m$).  The counts per category are contained in the $X_i$ random variables that are constrained so that $\sum_{i=1}^m X_i = n$.
+
+It can be calculated that
+
+$$\E[X_i] = np_i, \quad \V(X_i) = n p_i (1-p_i),$$
+
+$$\Cov(X_i, X_j) = -n p_i p_j \quad (i \not= j).$$
+
+
+## Multivariate Normal
+
+The $n$-vector $\boldsymbol{X}$ has Multivariate Normal distribution when $\boldsymbol{X} \sim \mbox{MVN}_n(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ where $\boldsymbol{\mu}$ is the $n$-vector of population means and $\boldsymbol{\Sigma}$ is the $n \times n$ variance-covariance matrix.  Its pdf is
+
+$$ f(\boldsymbol{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = 
+\frac{1}{\sqrt{2 \pi |\boldsymbol{\Sigma}|}} \exp -\left\{ -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}) \right\}.
+$$
+  
+\   
+
+Fun fact: $\boldsymbol{\Sigma}^{-1/2} (\boldsymbol{X}-\boldsymbol{\mu}) \sim \mbox{MVN}_n(\boldsymbol{0}, \boldsymbol{I})$.
+
+## Dirichlet
+
+The Dirichlet distribution models an $m$-vector $\boldsymbol{X}$ so that $0 \leq X_i \leq 1$ and $\sum_{i=1}^m X_i = 1$.  It is a generalization of the Beta distribution.  The rv $\boldsymbol{X} \sim \mbox{Dirichlet}_m(\boldsymbol{\alpha})$, where $\boldsymbol{\alpha}$ is an $m$-vector, has pdf
+
+$$
+f(\boldsymbol{x}; \boldsymbol{\alpha}) =
+\frac{\Gamma\left( \sum_{i=1}^m \alpha_i \right)}{\prod_{i=1}^m \Gamma(\alpha_i)} \prod_{i=1}^m x_i^{\alpha_i-1}.
+$$
+
+It can be calculated that
+$$\E[X_i] = \frac{\alpha_i}{\alpha_0}, \V(X_i) = \frac{\alpha_i (\alpha_0 - \alpha_i)}{\alpha_0^2 (\alpha_0 + 1)}, \Cov(X_i, X_j) = \frac{- \alpha_i \alpha_j}{\alpha_0^2 (\alpha_0 + 1)}$$
+where $\alpha_0 = \sum_{k=1}^m \alpha_k$ and $i \not= j$ in $\Cov(X_i, X_j)$.
+
+
+## In R
+
+For the Multinomial, base R contains the functions `dmultinom` and `rmultinom`. 
+
+For the Multivariate Normal, there are several packages that work with this distribution.  One choice is the package `mvtnorm`, which contains the functions `dmvnorm` and `rmvnorm`.
+
+For the Dirichlet, there are several packages that work with this distribution.  One choice is the package `MCMCpack`, which contains the functions `ddirichlet` and `rdirichlet`.
+
 # Sums of Random Variables
 
 ## Linear Transformation of a RV
@@ -809,176 +977,6 @@ ggplot(data=df) +
                  fill="lightgray", binwidth=0.75) +
   geom_line(aes(x=x, y=y), size=1.5)
 ```
-
-# Joint Distributions
-
-## Bivariate Random Variables
-
-For a pair of rv's $X$ and $Y$ defined on the same probability space, we can define their joint pmf or pdf.  For the discrete case,
-
-\begin{align*}
-f(x, y) & = \Pr(\{\omega: X(\omega) = x\} \cap \{\omega: Y(\omega) = y\}) \\
-\ & = \Pr(X=x, Y=y).
-\end{align*}
-
-The joint pdf is defined analogously for continuous rv's.  
-
-## Events for Bivariate RVs
-
-Let $A_x \times A_y \subseteq \mathbb{R} \times \mathbb{R}$ be an event.  Then $\Pr(X \in A_x, Y \in A_y)$ is calculated by:
-
-\begin{align*}
-& \sum_{x \in A_x} \sum_{y \in A_y} f(x, y) &  \mbox{(discrete)} \\
-& \int_{x \in A_x} \int_{y \in A_y} f(x, y) dy dx & \mbox{(continuous)} \\
-& \int_{x \in A_x} \int_{y \in A_y} dF_Y(y) dF_{X}(x) & \mbox{(general)}
-\end{align*}
-
-## Marginal Distributions
-
-We can calculate the marginal distribution of $X$ (or $Y$) from their joint distribution:
-
-$$f(x) = \sum_{y \in \mathcal{R}_y} f(x, y)$$
-
-$$f(x) = \int_{-\infty}^{\infty} f(x, y) dy$$
-
-## Independent Random Variables
-
-Two rv's are independent when their joint pmf or pdf factor:
-
-$$f(x,y) = f(x) f(y)$$
-
-This means, for example, in the continuous case,
-
-\begin{align*}
-\Pr(X \in A_x, Y \in A_y) & = \int_{x \in A_x} \int_{y \in A_y} f(x, y) dy dx  \\
-\ & = \int_{x \in A_x} \int_{y \in A_y} f(x) f(y) dy dx  \\
-\ & = \Pr(X \in A_x) \Pr(Y \in A_y)
-\end{align*}
-
-## Conditional Distributions
-
-We can define the conditional distribution of $X$ given $Y$ as follows.  The conditional rv $X | Y \sim F_{X|Y}$ with conditional pmf or pdf for $X | Y=y$ given by
-
-$$
-f(x | y) = \frac{f(x, y)}{f(y)}. 
-$$
-
-## Conditional Moments
-
-The $k$th conditional moment (when it exists) is calculated by:
-
-$$\E\left[X^k | Y=y\right] = \sum_{x \in \mathcal{R}_x} x^k f(x | y)$$
-
-$$\E\left[X^k | Y=y\right] = \int_{-\infty}^{\infty} x^k f(x | y) dx$$
-
-Note that $\E \left[X^k | Y\right]$ is a random variable that is a function of $Y$ whose distribution is determined by that of $Y$.
-
-## Law of Total Variance
-
-We can partition the variance of $X$ according to the following conditional calculations on $Y$:
-
-$$\V(X) = \V(\E[X | Y]) + \E[\V(X | Y)].$$
-
-This is a useful result for partitioning variation in modeling fitting.
-
-## Multivariate Distributions
-
-Let $\boldsymbol{X} = (X_1, X_2, \ldots, X_n)^T$ be a vector of $n$ rv's.  We also let realiozed values be $\boldsymbol{x} = (x_1, x_2, \ldots, x_n)^T$.  The joint pmf or pdf is written as
-
-$$f(\boldsymbol{x}) = f(x_1, x_2, \ldots, x_n)$$
-
-and if the rv's are independent then
-
-$$f(\boldsymbol{x}) = \prod_{i=1}^{n} f(x_i).$$
-
-## MV Expected Value
-
-The expected value of $\boldsymbol{X} = (X_1, X_2, \ldots, X_n)^T$ is an $n$-vector:
-
-$$\E[\boldsymbol{X}] = 
-\begin{bmatrix}
-\E[X_1] \\
-\E[X_2] \\
-\vdots \\
-\E[X_n]
-\end{bmatrix}
-$$
-
-## MV Variance-Covariance Matrix  
-
-The variance-covariance matrix of $\boldsymbol{X}$ is an $n \times n$ matrix with $(i, j)$ entry equal to $\Cov(X_i, X_j)$.
-  
-  
-$$\V(\boldsymbol{X}) =
-\begin{bmatrix}
-\V(X_1) & \Cov(X_1, X_2) & \cdots & \Cov(X_1, X_n) \\
-\Cov(X_2, X_1) & \V(X_2) & \cdots & \vdots \\
-\vdots & & \ddots & \vdots \\
-\Cov(X_n, X_1) & \cdots & & \V(X_n)
-\end{bmatrix}
-$$
-
-Often times $\boldsymbol{\Sigma}$ is used as the matrix of population covariances in $\V(\boldsymbol{X})$ so that $\boldsymbol{\Sigma}=\V(\boldsymbol{X})$.
-
-# Multivariate RVs
-
-## Multinomial
-
-Suppose $\boldsymbol{X}$ (an $m$-vector) is $\mbox{Multinomial}_m(n, \boldsymbol{p})$, where $\boldsymbol{p}$ is an $m$-vector such that $\sum_{i=1}^m p_i = 1$.  It has pmf
-
-$$
-f(\boldsymbol{x}; \boldsymbol{p}) = 
-{n \choose x_1 \ x_2 \ \cdots \ x_m} p_1^{x_1} p_2^{x_2} \cdots p_m^{x_m} 
-$$
-
-where 
-
-$${n \choose x_1 \ x_2 \ \cdots \ x_m} = \frac{n!}{x_1! x_2! \cdots x_m!}$$
-and $\sum_{i=1}^m x_i = n$.
-
-
-The Multinomial distribution is a generalization of the Binomial distribution. It models $n$ independent outcomes where each outcome has probability $p_i$ of category $i$ occurring (for $i=1, 2, \ldots, m$).  The counts per category are contained in the $X_i$ random variables that are constrained so that $\sum_{i=1}^m X_i = n$.
-
-It can be calculated that
-
-$$\E[X_i] = np_i, \quad \V(X_i) = n p_i (1-p_i),$$
-
-$$\Cov(X_i, X_j) = -n p_i p_j \quad (i \not= j).$$
-
-
-## Multivariate Normal
-
-The $n$-vector $\boldsymbol{X}$ has Multivariate Normal distribution when $\boldsymbol{X} \sim \mbox{MVN}_n(\boldsymbol{\mu}, \boldsymbol{\Sigma})$ where $\boldsymbol{\mu}$ is the $n$-vector of population means and $\boldsymbol{\Sigma}$ is the $n \times n$ variance-covariance matrix.  Its pdf is
-
-$$ f(\boldsymbol{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma}) = 
-\frac{1}{\sqrt{2 \pi |\boldsymbol{\Sigma}|}} \exp -\left\{ -\frac{1}{2} (\boldsymbol{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{x} - \boldsymbol{\mu}) \right\}.
-$$
-  
-\   
-
-Fun fact: $\boldsymbol{\Sigma}^{-1/2} (\boldsymbol{X}-\boldsymbol{\mu}) \sim \mbox{MVN}_n(\boldsymbol{0}, \boldsymbol{I})$.
-
-## Dirichlet
-
-The Dirichlet distribution models an $m$-vector $\boldsymbol{X}$ so that $0 \leq X_i \leq 1$ and $\sum_{i=1}^m X_i = 1$.  It is a generalization of the Beta distribution.  The rv $\boldsymbol{X} \sim \mbox{Dirichlet}_m(\boldsymbol{\alpha})$, where $\boldsymbol{\alpha}$ is an $m$-vector, has pdf
-
-$$
-f(\boldsymbol{x}; \boldsymbol{\alpha}) =
-\frac{\Gamma\left( \sum_{i=1}^m \alpha_i \right)}{\prod_{i=1}^m \Gamma(\alpha_i)} \prod_{i=1}^m x_i^{\alpha_i-1}.
-$$
-
-It can be calculated that
-$$\E[X_i] = \frac{\alpha_i}{\alpha_0}, \V(X_i) = \frac{\alpha_i (\alpha_0 - \alpha_i)}{\alpha_0^2 (\alpha_0 + 1)}, \Cov(X_i, X_j) = \frac{- \alpha_i \alpha_j}{\alpha_0^2 (\alpha_0 + 1)}$$
-where $\alpha_0 = \sum_{k=1}^m \alpha_k$ and $i \not= j$ in $\Cov(X_i, X_j)$.
-
-
-## In R
-
-For the Multinomial, base R contains the functions `dmultinom` and `rmultinom`. 
-
-For the Multivariate Normal, there are several packages that work with this distribution.  One choice is the package `mvtnorm`, which contains the functions `dmvnorm` and `rmvnorm`.
-
-For the Dirichlet, there are several packages that work with this distribution.  One choice is the package `MCMCpack`, which contains the functions `ddirichlet` and `rdirichlet`.
 
 # Population Principal Components Analysis
 
