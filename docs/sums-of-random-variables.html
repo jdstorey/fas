@@ -1056,9 +1056,10 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="sums-of-dependent-rvs" class="section level2">
 <h2><span class="header-section-number">17.3</span> Sums of Dependent RVs</h2>
-<p>If <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are independent random variables, then:</p>
+<p>If <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are possibly dependent random variables, then:</p>
 <p><span class="math display">\[{\operatorname{E}}\left[ \sum_{i=1}^n X_i \right] = \sum_{i=1}^n {\operatorname{E}}[X_i]\]</span></p>
 <p><span class="math display">\[{\operatorname{Var}}\left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n {\operatorname{Var}}(X_i) + \sum_{i \not= j} {\operatorname{Cov}}(X_i, X_j)\]</span></p>
+<p>Note that when <span class="math inline">\(X_i\)</span> and <span class="math inline">\(X_j\)</span> are independent (<span class="math inline">\(i \not= j\)</span>), then <span class="math inline">\({\operatorname{Cov}}(X_i, X_j) = 0\)</span>.</p>
 </div>
 <div id="means-of-random-variables" class="section level2">
 <h2><span class="header-section-number">17.4</span> Means of Random Variables</h2>

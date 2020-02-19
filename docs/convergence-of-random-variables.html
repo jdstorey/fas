@@ -1082,8 +1082,16 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="central-limit-theorem" class="section level2">
 <h2><span class="header-section-number">18.6</span> Central Limit Theorem</h2>
 <p>Suppose <span class="math inline">\(X_1, X_2, \ldots, X_n\)</span> are iid rv’s with population mean <span class="math inline">\({\operatorname{E}}[X_i] = \mu\)</span> and variance <span class="math inline">\({\operatorname{Var}}(X_i) = \sigma^2\)</span>. Then as <span class="math inline">\(n \rightarrow \infty\)</span>,</p>
-<p><span class="math display">\[\sqrt{n}(\overline{X}_n - \mu)  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, \sigma^2)\]</span></p>
-<p><span class="math display">\[\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, 1)\]</span></p>
+<p><span class="math display">\[\sqrt{n}(\overline{X}_n - \mu)  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, \sigma^2).\]</span></p>
+<p>We can also get convergence to a <span class="math inline">\(\mbox{Normal}(0, 1)\)</span> by dividing by the standard deviation, <span class="math inline">\(\sigma\)</span>:</p>
+<p><span class="math display">\[\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, 1).\]</span></p>
+<p>We write the second convergence result as above rather than <span class="math display">\[\frac{\sqrt{n} (\overline{X}_n - \mu)}{\sigma}  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, 1)\]</span> because <span class="math inline">\(\sigma/\sqrt{n}\)</span> is the “standard error” of <span class="math inline">\(\overline{X}_n\)</span> when <span class="math inline">\(\overline{X}_n\)</span> is treated as an estimator, so <span class="math inline">\(\sigma/\sqrt{n}\)</span> is kept intact.</p>
+<p>Note that for fixed <span class="math inline">\(n\)</span>, <span class="math display">\[
+{\operatorname{E}}\left[ \frac{\overline{X}_n - \mu}{1/\sqrt{n}} \right] = 0 \mbox{ and } {\operatorname{Var}}\left[ \frac{\overline{X}_n - \mu}{1/\sqrt{n}} \right] = \sigma^2,
+\]</span></p>
+<p><span class="math display">\[
+{\operatorname{E}}\left[ \frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}} \right] = 0 \mbox{ and } {\operatorname{Var}}\left[ \frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}} \right] = 1.
+\]</span></p>
 </div>
 <div id="example-calculations" class="section level2">
 <h2><span class="header-section-number">18.7</span> Example: Calculations</h2>

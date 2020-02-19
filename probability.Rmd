@@ -872,11 +872,13 @@ $$\V\left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n \V(X_i)$$
 
 ## Sums of Dependent RVs
 
-If $X_1, X_2, \ldots, X_n$ are independent random variables, then:
+If $X_1, X_2, \ldots, X_n$ are possibly dependent random variables, then:
 
 $$\E\left[ \sum_{i=1}^n X_i \right] = \sum_{i=1}^n \E[X_i]$$
 
 $$\V\left( \sum_{i=1}^n X_i \right) = \sum_{i=1}^n \V(X_i) + \sum_{i \not= j} \Cov(X_i, X_j)$$
+
+Note that when $X_i$ and $X_j$ are independent ($i \not= j$), then $\Cov(X_i, X_j) = 0$.
 
 ## Means of Random Variables
 
@@ -947,9 +949,24 @@ $$\overline{X}_n \stackrel{a.s.}{\longrightarrow} \mu.$$
 
 Suppose $X_1, X_2, \ldots, X_n$ are iid rv's with population mean $\E[X_i] = \mu$ and variance $\V(X_i) = \sigma^2$.  Then as $n \rightarrow \infty$,
 
-$$\sqrt{n}(\overline{X}_n - \mu)  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, \sigma^2)$$
+$$\sqrt{n}(\overline{X}_n - \mu)  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, \sigma^2).$$
 
-$$\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, 1)$$
+We can also get convergence to a $\mbox{Normal}(0, 1)$ by dividing by the standard deviation, $\sigma$:
+
+$$\frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}}  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, 1).$$
+
+We write the second convergence result as above rather than 
+$$\frac{\sqrt{n} (\overline{X}_n - \mu)}{\sigma}  \stackrel{D}{\longrightarrow} \mbox{Normal}(0, 1)$$
+because $\sigma/\sqrt{n}$ is the "standard error" of $\overline{X}_n$ when $\overline{X}_n$ is treated as an estimator, so $\sigma/\sqrt{n}$ is kept intact.
+
+Note that for fixed $n$, 
+$$
+\E \left[ \frac{\overline{X}_n - \mu}{1/\sqrt{n}} \right] = 0 \mbox{ and } \V \left[ \frac{\overline{X}_n - \mu}{1/\sqrt{n}} \right] = \sigma^2,
+$$
+
+$$
+\E \left[ \frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}} \right] = 0 \mbox{ and } \V \left[ \frac{\overline{X}_n - \mu}{\sigma/\sqrt{n}} \right] = 1.
+$$
 
 
 ## Example: Calculations
